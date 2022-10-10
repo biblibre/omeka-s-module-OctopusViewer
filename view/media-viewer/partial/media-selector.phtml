@@ -1,0 +1,13 @@
+<div class="media-viewer-media-selector">
+    <?php foreach ($item->media() as $media): ?>
+    <a
+        class="media-viewer-media-selector-element"
+        data-media-id="<?php echo $media->id(); ?>"
+        data-mediaviewer-render-url="<?php echo $this->url('site/mediaviewer', ['controller' => 'media', 'id' => $media->id(), 'action' => 'render'], [], true); ?>"
+        data-mediaviewer-info-url="<?php echo $this->url('site/mediaviewer', ['controller' => 'media', 'id' => $media->id(), 'action' => 'info'], [], true); ?>"
+    >
+            <?php echo $this->thumbnail($media, 'square'); ?>
+            <span><?php echo $media->displayTitle(); ?></span>
+        </a>
+    <?php endforeach; ?>
+</div>

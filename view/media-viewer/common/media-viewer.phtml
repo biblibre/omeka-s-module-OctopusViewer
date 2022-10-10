@@ -1,0 +1,11 @@
+<div class="media-viewer" data-item-id="<?php echo $item->id(); ?>">
+    <div class="media-viewer-header"></div>
+    <div class="media-viewer-body">
+        <?php echo $this->partial('media-viewer/partial/media-selector', ['item' => $item]); ?>
+        <div class="media-viewer-media-view"></div>
+        <div class="media-viewer-media-info"></div>
+    </div>
+    <div class="media-viewer-footer">
+        <a class="media-viewer-fullscreen"><i class="fa fa-expand"></i></a>
+    </div>
+</div>

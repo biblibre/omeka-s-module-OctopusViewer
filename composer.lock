@@ -1,0 +1,28 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "62080c0a05f61358058d236edce2673d",
+    "packages": [
+        {
+            "name": "mozilla/pdf.js",
+            "version": "3.2.146",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/mozilla/pdf.js/releases/download/v3.2.146/pdfjs-3.2.146-dist.zip"
+            },
+            "type": "library"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}

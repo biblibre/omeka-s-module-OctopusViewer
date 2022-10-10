@@ -1,0 +1,71 @@
+.media-viewer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    background-color: #e0e0e0;
+}
+
+.media-viewer-footer {
+    padding: 6px;
+}
+
+.media-viewer-body {
+    display: flex;
+    height: 50vmin;
+    min-height: 400px;
+    flex-grow: 1;
+}
+
+.media-viewer-media-selector {
+    flex-basis: 25%;
+    flex-shrink: 0;
+    background-color: lightgrey;
+    padding: 6px;
+    overflow-y: auto;
+}
+
+.media-viewer-media-selector-element {
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.media-viewer-media-selector-element img {
+    max-height: 100%;
+    margin-right: 1em;
+}
+
+.media-viewer-media-view {
+    flex-grow: 1;
+    background-color: darkgrey;
+    overflow: hidden;
+}
+
+.media-viewer-media-info {
+    flex-basis: 20%;
+    flex-shrink: 0;
+    background-color: lightgrey;
+    padding: 6px;
+    overflow-y: auto;
+}
+
+.media-viewer-media-view .media-render {
+    height: 100%;
+}
+
+.media-viewer-media-view .media-render iframe {
+    /* !important because height can be changed by fixIframeAspect, we do not want that */
+    height: 100% !important;
+
+    width: 100%;
+}
+
+.media-viewer-media-view .media-render audio,
+.media-viewer-media-view .media-render video {
+    height: 100%;
+    width: 100%;
+}
