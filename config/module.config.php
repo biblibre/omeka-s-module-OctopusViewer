@@ -17,6 +17,7 @@ return [
             'fallback' => FileRenderer\Fallback::class,
         ],
         'aliases' => [
+            'image/jp2' => 'image',
             'image/jpeg' => 'image',
             'image/png' => 'image',
             'image/tiff' => 'image',
