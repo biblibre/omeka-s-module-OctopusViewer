@@ -38,7 +38,7 @@ class MediaViewer extends AbstractHelper
             'item' => $item,
         ];
 
-        echo $view->partial(self::PARTIAL_NAME, $args);
+        return $view->partial(self::PARTIAL_NAME, $args);
     }
 
     public function renderMedia(MediaRepresentation $media)

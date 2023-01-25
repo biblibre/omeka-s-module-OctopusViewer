@@ -34,6 +34,11 @@ return [
             'fallback' => MediaRenderer\Fallback::class,
         ],
     ],
+    'resource_page_block_layouts' => [
+        'invokables' => [
+            'mediaViewer' => Site\ResourcePageBlockLayout\MediaViewer::class,
+        ],
+    ],
     'router' => [
         'routes' => [
             'site' => [
