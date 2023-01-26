@@ -2,6 +2,7 @@
     --mediaviewer-font-size: 14px;
     --mediaviewer-line-height: 1.3;
     --mediaviewer-border-color: #e0e0e0;
+    --mediaviewer-thumbnail-size: 50px;
 
     background-color: #fff;
     box-shadow: 0 0 5px 2px var(--mediaviewer-border-color);
@@ -49,14 +50,15 @@
     box-sizing: content-box;
     cursor: pointer;
     display: flex;
-    height: 50px;
+    height: var(--mediaviewer-thumbnail-size);
     padding: 6px;
 }
 
 .mediaviewer-media-selector-element .mediaviewer-thumbnail {
-    flex-basis: 50px;
+    flex-basis: var(--mediaviewer-thumbnail-size);
     flex-shrink: 0;
     margin-right: 1em;
+    width: var(--mediaviewer-thumbnail-size);
 }
 
 .mediaviewer-media-selector-element .mediaviewer-thumbnail img {
