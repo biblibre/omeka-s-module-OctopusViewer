@@ -39,11 +39,6 @@
                 return;
             }
 
-            mediaSelector.querySelectorAll('.mediaviewer-media-selector-element').forEach(e => {
-                e.classList.remove('mediaviewer-selected');
-            });
-            el.classList.add('mediaviewer-selected');
-
             mediaViewer.showMedia(el);
         });
     };
@@ -68,6 +63,11 @@
         }).then(text => {
             mediaInfo.innerHTML = text;
         });
+
+        mediaElement.closest('.mediaviewer-media-selector').querySelectorAll('.mediaviewer-media-selector-element').forEach(e => {
+            e.classList.remove('mediaviewer-selected');
+        });
+        mediaElement.classList.add('mediaviewer-selected');
     }
 
     document.addEventListener('DOMContentLoaded', function () {
