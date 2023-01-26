@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the MediaViewer
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MediaViewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-26 11:18+0100\n"
+"PO-Revision-Date: 2023-01-26 11:49+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: ../../index.rst:2
+msgid "MediaViewer user manual"
+msgstr "Manuel utilisateur de MediaViewer"
+
+#: ../../index.rst:4
+msgid ""
+"MediaViewer is a module for Omeka S that provides a viewer for Omeka S "
+"media. It's intended to be used as a replacement of other viewers like "
+"UniversalViewer or Mirador."
+msgstr ""
+"MediaViewer est un module pour Omeka S qui fournit une visionneuse pour "
+"les médias Omeka S. Il est prévu pour être utilisé en remplacement "
+"d'autres visionneuses comme UniversalViewer ou Mirador."
+
+#: ../../index.rst:9
+msgid "Motivation"
+msgstr "Motivation"
+
+#: ../../index.rst:11
+msgid ""
+"UniversalViewer and Mirador are great tools but they come with some "
+"limitations when using them in Omeka S:"
+msgstr ""
+"UniversalViewer et Mirador sont d'excellents outils mais ils ont "
+"quelques limites quand ils sont utilisés dans Omeka S:"
+
+#: ../../index.rst:14
+msgid ""
+"They require a IIIF Presentation manifest, which often means an "
+"additional module should be installed"
+msgstr ""
+"Ils nécessitent un manifeste IIIF, ce qui veut souvent dire que des "
+"modules supplémentaires doivent être installés"
+
+#: ../../index.rst:16
+msgid "They support only a subset of Omeka S media types"
+msgstr ""
+"Ils supportent seulement un sous-ensemble des types de médias Omeka S"
+
+#: ../../index.rst:17
+msgid "They are not easy to customize in Omeka S themes"
+msgstr "Ils ne sont pas faciles à personnaliser dans les thèmes Omeka S"
+
+#: ../../index.rst:19
+msgid "The goals of MediaViewer are:"
+msgstr "Les objectifs de MediaViewer sont:"
+
+#: ../../index.rst:21
+msgid ""
+"it should be able to display all types of media, falling back to a "
+"sensible default when a media cannot be rendered in a browser"
+msgstr ""
+"il doit être capable d'afficher tous les types de média, avec un "
+"affichage par défaut sensé dans les cas où le média ne peut pas être "
+"affiché dans un navigateur"
+
+#: ../../index.rst:23
+msgid ""
+"it should use as few external dependencies as possible, favoring the "
+"tools that are already available on an empty Omeka S installation (like "
+"OpenSeadragon)"
+msgstr ""
+"il doit utiliser le moins de dépendances externes possible, en "
+"privilégiant les outils déjà disponibles dans Omeka S (comme "
+"OpenSeadragon)"
+
+#: ../../index.rst:26
+msgid ""
+"it should require no additional Omeka S modules, but should be "
+"extensible by them"
+msgstr ""
+"il ne doit dépendre d'aucun autre module Omeka S, mais doit pouvoir être "
+"étendu par d'autres modules"
+
+#: ../../index.rst:28
+msgid "it should be easily customizable in Omeka S themes"
+msgstr "il doit être facilement personnalisable dans les thèmes Omeka S"
+
+#: ../../index.rst:31
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: ../../index.rst:33
+msgid "A viewer split into 3 panels:"
+msgstr "Une visionneuse divisée en 3 panneaux:"
+
+#: ../../index.rst:35
+msgid "the left panel contains a media selector"
+msgstr "le panneau de gauche contient un sélecteur de média"
+
+#: ../../index.rst:36
+msgid "the center panel renders the media"
+msgstr "le panneau central affiche le média"
+
+#: ../../index.rst:37
+msgid "the right panel displays metadata for the currently selected media"
+msgstr "le panneau de droite affiche les métadonnées du média sélectionné"
+
+#: ../../index.rst:39
+msgid ""
+"Images are displayed within OpenSeadragon, allowing to zoom, rotate, and "
+"flip images"
+msgstr ""
+"Les images sont affichées dans OpenSeadragon, ce qui permet de zoomer, "
+"faire pivoter, et retourner les images"
+
+#: ../../index.rst:40
+msgid "An optional IIIF Image server can be used"
+msgstr "Un serveur d'image IIIF optionnel peut-être utilisé"
+
+#: ../../index.rst:41
+msgid ""
+"PDF files are displayed with the browser's built-in PDF viewer, if it "
+"exists. If the browser doesn't support PDF (like in most mobile "
+"browsers), pdfjs is used."
+msgstr ""
+"Les fichiers PDF sont affichés dans le lecteur PDF intégré au "
+"navigateur, s'il existe. Si le navigateur ne supporte pas les PDF (comme "
+"la plupart des navigateurs sur mobile), pdfjs est utilisé."
+
+#: ../../index.rst:44
+msgid "Fullscreen mode"
+msgstr "Mode plein écran"
+
+#: ../../index.rst:47
+msgid "Installation"
+msgstr "Installation"
+
+#: ../../index.rst:49
+msgid ""
+"See general end user documentation for `installing a module <http://"
+"omeka.org/s/docs/user-manual/modules/#installing-modules>`_."
+msgstr ""
+"Voir la documentation utilisateur pour `installer un module <http://"
+"omeka.org/s/docs/user-manual/modules/#installing-modules>`_."
+
+#: ../../index.rst:52
+msgid "After installing the module, run the following commands:"
+msgstr "Après avoir installé le module, lancer les commandes suivantes:"
+
+#: ../../index.rst:61
+msgid "License"
+msgstr "Licence"
+
+#: ../../index.rst:63
+msgid ""
+"MediaViewer is distributed under the GNU General Public License, version "
+"3. The full text of this license is given in the ``LICENSE`` file."
+msgstr ""
+"MediaViewer est distribué sous la licence publique générale GNU, version "
+"3. Le texte complet de cette licence est dans le fichier ``LICENSE``."
