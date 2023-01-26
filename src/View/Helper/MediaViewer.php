@@ -9,7 +9,7 @@ use Omeka\Api\Representation\MediaRepresentation;
 
 class MediaViewer extends AbstractHelper
 {
-    const PARTIAL_NAME = 'media-viewer/common/media-viewer';
+    const PARTIAL_NAME = 'media-viewer/common/mediaviewer';
 
     protected $mediaRendererManager;
 
@@ -31,8 +31,8 @@ class MediaViewer extends AbstractHelper
             $mediaRenderer->preRender($view, $media);
         }
 
-        $view->headScript()->appendFile($view->assetUrl('js/media-viewer.js', 'MediaViewer'));
-        $view->headLink()->appendStylesheet($view->assetUrl('css/media-viewer.css', 'MediaViewer'));
+        $view->headScript()->appendFile($view->assetUrl('js/mediaviewer.js', 'MediaViewer'));
+        $view->headLink()->appendStylesheet($view->assetUrl('css/mediaviewer.css', 'MediaViewer'));
 
         $args = [
             'item' => $item,

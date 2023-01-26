@@ -1,0 +1,13 @@
+<div class="mediaviewer" data-item-id="<?php echo $item->id(); ?>">
+    <div class="mediaviewer-header">
+    <div class="mediaviewer-title"><?php echo $this->escapeHtml($item->displayTitle()); ?></div>
+        <a class="mediaviewer-fullscreen"><i class="fa fa-expand"></i></a>
+    </div>
+    <div class="mediaviewer-body">
+        <?php echo $this->partial('media-viewer/partial/media-selector', ['item' => $item]); ?>
+        <div class="mediaviewer-media-view"></div>
+        <div class="mediaviewer-media-info"></div>
+    </div>
+    <div class="mediaviewer-footer">
+    </div>
+</div>

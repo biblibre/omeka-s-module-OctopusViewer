@@ -1,13 +1,18 @@
-<div class="media-viewer-media-selector">
+<div class="mediaviewer-media-selector">
     <?php foreach ($item->media() as $media): ?>
     <a
-        class="media-viewer-media-selector-element"
+        class="mediaviewer-media-selector-element"
+        title="<?php echo $this->escapeHtml($media->displayTitle()); ?>"
         data-media-id="<?php echo $media->id(); ?>"
         data-mediaviewer-render-url="<?php echo $this->url('site/mediaviewer', ['controller' => 'media', 'id' => $media->id(), 'action' => 'render'], [], true); ?>"
         data-mediaviewer-info-url="<?php echo $this->url('site/mediaviewer', ['controller' => 'media', 'id' => $media->id(), 'action' => 'info'], [], true); ?>"
     >
-            <?php echo $this->thumbnail($media, 'square'); ?>
-            <span><?php echo $media->displayTitle(); ?></span>
+            <div class="mediaviewer-thumbnail">
+                <?php echo $this->thumbnail($media, 'square'); ?>
+            </div>
+            <div class="mediaviewer-title">
+                <span><?php echo $media->displayTitle(); ?></span>
+            </div>
         </a>
     <?php endforeach; ?>
 </div>
