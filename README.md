@@ -38,6 +38,8 @@ The goals of MediaViewer are:
   used.
 - Fullscreen mode
 
+https://user-images.githubusercontent.com/306836/214820277-66234bf1-0db5-4002-b3e6-3f0d0b6da0dd.mp4
+
 ## Installation
 
 See general end user documentation for
