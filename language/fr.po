@@ -1,0 +1,54 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-26 10:38+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: view/media-viewer/common/mediaviewer.phtml:4
+msgid "Full screen"
+msgstr "Plein écran"
+
+#: src/Form/ConfigForm.php:17
+msgid "Show viewer on the item page"
+msgstr "Afficher la visionneuse sur la page de contenu"
+
+#: src/Form/ConfigForm.php:20
+msgid "Before the item content"
+msgstr "Avant le contenu"
+
+#: src/Form/ConfigForm.php:21
+msgid "After the item content"
+msgstr "Après le contenu"
+
+#: src/Form/ConfigForm.php:34
+msgid "IIIF Image URI template"
+msgstr "Modèle d'URI IIIF Image"
+
+#: src/Form/ConfigForm.php:35
+msgid ""
+"If set, it will be used to build an IIIF base URI for media stored locally. "
+"The following expressions can be used and will be replaced by their "
+"corresponding value: {id}, {storage_id}, {filename}, {extension}"
+msgstr ""
+"Si défini, sera utilisé pour construire une URI IIIF pour les médias stockés "
+"localement. Les expressions suivantes peuvent être utilisées et seront "
+"remplacées par leur valeur correspondante: {id}, {storage_id}, {filename}, "
+"{extension}"
+
+#: src/Site/ResourcePageBlockLayout/MediaViewer.php:12
+msgid "Media viewer"
+msgstr "Media viewer"

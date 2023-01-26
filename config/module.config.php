@@ -62,6 +62,15 @@ return [
             'MediaViewer\FileRendererManager' => Service\FileRenderer\ManagerFactory::class,
         ],
     ],
+    'translator' => [
+        'translation_file_patterns' => [
+            [
+                'type' => 'gettext',
+                'base_dir' => dirname(__DIR__) . '/language',
+                'pattern' => '%s.mo',
+            ],
+        ],
+    ],
     'view_helpers' => [
         'factories' => [
             'mediaViewer' => Service\ViewHelper\MediaViewerFactory::class,
