@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the MediaViewer
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MediaViewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-27 16:36+0100\n"
+"PO-Revision-Date: 2023-01-27 16:52+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: ../../iiif-image-servers.rst:2
+msgid "IIIF Image Servers"
+msgstr "Serveurs d'image IIIF"
+
+#: ../../iiif-image-servers.rst:4
+msgid ""
+"In this section you will find a short documentation to get you started with "
+"some IIIF Image servers."
+msgstr ""
+"Dans cette section vous trouverez une brève documentation pour démarrer avec "
+"certains serveurs d'image IIIF"
+
+#: ../../iiif-image-servers/cantaloupe.rst:2
+msgid "Cantaloupe"
+msgstr "Cantaloupe"
+
+#: ../../iiif-image-servers/cantaloupe.rst:4
+#: ../../iiif-image-servers/iipimage.rst:4
+msgid "We'll assume Omeka S is served by Apache on a Debian system."
+msgstr ""
+"Nous allons supposer que Omeka S est servi par Apache sur un système Debian."
+
+#: ../../iiif-image-servers/cantaloupe.rst:7
+msgid "Install Cantaloupe"
+msgstr "Installer Cantaloupe"
+
+#: ../../iiif-image-servers/cantaloupe.rst:9
+msgid "Start by installing Java::"
+msgstr "Commencez par installer Java::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:13
+msgid ""
+"Then install Cantaloupe using the `latest release <https://github.com/"
+"cantaloupe-project/cantaloupe/releases/latest>`_ ZIP file::"
+msgstr ""
+"Puis installez Cantaloupe en utilisant le fichier ZIP de la `dernière "
+"version <https://github.com/cantaloupe-project/cantaloupe/releases/"
+"latest>`_::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:21
+msgid "Configure Cantaloupe"
+msgstr "Configurer Cantaloupe"
+
+#: ../../iiif-image-servers/cantaloupe.rst:23
+msgid "Copy the sample configuration file::"
+msgstr "Copiez le fichier de configuration d'exemple::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:27
+msgid ""
+"Then edit the copy. You will need to define the path to your pyramid images::"
+msgstr ""
+"Puis modifiez la copie. Vous aurez besoin de définir le chemin vers vos "
+"images pyramide::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:31
+msgid ""
+"You can use `PyramidImageBuilder`_ to create these pyramid images. If that's "
+"what you use, pyramid images will be located in ``<OMEKA_PATH>/files/pyramid/"
+"``."
+msgstr ""
+"Vous pouvez utiliser `PyramidImageBuilder`_ pour créer ces images pyramide. "
+"Si c'est ce que vous utilisez, les images pyramide seront dans "
+"``<OMEKA_PATH>/files/pyramid/``."
+
+#: ../../iiif-image-servers/cantaloupe.rst:38
+msgid "The trailing slash in ``path_prefix`` is important!"
+msgstr "La barre oblique de fin dans ``path_prefix`` est importante!"
+
+#: ../../iiif-image-servers/cantaloupe.rst:41
+msgid "Start Cantaloupe"
+msgstr "Démarrer Cantaloupe"
+
+#: ../../iiif-image-servers/cantaloupe.rst:43
+msgid "The simplest way to start Cantaloupe is to run the following commands::"
+msgstr ""
+"Le moyen le plus simple de démarrer Cantaloupe est de lancer les commandes "
+"suivantes::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:49
+msgid "Configure Apache to proxy requests to Cantaloupe"
+msgstr "Configurer Apache pour transmettre les requêtes à Cantaloupe"
+
+#: ../../iiif-image-servers/cantaloupe.rst:51
+msgid "Enable Apache modules ``proxy`` and ``proxy_http``::"
+msgstr "Activez les modules Apache ``proxy`` et ``proxy_http``::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:55
+#: ../../iiif-image-servers/iipimage.rst:53
+msgid ""
+"In Apache's ``<VirtualHost>`` for Omeka S (probably located in ``/etc/"
+"apache2/sites-enabled/``), add the following lines::"
+msgstr ""
+"Dans le ``<VirtualHost>`` Apache pour Omeka S (probablement situé dans ``/"
+"etc/apache2/sites-enabled/``), ajoutez les lignes suivantes::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:61
+#: ../../iiif-image-servers/iipimage.rst:59
+msgid "Then restart Apache::"
+msgstr "Puis redémarrez Apache::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:66
+#: ../../iiif-image-servers/iipimage.rst:64
+msgid "Configure MediaViewer"
+msgstr "Configurer MediaViewer"
+
+#: ../../iiif-image-servers/cantaloupe.rst:68
+#: ../../iiif-image-servers/iipimage.rst:66
+msgid "In the module configuration, change IIIF Image URI template to::"
+msgstr "Dans la configuration du module, modifiez le modèle d'URI IIIF Image::"
+
+#: ../../iiif-image-servers/cantaloupe.rst:72
+#: ../../iiif-image-servers/iipimage.rst:70
+msgid ""
+"This assumes the pyramid image files are named after the Omeka S media "
+"storage ID, which is what `PyramidImageBuilder`_ does. If your images are "
+"named differently, modify the URI template accordingly."
+msgstr ""
+"Ça suppose que les fichiers d'image pyramide portent le même nom que le "
+"*storage ID* du média Omeka S, ce que fait `PyramidImageBuilder`_. Si vos "
+"images sont nommées différemment, modifiez le modèle d'URI en conséquence."
+
+#: ../../iiif-image-servers/iipimage.rst:2
+msgid "IIPImage"
+msgstr "IIPImage"
+
+#: ../../iiif-image-servers/iipimage.rst:7
+msgid "Install IIPImage"
+msgstr "Installer IIPImage"
+
+#: ../../iiif-image-servers/iipimage.rst:9
+msgid "Install IIPImage using the debian package::"
+msgstr "Installez IIPImage en utilisant le paquet debian::"
+
+#: ../../iiif-image-servers/iipimage.rst:13
+msgid "Disable the Apache module, we won't use it::"
+msgstr "Désactivez le module Apache, nous n'allons pas l'utiliser::"
+
+#: ../../iiif-image-servers/iipimage.rst:19
+msgid "Configure IIPImage"
+msgstr "Configurer IIPImage"
+
+#: ../../iiif-image-servers/iipimage.rst:21
+msgid "Create ``/etc/default/iipsrv`` with the following contents::"
+msgstr "Créez ``/etc/default/iipsrv`` avec le contenu suivant::"
+
+#: ../../iiif-image-servers/iipimage.rst:27
+msgid "Replace ``<yourhost>`` by the hostname of your Omeka S installation"
+msgstr ""
+"Remplacez ``<yourhost>`` par le nom d'hôte de votre installation Omeka S"
+
+#: ../../iiif-image-servers/iipimage.rst:29
+msgid ""
+"Replace ``<path_to_pyramid_images>`` by the absolute path of the directory "
+"that contain your pyramid image files. You can use `PyramidImageBuilder`_ to "
+"create these files."
+msgstr ""
+"Remplacez ``<path_to_pyramid_images>`` par le chemin absolu du répertoire "
+"contenant vos fichiers d'image pyramide. Vous pouvez utiliser "
+"`PyramidImageBuilder`_ pour créer ces fichiers."
+
+#: ../../iiif-image-servers/iipimage.rst:33
+msgid ""
+"If you use `PyramidImageBuilder`_, pyramid images will be located in "
+"``<OMEKA_PATH>/files/pyramid/``."
+msgstr ""
+"Si vous utilisez `PyramidImageBuilder`_, les images pyramide seront dans "
+"``<OMEKA_PATH>/files/pyramid/``."
+
+#: ../../iiif-image-servers/iipimage.rst:40
+msgid "The trailing slash in FILESYSTEM_PREFIX is important!"
+msgstr "La barre oblique de fin dans FILESYSTEM_PREFIX est importante!"
+
+#: ../../iiif-image-servers/iipimage.rst:42
+msgid "Once the configuration file is ready, restart IIPImage::"
+msgstr ""
+"Une fois que le fichier de configuration est prêt, redémarrez IIPImage::"
+
+#: ../../iiif-image-servers/iipimage.rst:47
+msgid "Configure Apache to proxy requests to IIPImage"
+msgstr "Configurer Apache pour transmettre les requêtes à IIPImage"
+
+#: ../../iiif-image-servers/iipimage.rst:49
+msgid "Enable Apache modules ``proxy`` and ``proxy_fcgi``::"
+msgstr "Activez les modules Apache ``proxy`` et ``proxy_fcgi``::"

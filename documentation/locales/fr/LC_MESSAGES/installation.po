@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the MediaViewer
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MediaViewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-27 16:36+0100\n"
+"PO-Revision-Date: 2023-01-27 16:37+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre."
+"com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: ../../installation.rst:2
+msgid "Installation"
+msgstr "Installation"
+
+#: ../../installation.rst:4
+msgid ""
+"See general end user documentation for `installing a module "
+"<http://omeka.org/s/docs/user-manual/modules/#installing-"
+"modules>`_."
+msgstr ""
+"Voir la documentation utilisateur pour `installer un module "
+"<http://omeka.org/s/docs/user-manual/modules/#installing-"
+"modules>`_."
+
+#: ../../installation.rst:7
+msgid "After installing the module, run the following commands:"
+msgstr ""
+"Après avoir installé le module, lancer les commandes "
+"suivantes:"
