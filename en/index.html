@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaViewer user manual &mdash; MediaViewer  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> MediaViewer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iiif-image-servers.html">IIIF Image Servers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">MediaViewer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">MediaViewer user manual</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mediaviewer-user-manual">
+<h1>MediaViewer user manual<a class="headerlink" href="#mediaviewer-user-manual" title="Permalink to this heading"></a></h1>
+<p>MediaViewer is a module for Omeka S that provides a viewer for Omeka S media.
+It’s intended to be used as a replacement of other viewers like UniversalViewer
+or Mirador.</p>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading"></a></h2>
+<p>UniversalViewer and Mirador are great tools but they come with some limitations
+when using them in Omeka S:</p>
+<ul class="simple">
+<li><p>They require a IIIF Presentation manifest, which often means an additional
+module should be installed</p></li>
+<li><p>They support only a subset of Omeka S media types</p></li>
+<li><p>They are not easy to customize in Omeka S themes</p></li>
+</ul>
+<p>The goals of MediaViewer are:</p>
+<ul class="simple">
+<li><p>it should be able to display all types of media, falling back to a sensible
+default when a media cannot be rendered in a browser</p></li>
+<li><p>it should use as few external dependencies as possible, favoring the
+tools that are already available on an empty Omeka S installation (like
+OpenSeadragon)</p></li>
+<li><p>it should require no additional Omeka S modules, but should be extensible by
+them</p></li>
+<li><p>it should be easily customizable in Omeka S themes</p></li>
+</ul>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>A viewer split into 3 panels:</p>
+<ul>
+<li><p>the left panel contains a media selector</p></li>
+<li><p>the center panel renders the media</p></li>
+<li><p>the right panel displays metadata for the currently selected media</p></li>
+</ul>
+</li>
+<li><p>Images are displayed within OpenSeadragon, allowing to zoom, rotate, and flip images</p></li>
+<li><p>An optional IIIF Image server can be used</p></li>
+<li><p>PDF files are displayed with the browser’s built-in PDF viewer, if it exists.
+If the browser doesn’t support PDF (like in most mobile browsers), pdfjs is
+used.</p></li>
+<li><p>Fullscreen mode</p></li>
+</ul>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
+<p>MediaViewer is distributed under the GNU General Public License, version 3. The
+full text of this license is given in the <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BibLibre.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

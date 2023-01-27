@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IIPImage &mdash; Documentation MediaViewer </title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="Cantaloupe" href="cantaloupe.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> MediaViewer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../iiif-image-servers.html">Serveurs d’image IIIF</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.html">Cantaloupe</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IIPImage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-iipimage">Installer IIPImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-iipimage">Configurer IIPImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-apache-to-proxy-requests-to-iipimage">Configurer Apache pour transmettre les requêtes à IIPImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-mediaviewer">Configurer MediaViewer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MediaViewer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../iiif-image-servers.html">Serveurs d’image IIIF</a></li>
+      <li class="breadcrumb-item active">IIPImage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/iiif-image-servers/iipimage.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iipimage">
+<h1>IIPImage<a class="headerlink" href="#iipimage" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Nous allons supposer que Omeka S est servi par Apache sur un système Debian.</p>
+<section id="install-iipimage">
+<h2>Installer IIPImage<a class="headerlink" href="#install-iipimage" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Installez IIPImage en utilisant le paquet debian:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">iipimage</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>Désactivez le module Apache, nous n’allons pas l’utiliser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2dismod</span> <span class="n">iipsrv</span>
+<span class="n">systemctl</span> <span class="n">restart</span> <span class="n">apache2</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-iipimage">
+<h2>Configurer IIPImage<a class="headerlink" href="#configure-iipimage" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Créez <code class="docutils literal notranslate"><span class="pre">/etc/default/iipsrv</span></code> avec le contenu suivant:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FILESYSTEM_PREFIX</span><span class="o">=&lt;</span><span class="n">path_to_pyramid_images</span><span class="o">&gt;/</span>
+<span class="n">URI_MAP</span><span class="o">=</span><span class="n">iiif</span><span class="o">=&gt;</span><span class="n">IIIF</span>
+<span class="n">BASE_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">yourhost</span><span class="o">&gt;/</span><span class="n">iiif</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Remplacez <code class="docutils literal notranslate"><span class="pre">&lt;yourhost&gt;</span></code> par le nom d’hôte de votre installation Omeka S</p>
+<p>Remplacez <code class="docutils literal notranslate"><span class="pre">&lt;path_to_pyramid_images&gt;</span></code> par le chemin absolu du répertoire contenant vos fichiers d’image pyramide. Vous pouvez utiliser <a class="reference external" href="https://github.com/biblibre/omeka-s-module-PyramidImageBuilder">PyramidImageBuilder</a> pour créer ces fichiers.</p>
+<p>Si vous utilisez <a class="reference external" href="https://github.com/biblibre/omeka-s-module-PyramidImageBuilder">PyramidImageBuilder</a>, les images pyramide seront dans <code class="docutils literal notranslate"><span class="pre">&lt;OMEKA_PATH&gt;/files/pyramid/</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La barre oblique de fin dans FILESYSTEM_PREFIX est importante!</p>
+</div>
+<p>Une fois que le fichier de configuration est prêt, redémarrez IIPImage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">iipsrv</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-apache-to-proxy-requests-to-iipimage">
+<h2>Configurer Apache pour transmettre les requêtes à IIPImage<a class="headerlink" href="#configure-apache-to-proxy-requests-to-iipimage" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Activez les modules Apache <code class="docutils literal notranslate"><span class="pre">proxy</span></code> et <code class="docutils literal notranslate"><span class="pre">proxy_fcgi</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">proxy</span> <span class="n">proxy_fcgi</span>
+</pre></div>
+</div>
+<p>Dans le <code class="docutils literal notranslate"><span class="pre">&lt;VirtualHost&gt;</span></code> Apache pour Omeka S (probablement situé dans <code class="docutils literal notranslate"><span class="pre">/etc/apache2/sites-enabled/</span></code>), ajoutez les lignes suivantes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ProxyPass</span> <span class="s2">&quot;/iiif&quot;</span> <span class="s2">&quot;fcgi://localhost:9000/&quot;</span>
+<span class="n">ProxyPassReverse</span> <span class="s2">&quot;/iiif&quot;</span> <span class="s2">&quot;fcgi://localhost:9000/&quot;</span>
+</pre></div>
+</div>
+<p>Puis redémarrez Apache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">apache2</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-mediaviewer">
+<h2>Configurer MediaViewer<a class="headerlink" href="#configure-mediaviewer" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Dans la configuration du module, modifiez le modèle d’URI IIIF Image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">yourhost</span><span class="o">&gt;/</span><span class="n">iiif</span><span class="o">/</span><span class="p">{</span><span class="n">storage_id</span><span class="p">}</span><span class="o">/</span><span class="n">info</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Ça suppose que les fichiers d’image pyramide portent le même nom que le <em>storage ID</em> du média Omeka S, ce que fait <a class="reference external" href="https://github.com/biblibre/omeka-s-module-PyramidImageBuilder">PyramidImageBuilder</a>. Si vos images sont nommées différemment, modifiez le modèle d’URI en conséquence.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="cantaloupe.html" class="btn btn-neutral float-left" title="Cantaloupe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BibLibre.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
