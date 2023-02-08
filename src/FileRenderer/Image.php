@@ -34,6 +34,7 @@ class Image implements FileRendererInterface
         $uriTemplate = $this->settings->get('mediaviewer_iiif_image_uri_template');
         if ($uriTemplate) {
             $config['tileSources'] = $this->processUriTemplate($uriTemplate, $media);
+            $config['fallbackUrl'] = $media->originalUrl();
         } else {
             $config['tileSources'] = [
                 'type' => 'image',
