@@ -54,3 +54,4 @@ full text of this license is given in the ``LICENSE`` file.
 
    installation
    iiif-image-servers
+   embed

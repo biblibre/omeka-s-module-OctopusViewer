@@ -5,10 +5,8 @@ namespace MediaViewer;
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
-use Laminas\ModuleManager\ModuleManager;
 use Laminas\Mvc\Controller\AbstractController;
 use Laminas\Mvc\MvcEvent;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use MediaViewer\Form\ConfigForm;
 
@@ -20,6 +18,7 @@ class Module extends AbstractModule
 
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
         $acl->allow(null, 'MediaViewer\Controller\Site\Media');
+        $acl->allow(null, 'MediaViewer\Controller\Site\Viewer');
     }
 
     public function getConfigForm(PhpRenderer $renderer)

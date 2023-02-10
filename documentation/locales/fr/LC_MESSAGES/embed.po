@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the MediaViewer
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MediaViewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-13 11:51+0100\n"
+"PO-Revision-Date: 2023-02-13 11:56+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: ../../embed.rst:2
+msgid "Embed the viewer on another site"
+msgstr "Embarquer la visionneuse sur un autre site"
+
+#: ../../embed.rst:5
+msgid "As an iframe"
+msgstr "En tant qu'iframe"
+
+#: ../../embed.rst:7
+msgid "The easiest way to embed the viewer is by using ``<iframe>``."
+msgstr ""
+"La manière la plus facile d'embarquer la visionneuse est d'utiliser "
+"``<iframe>``."
+
+#: ../../embed.rst:9 ../../embed.rst:51
+msgid "Add the following HTML code to your site:"
+msgstr "Ajoutez le code HTML suivant à votre site:"
+
+#: ../../embed.rst:21 ../../embed.rst:64
+msgid "Then replace:"
+msgstr "Puis remplacez:"
+
+#: ../../embed.rst:23 ../../embed.rst:66
+msgid "``{BASE_URL}`` by the base URL of Omeka,"
+msgstr "``{BASE_URL}`` par l'URL de base d'Omeka,"
+
+#: ../../embed.rst:24 ../../embed.rst:67
+msgid ""
+"``{MEDIA_QUERY}`` by a list of URL parameters separated by ``&`` (this "
+"will define which media will be displayed),"
+msgstr ""
+"``{MEDIA_QUERY}`` par une liste de paramètres d'URL séparés par ``&`` "
+"(ça définira quels médias sont affichés),"
+
+#: ../../embed.rst:26 ../../embed.rst:69
+msgid "``{SITE_SLUG}`` by the identifier of an existing Omeka S site, and"
+msgstr "``{SITE_SLUG}`` par l'identifiant d'un site Omeka S existant, et"
+
+#: ../../embed.rst:27 ../../embed.rst:70
+msgid "``{TITLE}`` by the text to be displayed in the viewer header."
+msgstr ""
+"``{TITLE}`` par le texte à afficher dans l'en-tête de la visionneuse."
+
+#: ../../embed.rst:29 ../../embed.rst:72
+msgid "For instance:"
+msgstr "Par exemple:"
+
+#: ../../embed.rst:42
+msgid "As a web component"
+msgstr "En tant que composant web"
+
+#: ../../embed.rst:46
+msgid "This feature is experimental"
+msgstr "Cette fonctionnalité est expérimentale"
+
+#: ../../embed.rst:48
+msgid ""
+"If iframes cannot be used, the viewer can also be embedded on another "
+"website as a `web component <https://developer.mozilla.org/en-US/docs/"
+"Web/Web_Components>`_."
+msgstr ""
+"Si les iframes ne peuvent pas être utilisées, la visionneuse peut aussi "
+"être embarquée sur un autre site en tant que `composant web <https://"
+"developer.mozilla.org/fr/docs/Web/Web_Components>`_."
+
+#: ../../embed.rst:87
+msgid ""
+"The style is inlined for convenience, but you can remove it and use your "
+"own styles"
+msgstr ""
+"Le style est mis en ligne par commodité, mais vous pouvez le retirer et "
+"utiliser vos propres styles"

@@ -7,6 +7,9 @@ return [
         'invokables' => [
             'MediaViewer\Controller\Site\Media' => Controller\Site\MediaController::class,
         ],
+        'factories' => [
+            'MediaViewer\Controller\Site\Viewer' => Service\Controller\Site\ViewerControllerFactory::class,
+        ],
     ],
     'mediaviewer_file_renderers' => [
         'factories' => [
@@ -44,11 +47,28 @@ return [
             'site' => [
                 'child_routes' => [
                     'mediaviewer' => [
-                        'type' => \Laminas\Router\Http\Segment::class,
+                        'type' => \Laminas\Router\Http\Literal::class,
                         'options' => [
-                            'route' => '/mediaviewer/:controller/:id/:action',
+                            'route' => '/mediaviewer',
                             'defaults' => [
                                 '__NAMESPACE__' => 'MediaViewer\Controller\Site',
+                            ],
+                        ],
+                        'child_routes' => [
+                            'default' => [
+                                'type' => \Laminas\Router\Http\Segment::class,
+                                'options' => [
+                                    'route' => '/:controller/:id/:action',
+                                ],
+                            ],
+                            'viewer' => [
+                                'type' => \Laminas\Router\Http\Segment::class,
+                                'options' => [
+                                    'route' => '/viewer/:action',
+                                    'defaults' => [
+                                        'controller' => 'viewer',
+                                    ],
+                                ],
                             ],
                         ],
                     ],

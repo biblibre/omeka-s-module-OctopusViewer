@@ -7,7 +7,7 @@ use Laminas\View\Model\ViewModel;
 
 class MediaController extends AbstractActionController
 {
-    public function renderAction ()
+    public function renderAction()
     {
         $mediaId = $this->params()->fromRoute('id');
         $media = $this->api()->read('media', $mediaId)->getContent();
@@ -15,6 +15,8 @@ class MediaController extends AbstractActionController
         $view = new ViewModel();
         $view->setVariable('media', $media);
         $view->setTerminal(true);
+
+        $this->getResponse()->getHeaders()->addHeaderLine('Access-Control-Allow-Origin', '*');
 
         return $view;
     }
@@ -27,6 +29,8 @@ class MediaController extends AbstractActionController
         $view = new ViewModel();
         $view->setVariable('media', $media);
         $view->setTerminal(true);
+
+        $this->getResponse()->getHeaders()->addHeaderLine('Access-Control-Allow-Origin', '*');
 
         return $view;
     }

@@ -2,6 +2,7 @@
 
 namespace MediaViewer\FileRenderer;
 
+use Laminas\View\HelperPluginManager;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Representation\MediaRepresentation;
 use Omeka\Settings\Settings;
@@ -15,16 +16,20 @@ class Image implements FileRendererInterface
         $this->settings = $settings;
     }
 
-    public function preRender(PhpRenderer $view, MediaRepresentation $media): void
+    public function getJsDependencies(HelperPluginManager $viewHelpers): array
     {
-        $view->headScript()->appendFile($view->assetUrl('vendor/openseadragon/openseadragon.min.js', 'Omeka'));
-        $view->headScript()->appendFile($view->assetUrl('js/mediaviewer-openseadragon.js', 'MediaViewer'));
+        $assetUrl = $viewHelpers->get('assetUrl');
+
+        return [
+            $assetUrl('vendor/openseadragon/openseadragon.min.js', 'Omeka'),
+            $assetUrl('js/mediaviewer-openseadragon.js', 'MediaViewer'),
+        ];
     }
 
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
         $config = [
-            'prefixUrl' => $view->assetUrl('vendor/openseadragon/images/', 'Omeka', false, false),
+            'prefixUrl' => $view->assetUrl('vendor/openseadragon/images/', 'Omeka', false, false, true),
             'showRotationControl' => true,
             'showFlipControl' => true,
             'showFullPageControl' => false,

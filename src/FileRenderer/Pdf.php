@@ -2,23 +2,29 @@
 
 namespace MediaViewer\FileRenderer;
 
+use Laminas\View\HelperPluginManager;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Representation\MediaRepresentation;
 
-class Pdf implements FileRendererInterface
+class Pdf extends AbstractFileRenderer
 {
-    public function preRender(PhpRenderer $view, MediaRepresentation $media): void
+    public function getJsDependencies(HelperPluginManager $viewHelpers): array
     {
-        $pdfObjectUrl = $view->basePath . '/modules/MediaViewer/node_modules/pdfobject/pdfobject.min.js';
-        $view->headScript()->appendFile($pdfObjectUrl);
+        $assetUrl = $viewHelpers->get('assetUrl');
+        $basePath = $viewHelpers->get('basePath');
 
-        $view->headScript()->appendFile($view->assetUrl('js/mediaviewer-pdfobject.js', 'MediaViewer'));
+        $pdfObjectUrl = $basePath() . '/modules/MediaViewer/node_modules/pdfobject/pdfobject.min.js';
+
+        return [
+            $pdfObjectUrl,
+            $assetUrl('js/mediaviewer-pdfobject.js', 'MediaViewer'),
+        ];
     }
 
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
         $config = [
-            'PDFJS_URL' => $view->basePath . '/modules/MediaViewer/vendor/mozilla/pdf.js/web/viewer.html',
+            'PDFJS_URL' => $view->serverUrl() . $view->basePath() . '/modules/MediaViewer/vendor/mozilla/pdf.js/web/viewer.html',
         ];
 
         $values = [
