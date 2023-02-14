@@ -36,11 +36,73 @@
     overflow: hidden;
 }
 
-.mediaviewer-media-selector {
+.sidebar {
+    display: flex;
     flex-basis: 20%;
+    flex-direction: column;
     flex-shrink: 0;
-    overflow-y: auto;
+    min-width: 0;
+    overflow: hidden;
+}
+.sidebar:not(.collapsed) {
+    min-width: 100px;
+}
+
+/* Enable transitions only after initial load */
+.loaded .sidebar {
+    transition-property: flex-basis, min-width;
+    transition-duration: 0.5s;
+}
+.loaded .collapse-toggle i::before {
+    transition-property: transform;
+    transition-duration: 0.5s;
+}
+
+.sidebar-left {
     border-right: 1px solid var(--mediaviewer-border-color);
+}
+.sidebar-right {
+    border-left: 1px solid var(--mediaviewer-border-color);
+}
+
+.sidebar.collapsed {
+    flex-basis: 24px;
+}
+
+.sidebar .collapse-toggle {
+    cursor: pointer;
+    padding: 6px;
+    line-height: 12px;
+}
+
+.sidebar-right .sidebar-header {
+    text-align: right;
+}
+.sidebar-right .collapse-toggle i::before {
+    transform: rotateY(180deg);
+}
+
+.collapse-toggle:hover {
+    background-color: #e9e9e9;
+}
+
+.collapsed .collapse-toggle {
+    flex-grow: 1;
+    vertical-align: center;
+}
+.collapsed .collapse-toggle i::before {
+    transform: rotateY(180deg);
+}
+.sidebar-right.collapsed .collapse-toggle i::before {
+    transform: rotateY(0deg);
+}
+
+.sidebar-content {
+    overflow-y: auto;
+}
+
+.sidebar.collapsed .sidebar-content {
+    display: none;
 }
 
 .mediaviewer-media-selector-element {
@@ -50,6 +112,9 @@
     display: flex;
     height: var(--mediaviewer-thumbnail-size);
     padding: 6px;
+}
+.mediaviewer-media-selector-element:hover {
+    background-color: #e9e9e9;
 }
 
 .mediaviewer-media-selector-element .mediaviewer-thumbnail {
@@ -82,11 +147,7 @@
     background-color: #f0f0f0;
 }
 
-.mediaviewer-media-info {
-    border-left: 1px solid var(--mediaviewer-border-color);
-    flex-basis: 20%;
-    flex-shrink: 0;
-    overflow-y: auto;
+.mediaviewer-media-info-metadata {
     padding: 6px;
 }
 
@@ -132,11 +193,17 @@
     width: 100%;
 }
 
-.mediaviewer-icon-fullscreen {
-    box-sizing: border-box;
-    position: relative;
+[class*=mediaviewer-icon-] {
+    display: inline-block;
+    line-height: 0;
+}
+[class*=mediaviewer-icon-]:before {
     display: block;
-    background-image: url(../image/fullscreen.png);
-    width: 16px;
-    height: 16px;
+}
+
+.mediaviewer-icon-fullscreen::before {
+    content: url(../image/fullscreen.png);
+}
+.mediaviewer-icon-collapse::before {
+    content: url(../image/collapse.png);
 }

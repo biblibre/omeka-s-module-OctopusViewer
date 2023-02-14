@@ -24,13 +24,17 @@
 
             Promise.all([mediaSelectorPromise, jsDependenciesPromise])
                 .then(([mediaSelectorHTML]) => {
-                    this.shadowRoot.querySelector('.mediaviewer-media-selector').innerHTML = mediaSelectorHTML;
+                    const mediaSelector = this.shadowRoot.querySelector('.mediaviewer-media-selector-list');
+                    mediaSelector.innerHTML = mediaSelectorHTML;
+
+                    this.attachEventListeners();
+
+                    this.shadowRoot.querySelector('.mediaviewer-viewer').classList.add('loaded');
+
                     const firstMedia = this.shadowRoot.querySelector('.mediaviewer-media-selector-element');
                     if (firstMedia) {
                         this.showMedia(firstMedia);
                     }
-
-                    this.attachEventListeners();
                 });
         }
 
@@ -78,15 +82,29 @@
             });
 
             const mediaSelector = this.shadowRoot.querySelector('.mediaviewer-media-selector');
+
             mediaSelector.addEventListener('click', ev => {
                 ev.preventDefault();
-                ev.stopPropagation();
                 const el = ev.target.closest('.mediaviewer-media-selector-element');
                 if (!el) {
                     return;
                 }
 
+                ev.stopPropagation();
+
                 this.showMedia(el);
+            });
+
+            this.shadowRoot.querySelector('.mediaviewer-viewer').addEventListener('click', ev => {
+                ev.preventDefault();
+                const el = ev.target.closest('.collapse-toggle');
+                if (!el) {
+                    return;
+                }
+
+                ev.stopPropagation();
+
+                ev.target.closest('.sidebar').classList.toggle('collapsed');
             });
         }
 
@@ -95,7 +113,7 @@
             const mediaRenderUrl = new URL(mediaElement.getAttribute('data-mediaviewer-render-url'), baseUrl);
             const mediaInfoUrl = new URL(mediaElement.getAttribute('data-mediaviewer-info-url'), baseUrl);
             const mediaView = mediaViewer.querySelector('.mediaviewer-media-view');
-            const mediaInfo = mediaViewer.querySelector('.mediaviewer-media-info');
+            const mediaInfo = mediaViewer.querySelector('.mediaviewer-media-info-metadata');
 
             mediaView.innerHTML = '';
             fetch(mediaRenderUrl).then(response => {
@@ -142,9 +160,19 @@
         <a class="mediaviewer-fullscreen"><i class="mediaviewer-icon-fullscreen"></i></a>
     </div>
     <div class="mediaviewer-body">
-        <div class="mediaviewer-media-selector"></div>
+        <div class="mediaviewer-media-selector sidebar sidebar-left">
+            <div class="sidebar-header collapse-toggle">
+                <i class="mediaviewer-icon-collapse"></i>
+            </div>
+            <div class="sidebar-content mediaviewer-media-selector-list"></div>
+        </div>
         <div class="mediaviewer-media-view"></div>
-        <div class="mediaviewer-media-info"></div>
+        <div class="mediaviewer-media-info sidebar sidebar-right">
+            <div class="sidebar-header collapse-toggle">
+                <i class="mediaviewer-icon-collapse"></i>
+            </div>
+            <div class="sidebar-content mediaviewer-media-info-metadata"></div>
+        </div>
     </div>
     <div class="mediaviewer-footer"></div>
 </div>
