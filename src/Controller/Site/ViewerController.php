@@ -40,8 +40,7 @@ class ViewerController extends AbstractActionController
             $jsDependencies = array_merge($jsDependencies, $mediaRendererJsDependencies);
         }
 
-        $view = new JsonModel();
-        $view->setVariable('jsDependencies', $jsDependencies);
+        $view = new JsonModel(['jsDependencies' => $jsDependencies]);
 
         $this->getResponse()->getHeaders()->addHeaderLine('Access-Control-Allow-Origin', '*');
 
