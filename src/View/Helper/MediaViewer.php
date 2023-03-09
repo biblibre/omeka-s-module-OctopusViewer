@@ -31,6 +31,11 @@ class MediaViewer extends AbstractHelper
 
     public function forItem(ItemRepresentation $item)
     {
+        $media = $item->media();
+        if (empty($media)) {
+            return '';
+        }
+
         $view = $this->getView();
 
         $view->headLink()->appendStylesheet($view->assetUrl('css/mediaviewer.css', 'MediaViewer'));
