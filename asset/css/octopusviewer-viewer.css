@@ -163,6 +163,10 @@
     margin-bottom: 1em;
 }
 
+.octopusviewer-media-info .property h4 {
+    margin: 0;
+}
+
 .octopusviewer-media-info .property dt {
     font-weight: bold;
 }
