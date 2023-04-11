@@ -1,7 +1,7 @@
-MediaViewer user manual
-=======================
+OctopusViewer user manual
+=========================
 
-MediaViewer is a module for Omeka S that provides a viewer for Omeka S media.
+OctopusViewer gathers all your Omeka S media in a lightweight viewer.
 It's intended to be used as a replacement of other viewers like UniversalViewer
 or Mirador.
 
@@ -16,7 +16,7 @@ when using them in Omeka S:
 * They support only a subset of Omeka S media types
 * They are not easy to customize in Omeka S themes
 
-The goals of MediaViewer are:
+The goals of OctopusViewer are:
 
 * it should be able to display all types of media, falling back to a sensible
   default when a media cannot be rendered in a browser
@@ -46,7 +46,7 @@ Features
 License
 -------
 
-MediaViewer is distributed under the GNU General Public License, version 3. The
+OctopusViewer is distributed under the GNU General Public License, version 3. The
 full text of this license is given in the ``LICENSE`` file.
 
 .. toctree::

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Embarquer la visionneuse sur un autre site &mdash; Documentation MediaViewer </title>
+  <title>Embarquer la visionneuse sur un autre site &mdash; Documentation OctopusViewer </title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MediaViewer
+            <a href="index.html" class="icon icon-home"> OctopusViewer
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -55,7 +55,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">MediaViewer</a>
+          <a href="index.html">OctopusViewer</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -80,7 +80,7 @@
 <p>La manière la plus facile d’embarquer la visionneuse est d’utiliser <code class="docutils literal notranslate"><span class="pre">&lt;iframe&gt;</span></code>.</p>
 <p>Ajoutez le code HTML suivant à votre site:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span>
-    <span class="na">src</span><span class="o">=</span><span class="s">&quot;{BASE_URL}/s/{SITE_SLUG}/mediaviewer/viewer/embed?mediaviewer_title={TITLE}&amp;{MEDIA_QUERY}&quot;</span>
+    <span class="na">src</span><span class="o">=</span><span class="s">&quot;{BASE_URL}/s/{SITE_SLUG}/octopusviewer/viewer/embed?octopusviewer_title={TITLE}&amp;{MEDIA_QUERY}&quot;</span>
     <span class="na">height</span><span class="o">=</span><span class="s">&quot;450px&quot;</span>
     <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span>
     <span class="na">allow</span><span class="o">=</span><span class="s">&quot;fullscreen&quot;</span>
@@ -97,7 +97,7 @@
 </ul>
 <p>Par exemple:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span>
-    <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://omeka.example.com/s/home/mediaviewer/viewer/embed?mediaviewer_title=MediaViewer&amp;item_id=23&quot;</span>
+    <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://omeka.example.com/s/home/octopusviewer/viewer/embed?octopusviewer_title=OctopusViewer&amp;item_id=23&quot;</span>
     <span class="na">height</span><span class="o">=</span><span class="s">&quot;450px&quot;</span>
     <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span>
     <span class="na">allow</span><span class="o">=</span><span class="s">&quot;fullscreen&quot;</span>
@@ -114,14 +114,14 @@
 </div>
 <p>Si les iframes ne peuvent pas être utilisées, la visionneuse peut aussi être embarquée sur un autre site en tant que <a class="reference external" href="https://developer.mozilla.org/fr/docs/Web/Web_Components">composant web</a>.</p>
 <p>Ajoutez le code HTML suivant à votre site:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{BASE_URL}/modules/MediaViewer/asset/js/mediaviewer-viewer.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">mediaviewer-viewer</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{BASE_URL}/modules/OctopusViewer/asset/js/octopusviewer-viewer.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">octopusviewer-viewer</span>
     <span class="na">media-query</span><span class="o">=</span><span class="s">&quot;{MEDIA_QUERY}&quot;</span>
     <span class="na">site-slug</span><span class="o">=</span><span class="s">&quot;{SITE_SLUG}&quot;</span>
     <span class="na">style</span><span class="o">=</span><span class="s">&quot;display:block; height: 50vmin; min-height: 450px&quot;</span>
 <span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>{TITLE}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">mediaviewer-viewer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">octopusviewer-viewer</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Puis remplacez:</p>
@@ -132,14 +132,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">{TITLE}</span></code> par le texte à afficher dans l’en-tête de la visionneuse.</p></li>
 </ul>
 <p>Par exemple:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://omeka.example.com/modules/MediaViewer/asset/js/mediaviewer-viewer.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">mediaviewer-viewer</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://omeka.example.com/modules/OctopusViewer/asset/js/octopusviewer-viewer.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">octopusviewer-viewer</span>
     <span class="na">media-query</span><span class="o">=</span><span class="s">&quot;item_id=23&quot;</span>
     <span class="na">site-slug</span><span class="o">=</span><span class="s">&quot;home&quot;</span>
     <span class="na">style</span><span class="o">=</span><span class="s">&quot;display:block; height: 50vmin; min-height: 450px&quot;</span>
 <span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>All media of item #23<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">mediaviewer-viewer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">octopusviewer-viewer</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <div class="admonition note">

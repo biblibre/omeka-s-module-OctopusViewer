@@ -8,6 +8,6 @@ After installing the module, run the following commands:
 
 ::
 
-    cd /path/to/omeka/modules/MediaViewer
+    cd /path/to/omeka/modules/OctopusViewer
     php ../../build/composer.phar install --no-dev
     npm install --omit dev

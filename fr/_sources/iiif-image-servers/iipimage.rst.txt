@@ -60,8 +60,8 @@ Then restart Apache::
 
     systemctl restart apache2.service
 
-Configure MediaViewer
----------------------
+Configure OctopusViewer
+-----------------------
 
 In the module configuration, change IIIF Image URI template to::
 
