@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\Controller\Site;
+namespace OctopusViewer\Controller\Site;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;

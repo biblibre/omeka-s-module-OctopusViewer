@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\FileRenderer;
+namespace OctopusViewer\FileRenderer;
 
 use Omeka\ServiceManager\AbstractPluginManager;
 

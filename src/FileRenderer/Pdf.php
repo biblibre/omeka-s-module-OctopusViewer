@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\FileRenderer;
+namespace OctopusViewer\FileRenderer;
 
 use Laminas\View\HelperPluginManager;
 use Laminas\View\Renderer\PhpRenderer;
@@ -13,18 +13,18 @@ class Pdf extends AbstractFileRenderer
         $assetUrl = $viewHelpers->get('assetUrl');
         $basePath = $viewHelpers->get('basePath');
 
-        $pdfObjectUrl = $basePath() . '/modules/MediaViewer/node_modules/pdfobject/pdfobject.min.js';
+        $pdfObjectUrl = $basePath() . '/modules/OctopusViewer/node_modules/pdfobject/pdfobject.min.js';
 
         return [
             $pdfObjectUrl,
-            $assetUrl('js/mediaviewer-pdfobject.js', 'MediaViewer'),
+            $assetUrl('js/octopusviewer-pdfobject.js', 'OctopusViewer'),
         ];
     }
 
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
         $config = [
-            'PDFJS_URL' => $view->serverUrl() . $view->basePath() . '/modules/MediaViewer/vendor/mozilla/pdf.js/web/viewer.html',
+            'PDFJS_URL' => $view->serverUrl() . $view->basePath() . '/modules/OctopusViewer/vendor/mozilla/pdf.js/web/viewer.html',
         ];
 
         $values = [
@@ -32,6 +32,6 @@ class Pdf extends AbstractFileRenderer
             'media' => $media,
         ];
 
-        return $view->partial('media-viewer/partial/file-renderer/pdf', $values);
+        return $view->partial('octopus-viewer/partial/file-renderer/pdf', $values);
     }
 }

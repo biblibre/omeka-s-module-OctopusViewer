@@ -21,7 +21,7 @@ StrictHostKeyChecking accept-new
 CONFIG
 
 cd "$(mktemp -d)"
-git clone --branch gh-pages git@github.com:biblibre/omeka-s-module-MediaViewer.git .
+git clone --branch gh-pages git@github.com:biblibre/omeka-s-module-OctopusViewer.git .
 
 languages="en fr"
 for language in $languages; do

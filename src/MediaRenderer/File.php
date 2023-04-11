@@ -1,10 +1,10 @@
 <?php
 
-namespace MediaViewer\MediaRenderer;
+namespace OctopusViewer\MediaRenderer;
 
 use Laminas\View\HelperPluginManager;
 use Laminas\View\Renderer\PhpRenderer;
-use MediaViewer\FileRenderer\Manager as FileRendererManager;
+use OctopusViewer\FileRenderer\Manager as FileRendererManager;
 use Omeka\Api\Representation\MediaRepresentation;
 
 class File extends AbstractMediaRenderer

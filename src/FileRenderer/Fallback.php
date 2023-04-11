@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\FileRenderer;
+namespace OctopusViewer\FileRenderer;
 
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Representation\MediaRepresentation;

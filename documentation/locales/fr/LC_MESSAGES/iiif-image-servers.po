@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2023, BibLibre
-# This file is distributed under the same license as the MediaViewer
+# This file is distributed under the same license as the OctopusViewer
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: MediaViewer\n"
+"Project-Id-Version: OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-27 16:36+0100\n"
 "PO-Revision-Date: 2023-01-27 16:52+0100\n"
@@ -121,8 +121,8 @@ msgstr "Puis redémarrez Apache::"
 
 #: ../../iiif-image-servers/cantaloupe.rst:66
 #: ../../iiif-image-servers/iipimage.rst:64
-msgid "Configure MediaViewer"
-msgstr "Configurer MediaViewer"
+msgid "Configure OctopusViewer"
+msgstr "Configurer OctopusViewer"
 
 #: ../../iiif-image-servers/cantaloupe.rst:68
 #: ../../iiif-image-servers/iipimage.rst:66

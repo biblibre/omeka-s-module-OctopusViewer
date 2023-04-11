@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    class MediaViewerOpenSeadragon extends HTMLElement {
+    class OctopusViewerOpenSeadragon extends HTMLElement {
         connectedCallback () {
             const config = JSON.parse(this.getAttribute('data-config'));
             config.element = this;
@@ -22,5 +22,5 @@
         }
     }
 
-    window.customElements.define('mediaviewer-openseadragon', MediaViewerOpenSeadragon);
+    window.customElements.define('octopusviewer-openseadragon', OctopusViewerOpenSeadragon);
 })();

@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\Form;
+namespace OctopusViewer\Form;
 
 use Laminas\Form\Form;
 use Laminas\Form\Element\Text;
@@ -12,7 +12,7 @@ class ConfigForm extends Form
     {
         $this->add([
             'type' => Select::class,
-            'name' => 'mediaviewer_item_show',
+            'name' => 'octopusviewer_item_show',
             'options' => [
                 'label' => 'Show viewer on the item page', // @translate
                 'value_options' => [
@@ -22,26 +22,26 @@ class ConfigForm extends Form
                 ],
             ],
             'attributes' => [
-                'id' => 'mediaviewer_item_show',
+                'id' => 'octopusviewer_item_show',
                 'required' => false,
             ],
         ]);
 
         $this->add([
             'type' => Text::class,
-            'name' => 'mediaviewer_iiif_image_uri_template',
+            'name' => 'octopusviewer_iiif_image_uri_template',
             'options' => [
                 'label' => 'IIIF Image URI template', // @translate
                 'info' => 'If set, it will be used to build an IIIF base URI for media stored locally. The following expressions can be used and will be replaced by their corresponding value: {id}, {storage_id}, {filename}, {extension}', // @translate
             ],
             'attributes' => [
-                'id' => 'mediaviewer_iiif_image_uri_template',
+                'id' => 'octopusviewer_iiif_image_uri_template',
                 'placeholder' => 'https://example.com/iiif/{filename}/info.json',
             ],
         ]);
 
         $this->getInputFilter()->add([
-            'name' => 'mediaviewer_item_show',
+            'name' => 'octopusviewer_item_show',
             'required' => false,
         ]);
     }

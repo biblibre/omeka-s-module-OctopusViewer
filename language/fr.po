@@ -45,6 +45,6 @@ msgstr ""
 "remplacées par leur valeur correspondante: {id}, {storage_id}, {filename}, "
 "{extension}"
 
-#: src/Site/ResourcePageBlockLayout/MediaViewer.php:12
+#: src/Site/ResourcePageBlockLayout/OctopusViewer.php:12
 msgid "Media viewer"
 msgstr "Media viewer"

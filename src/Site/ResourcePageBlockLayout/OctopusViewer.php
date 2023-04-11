@@ -1,11 +1,11 @@
 <?php
-namespace MediaViewer\Site\ResourcePageBlockLayout;
+namespace OctopusViewer\Site\ResourcePageBlockLayout;
 
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Site\ResourcePageBlockLayout\ResourcePageBlockLayoutInterface;
 use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
-class MediaViewer implements ResourcePageBlockLayoutInterface
+class OctopusViewer implements ResourcePageBlockLayoutInterface
 {
     public function getLabel() : string
     {
@@ -19,6 +19,6 @@ class MediaViewer implements ResourcePageBlockLayoutInterface
 
     public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource) : string
     {
-        return $view->mediaViewer()->forItem($resource);
+        return $view->octopusViewer()->forItem($resource);
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace MediaViewer\View\Helper;
+namespace OctopusViewer\View\Helper;
 
 use Laminas\View\Helper\AbstractHelper;
-use MediaViewer\MediaRenderer\Manager as MediaRendererManager;
+use OctopusViewer\MediaRenderer\Manager as MediaRendererManager;
 use Omeka\Api\Representation\ItemRepresentation;
 use Omeka\Api\Representation\MediaRepresentation;
 
-class MediaViewer extends AbstractHelper
+class OctopusViewer extends AbstractHelper
 {
     protected $mediaRendererManager;
 
@@ -20,13 +20,13 @@ class MediaViewer extends AbstractHelper
     {
         $view = $this->getView();
 
-        $view->headScript()->appendFile($view->assetUrl('js/mediaviewer-viewer.js', 'MediaViewer'));
+        $view->headScript()->appendFile($view->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
 
         $args = [
             'query' => $query,
         ];
 
-        return $view->partial('media-viewer/helper/mediaviewer/viewer', $args);
+        return $view->partial('octopus-viewer/helper/octopusviewer/viewer', $args);
     }
 
     public function forItem(ItemRepresentation $item)
@@ -38,14 +38,14 @@ class MediaViewer extends AbstractHelper
 
         $view = $this->getView();
 
-        $view->headLink()->appendStylesheet($view->assetUrl('css/mediaviewer.css', 'MediaViewer'));
-        $view->headScript()->appendFile($view->assetUrl('js/mediaviewer-viewer.js', 'MediaViewer'));
+        $view->headLink()->appendStylesheet($view->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
+        $view->headScript()->appendFile($view->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
 
         $args = [
             'item' => $item,
         ];
 
-        return $view->partial('media-viewer/helper/mediaviewer/for-item', $args);
+        return $view->partial('octopus-viewer/helper/octopusviewer/for-item', $args);
     }
 
     public function renderMedia(MediaRepresentation $media)

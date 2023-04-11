@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2023, BibLibre
-# This file is distributed under the same license as the MediaViewer
+# This file is distributed under the same license as the OctopusViewer
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  MediaViewer\n"
+"Project-Id-Version:  OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-27 16:36+0100\n"
 "PO-Revision-Date: 2023-01-26 11:49+0100\n"
@@ -20,16 +20,16 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 #: ../../index.rst:2
-msgid "MediaViewer user manual"
-msgstr "Manuel utilisateur de MediaViewer"
+msgid "OctopusViewer user manual"
+msgstr "Manuel utilisateur de OctopusViewer"
 
 #: ../../index.rst:4
 msgid ""
-"MediaViewer is a module for Omeka S that provides a viewer for Omeka S "
+"OctopusViewer is a module for Omeka S that provides a viewer for Omeka S "
 "media. It's intended to be used as a replacement of other viewers like "
 "UniversalViewer or Mirador."
 msgstr ""
-"MediaViewer est un module pour Omeka S qui fournit une visionneuse pour "
+"OctopusViewer est un module pour Omeka S qui fournit une visionneuse pour "
 "les médias Omeka S. Il est prévu pour être utilisé en remplacement "
 "d'autres visionneuses comme UniversalViewer ou Mirador."
 
@@ -62,8 +62,8 @@ msgid "They are not easy to customize in Omeka S themes"
 msgstr "Ils ne sont pas faciles à personnaliser dans les thèmes Omeka S"
 
 #: ../../index.rst:19
-msgid "The goals of MediaViewer are:"
-msgstr "Les objectifs de MediaViewer sont:"
+msgid "The goals of OctopusViewer are:"
+msgstr "Les objectifs de OctopusViewer sont:"
 
 #: ../../index.rst:21
 msgid ""
@@ -148,10 +148,10 @@ msgstr "Licence"
 
 #: ../../index.rst:49
 msgid ""
-"MediaViewer is distributed under the GNU General Public License, version "
+"OctopusViewer is distributed under the GNU General Public License, version "
 "3. The full text of this license is given in the ``LICENSE`` file."
 msgstr ""
-"MediaViewer est distribué sous la licence publique générale GNU, version "
+"OctopusViewer est distribué sous la licence publique générale GNU, version "
 "3. Le texte complet de cette licence est dans le fichier ``LICENSE``."
 
 #~ msgid "Installation"

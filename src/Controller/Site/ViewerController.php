@@ -1,11 +1,11 @@
 <?php
 
-namespace MediaViewer\Controller\Site;
+namespace OctopusViewer\Controller\Site;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\Model\JsonModel;
-use MediaViewer\MediaRenderer\Manager as MediaRendererManager;
+use OctopusViewer\MediaRenderer\Manager as MediaRendererManager;
 
 class ViewerController extends AbstractActionController
 {

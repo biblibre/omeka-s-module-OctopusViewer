@@ -1,16 +1,16 @@
 <?php
 
-namespace MediaViewer\Service\MediaRenderer;
+namespace OctopusViewer\Service\MediaRenderer;
 
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use MediaViewer\MediaRenderer\File;
+use OctopusViewer\MediaRenderer\File;
 
 class FileFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $fileRendererManager = $container->get('MediaViewer\FileRendererManager');
+        $fileRendererManager = $container->get('OctopusViewer\FileRendererManager');
 
         return new File($fileRendererManager);
     }

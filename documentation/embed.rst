@@ -11,7 +11,7 @@ Add the following HTML code to your site:
 .. code-block:: html
 
     <iframe
-        src="{BASE_URL}/s/{SITE_SLUG}/mediaviewer/viewer/embed?mediaviewer_title={TITLE}&{MEDIA_QUERY}"
+        src="{BASE_URL}/s/{SITE_SLUG}/octopusviewer/viewer/embed?octopusviewer_title={TITLE}&{MEDIA_QUERY}"
         height="450px"
         width="100%"
         allow="fullscreen"
@@ -31,7 +31,7 @@ For instance:
 .. code-block:: html
 
     <iframe
-        src="https://omeka.example.com/s/home/mediaviewer/viewer/embed?mediaviewer_title=MediaViewer&item_id=23"
+        src="https://omeka.example.com/s/home/octopusviewer/viewer/embed?octopusviewer_title=OctopusViewer&item_id=23"
         height="450px"
         width="100%"
         allow="fullscreen"
@@ -52,14 +52,14 @@ Add the following HTML code to your site:
 
 .. code-block:: html
 
-    <script src="{BASE_URL}/modules/MediaViewer/asset/js/mediaviewer-viewer.js"></script>
-    <mediaviewer-viewer
+    <script src="{BASE_URL}/modules/OctopusViewer/asset/js/octopusviewer-viewer.js"></script>
+    <octopusviewer-viewer
         media-query="{MEDIA_QUERY}"
         site-slug="{SITE_SLUG}"
         style="display:block; height: 50vmin; min-height: 450px"
     >
         <span slot="title">{TITLE}</span>
-    </mediaviewer-viewer>
+    </octopusviewer-viewer>
 
 Then replace:
 
@@ -73,14 +73,14 @@ For instance:
 
 .. code-block:: html
 
-    <script src="https://omeka.example.com/modules/MediaViewer/asset/js/mediaviewer-viewer.js"></script>
-    <mediaviewer-viewer
+    <script src="https://omeka.example.com/modules/OctopusViewer/asset/js/octopusviewer-viewer.js"></script>
+    <octopusviewer-viewer
         media-query="item_id=23"
         site-slug="home"
         style="display:block; height: 50vmin; min-height: 450px"
     >
         <span slot="title">All media of item #23</span>
-    </mediaviewer-viewer>
+    </octopusviewer-viewer>
 
 .. note::
 

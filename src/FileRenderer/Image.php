@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\FileRenderer;
+namespace OctopusViewer\FileRenderer;
 
 use Laminas\View\HelperPluginManager;
 use Laminas\View\Renderer\PhpRenderer;
@@ -22,7 +22,7 @@ class Image implements FileRendererInterface
 
         return [
             $assetUrl('vendor/openseadragon/openseadragon.min.js', 'Omeka'),
-            $assetUrl('js/mediaviewer-openseadragon.js', 'MediaViewer'),
+            $assetUrl('js/octopusviewer-openseadragon.js', 'OctopusViewer'),
         ];
     }
 
@@ -36,7 +36,7 @@ class Image implements FileRendererInterface
             'animationTime' => 0.2,
         ];
 
-        $uriTemplate = $this->settings->get('mediaviewer_iiif_image_uri_template');
+        $uriTemplate = $this->settings->get('octopusviewer_iiif_image_uri_template');
         if ($uriTemplate) {
             $config['tileSources'] = $this->processUriTemplate($uriTemplate, $media);
             $config['fallbackUrl'] = $media->originalUrl();
@@ -51,7 +51,7 @@ class Image implements FileRendererInterface
             'config' => $config,
         ];
 
-        return $view->partial('media-viewer/partial/file-renderer/image', $values);
+        return $view->partial('octopus-viewer/partial/file-renderer/image', $values);
     }
 
     protected function processUriTemplate($uriTemplate, $media)

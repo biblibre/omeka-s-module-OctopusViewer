@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\MediaRenderer;
+namespace OctopusViewer\MediaRenderer;
 
 use Laminas\View\HelperPluginManager;
 

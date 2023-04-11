@@ -33,6 +33,6 @@ msgid ""
 "corresponding value: {id}, {storage_id}, {filename}, {extension}"
 msgstr ""
 
-#: src/Site/ResourcePageBlockLayout/MediaViewer.php:12
+#: src/Site/ResourcePageBlockLayout/OctopusViewer.php:12
 msgid "Media viewer"
 msgstr ""

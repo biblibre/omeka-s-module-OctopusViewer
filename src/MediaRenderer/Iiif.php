@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer\MediaRenderer;
+namespace OctopusViewer\MediaRenderer;
 
 use Laminas\View\Renderer\PhpRenderer;
 use Laminas\View\HelperPluginManager;
@@ -14,7 +14,7 @@ class Iiif extends AbstractMediaRenderer
 
         return [
             $assetUrl('vendor/openseadragon/openseadragon.min.js', 'Omeka'),
-            $assetUrl('js/mediaviewer-openseadragon.js', 'MediaViewer'),
+            $assetUrl('js/octopusviewer-openseadragon.js', 'OctopusViewer'),
         ];
     }
 
@@ -33,6 +33,6 @@ class Iiif extends AbstractMediaRenderer
             'config' => $config,
         ];
 
-        return $view->partial('media-viewer/partial/media-renderer/iiif', $values);
+        return $view->partial('octopus-viewer/partial/media-renderer/iiif', $values);
     }
 }

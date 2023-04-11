@@ -1,10 +1,10 @@
 <?php
 
-namespace MediaViewer\Service\FileRenderer;
+namespace OctopusViewer\Service\FileRenderer;
 
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use MediaViewer\FileRenderer\Image;
+use OctopusViewer\FileRenderer\Image;
 
 class ImageFactory implements FactoryInterface
 {

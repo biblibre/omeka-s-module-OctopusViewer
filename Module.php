@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaViewer;
+namespace OctopusViewer;
 
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
@@ -8,7 +8,7 @@ use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Mvc\Controller\AbstractController;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\Renderer\PhpRenderer;
-use MediaViewer\Form\ConfigForm;
+use OctopusViewer\Form\ConfigForm;
 
 class Module extends AbstractModule
 {
@@ -17,8 +17,8 @@ class Module extends AbstractModule
         parent::onBootstrap($event);
 
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
-        $acl->allow(null, 'MediaViewer\Controller\Site\Media');
-        $acl->allow(null, 'MediaViewer\Controller\Site\Viewer');
+        $acl->allow(null, 'OctopusViewer\Controller\Site\Media');
+        $acl->allow(null, 'OctopusViewer\Controller\Site\Viewer');
     }
 
     public function getConfigForm(PhpRenderer $renderer)
@@ -28,8 +28,8 @@ class Module extends AbstractModule
 
         $form = $forms->get(ConfigForm::class);
         $form->setData([
-            'mediaviewer_iiif_image_uri_template' => $settings->get('mediaviewer_iiif_image_uri_template'),
-            'mediaviewer_item_show' => $settings->get('mediaviewer_item_show'),
+            'octopusviewer_iiif_image_uri_template' => $settings->get('octopusviewer_iiif_image_uri_template'),
+            'octopusviewer_item_show' => $settings->get('octopusviewer_item_show'),
         ]);
 
         return $renderer->formCollection($form, false);
@@ -48,8 +48,8 @@ class Module extends AbstractModule
         }
 
         $formData = $form->getData();
-        $settings->set('mediaviewer_iiif_image_uri_template', $formData['mediaviewer_iiif_image_uri_template']);
-        $settings->set('mediaviewer_item_show', $formData['mediaviewer_item_show']);
+        $settings->set('octopusviewer_iiif_image_uri_template', $formData['octopusviewer_iiif_image_uri_template']);
+        $settings->set('octopusviewer_item_show', $formData['octopusviewer_item_show']);
 
         return true;
     }
@@ -57,7 +57,7 @@ class Module extends AbstractModule
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
         $settings = $this->getServiceLocator()->get('Omeka\Settings');
-        $show = $settings->get('mediaviewer_item_show');
+        $show = $settings->get('octopusviewer_item_show');
         if ($show) {
             $sharedEventManager->attach(
                 'Omeka\Controller\Site\Item',
@@ -76,6 +76,6 @@ class Module extends AbstractModule
     {
         $view = $event->getTarget();
 
-        echo $view->mediaViewer()->forItem($view->item);
+        echo $view->octopusViewer()->forItem($view->item);
     }
 }

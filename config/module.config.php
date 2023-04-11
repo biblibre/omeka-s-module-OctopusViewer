@@ -1,17 +1,17 @@
 <?php
 
-namespace MediaViewer;
+namespace OctopusViewer;
 
 return [
     'controllers' => [
         'invokables' => [
-            'MediaViewer\Controller\Site\Media' => Controller\Site\MediaController::class,
+            'OctopusViewer\Controller\Site\Media' => Controller\Site\MediaController::class,
         ],
         'factories' => [
-            'MediaViewer\Controller\Site\Viewer' => Service\Controller\Site\ViewerControllerFactory::class,
+            'OctopusViewer\Controller\Site\Viewer' => Service\Controller\Site\ViewerControllerFactory::class,
         ],
     ],
-    'mediaviewer_file_renderers' => [
+    'octopusviewer_file_renderers' => [
         'factories' => [
             'image' => Service\FileRenderer\ImageFactory::class,
         ],
@@ -28,7 +28,7 @@ return [
             'application/pdf' => 'pdf',
         ],
     ],
-    'mediaviewer_media_renderers' => [
+    'octopusviewer_media_renderers' => [
         'factories' => [
             'file' => Service\MediaRenderer\FileFactory::class,
         ],
@@ -39,19 +39,19 @@ return [
     ],
     'resource_page_block_layouts' => [
         'invokables' => [
-            'mediaViewer' => Site\ResourcePageBlockLayout\MediaViewer::class,
+            'octopusViewer' => Site\ResourcePageBlockLayout\OctopusViewer::class,
         ],
     ],
     'router' => [
         'routes' => [
             'site' => [
                 'child_routes' => [
-                    'mediaviewer' => [
+                    'octopusviewer' => [
                         'type' => \Laminas\Router\Http\Literal::class,
                         'options' => [
-                            'route' => '/mediaviewer',
+                            'route' => '/octopusviewer',
                             'defaults' => [
-                                '__NAMESPACE__' => 'MediaViewer\Controller\Site',
+                                '__NAMESPACE__' => 'OctopusViewer\Controller\Site',
                             ],
                         ],
                         'child_routes' => [
@@ -78,8 +78,8 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'MediaViewer\MediaRendererManager' => Service\MediaRenderer\ManagerFactory::class,
-            'MediaViewer\FileRendererManager' => Service\FileRenderer\ManagerFactory::class,
+            'OctopusViewer\MediaRendererManager' => Service\MediaRenderer\ManagerFactory::class,
+            'OctopusViewer\FileRendererManager' => Service\FileRenderer\ManagerFactory::class,
         ],
     ],
     'translator' => [
@@ -93,7 +93,7 @@ return [
     ],
     'view_helpers' => [
         'factories' => [
-            'mediaViewer' => Service\ViewHelper\MediaViewerFactory::class,
+            'octopusViewer' => Service\ViewHelper\OctopusViewerFactory::class,
         ],
     ],
     'view_manager' => [

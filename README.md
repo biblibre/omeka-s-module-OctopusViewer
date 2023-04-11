@@ -1,6 +1,6 @@
-# MediaViewer (module for Omeka S)
+# OctopusViewer (module for Omeka S)
 
-MediaViewer, as its name suggests, is a viewer for Omeka S media.
+OctopusViewer gathers all your Omeka S media in a lightweight viewer.
 It's intended to be used as a replacement of other viewers like UniversalViewer
 or Mirador.
 
@@ -14,7 +14,7 @@ when using them in Omeka S:
 - They support only a subset of Omeka S media types
 - They are not easy to customize in Omeka S themes
 
-The goals of MediaViewer are:
+The goals of OctopusViewer are:
 
 - it should be able to display all types of media, falling back to a sensible
   default when a media cannot be rendered in a browser
@@ -48,12 +48,12 @@ See general end user documentation for
 After installing the module, run the following commands:
 
 ```
-cd /path/to/omeka/modules/MediaViewer
+cd /path/to/omeka/modules/OctopusViewer
 php ../../build/composer.phar install --no-dev
 npm install --omit dev
 ```
 
 ## License
 
-MediaViewer is distributed under the GNU General Public License, version 3. The
+OctopusViewer is distributed under the GNU General Public License, version 3. The
 full text of this license is given in the `LICENSE` file.
