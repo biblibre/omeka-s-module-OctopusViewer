@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62080c0a05f61358058d236edce2673d",
+    "content-hash": "6964106cc4a324b28a4cd4fd71131c30",
     "packages": [
         {
             "name": "mozilla/pdf.js",
