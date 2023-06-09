@@ -43,6 +43,11 @@ https://user-images.githubusercontent.com/306836/214820277-66234bf1-0db5-4002-b3
 See general end user documentation for
 [installing a module](http://omeka.org/s/docs/user-manual/modules/#installing-modules).
 
+## Documentation
+
+The full documentation can be found here:
+https://biblibre.github.io/omeka-s-module-OctopusViewer/
+
 ## Sponsors
 
 - [UMR LISA](https://umrlisa.univ-corse.fr)
