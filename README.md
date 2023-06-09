@@ -53,6 +53,17 @@ php ../../build/composer.phar install --no-dev
 npm install --omit dev
 ```
 
+## Usage
+
+To use OctopusViewer in your own theme you can use : 
+
+```php 
+$this->octopusViewer()->forItem($item)```
+ // $item is an `Item Representation`
+
+$this->octopusViewer()->renderMedia($media) 
+// $media is a `Media Representation`
+```
 ## License
 
 OctopusViewer is distributed under the GNU General Public License, version 3. The
