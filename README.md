@@ -60,9 +60,6 @@ To use OctopusViewer in your own theme you can use :
 ```php 
 $this->octopusViewer()->forItem($item)```
  // $item is an `Item Representation`
-
-$this->octopusViewer()->renderMedia($media) 
-// $media is a `Media Representation`
 ```
 ## License
 
