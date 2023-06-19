@@ -58,7 +58,7 @@ npm install --omit dev
 To use OctopusViewer in your own theme you can use : 
 
 ```php 
-echo $this->octopusViewer()->forItem(Item Representation)
+echo $this->octopusViewer()->forItem($itemRepresentation)
 ```
 ## License
 
