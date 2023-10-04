@@ -11,20 +11,20 @@ class Pdf extends AbstractFileRenderer
     public function getJsDependencies(HelperPluginManager $viewHelpers): array
     {
         $assetUrl = $viewHelpers->get('assetUrl');
-        $basePath = $viewHelpers->get('basePath');
-
-        $pdfObjectUrl = $basePath() . '/modules/OctopusViewer/node_modules/pdfobject/pdfobject.min.js';
 
         return [
-            $pdfObjectUrl,
-            $assetUrl('js/octopusviewer-pdfobject.js', 'OctopusViewer'),
+            $assetUrl('js/octopusviewer-pdfjs.js', 'OctopusViewer'),
         ];
     }
 
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
+        $viewer_url = $view->serverUrl($view->assetUrl('vendor/pdf.js/web/viewer.html', 'OctopusViewer'));
+        $css_url = $view->serverUrl($view->assetUrl('css/pdfjs-viewer.css', 'OctopusViewer', $override = true));
+
         $config = [
-            'PDFJS_URL' => $view->serverUrl() . $view->basePath() . '/modules/OctopusViewer/vendor/mozilla/pdf.js/web/viewer.html',
+            'viewer_url' => $viewer_url,
+            'css_url' => $css_url,
         ];
 
         $values = [

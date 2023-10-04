@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+
+- Always use PDF.js to be able to customize the viewer
+- The "Download" and "Open File" buttons of the PDF viewer are now hidden by
+  default (can be made visible by themes)
+
 ## [0.2.1] - 2023-04-12
 
 ### Changed

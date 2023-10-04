@@ -33,9 +33,7 @@ The goals of OctopusViewer are:
   - the right panel displays metadata for the currently selected media
 - Images are displayed within OpenSeadragon, allowing to zoom, rotate, and flip images
 - An optional IIIF Image server can be used
-- PDF files are displayed with the browser's built-in PDF viewer, if it exists.
-  If the browser doesn't support PDF (like in most mobile browsers), pdfjs is
-  used.
+- PDF files are displayed with [pdfjs](https://mozilla.github.io/pdf.js/).
 - Fullscreen mode
 
 https://user-images.githubusercontent.com/306836/214820277-66234bf1-0db5-4002-b3e6-3f0d0b6da0dd.mp4
@@ -44,14 +42,6 @@ https://user-images.githubusercontent.com/306836/214820277-66234bf1-0db5-4002-b3
 
 See general end user documentation for
 [installing a module](http://omeka.org/s/docs/user-manual/modules/#installing-modules).
-
-After installing the module, run the following commands:
-
-```
-cd /path/to/omeka/modules/OctopusViewer
-php ../../build/composer.phar install --no-dev
-npm install --omit dev
-```
 
 ## License
 

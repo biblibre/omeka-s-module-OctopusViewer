@@ -43,6 +43,12 @@ Features
   used.
 * Fullscreen mode
 
+Installation
+------------
+
+See general end user documentation for
+`installing a module <http://omeka.org/s/docs/user-manual/modules/#installing-modules>`_.
+
 License
 -------
 
@@ -52,6 +58,19 @@ full text of this license is given in the ``LICENSE`` file.
 .. toctree::
    :hidden:
 
-   installation
    iiif-image-servers
    embed
+
+.. toctree::
+   :caption: Theme
+   :hidden:
+   :glob:
+
+   theme/*
+
+.. toctree::
+   :caption: Development
+   :hidden:
+   :glob:
+
+   development/*
