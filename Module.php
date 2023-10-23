@@ -9,6 +9,7 @@ use Laminas\Mvc\Controller\AbstractController;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\Renderer\PhpRenderer;
 use OctopusViewer\Form\ConfigForm;
+use OctopusViewer\Form\SiteSettingsFieldset;
 
 class Module extends AbstractModule
 {
@@ -30,6 +31,8 @@ class Module extends AbstractModule
         $form->setData([
             'octopusviewer_iiif_image_uri_template' => $settings->get('octopusviewer_iiif_image_uri_template'),
             'octopusviewer_item_show' => $settings->get('octopusviewer_item_show'),
+            'octopusviewer_show_media_selector' => $settings->get('octopusviewer_show_media_selector', 'auto'),
+            'octopusviewer_show_media_info' => $settings->get('octopusviewer_show_media_info', 'auto'),
         ]);
 
         return $renderer->formCollection($form, false);
@@ -50,6 +53,8 @@ class Module extends AbstractModule
         $formData = $form->getData();
         $settings->set('octopusviewer_iiif_image_uri_template', $formData['octopusviewer_iiif_image_uri_template']);
         $settings->set('octopusviewer_item_show', $formData['octopusviewer_item_show']);
+        $settings->set('octopusviewer_show_media_selector', $formData['octopusviewer_show_media_selector']);
+        $settings->set('octopusviewer_show_media_info', $formData['octopusviewer_show_media_info']);
 
         return true;
     }
@@ -65,6 +70,8 @@ class Module extends AbstractModule
                 [$this, 'handleSiteItemViewShow']
             );
         }
+
+        $sharedEventManager->attach('Omeka\Form\SiteSettingsForm', 'form.add_elements', [$this, 'onSiteSettingsFormAddElements']);
     }
 
     public function getConfig()
@@ -77,5 +84,42 @@ class Module extends AbstractModule
         $view = $event->getTarget();
 
         echo $view->octopusViewer()->forItem($view->item);
+    }
+
+    public function onSiteSettingsFormAddElements(Event $event)
+    {
+        $services = $this->getServiceLocator();
+        $forms = $services->get('FormElementManager');
+        $siteSettings = $services->get('Omeka\Settings\Site');
+
+        $fieldset = $forms->get(SiteSettingsFieldset::class);
+        $fieldset->populateValues([
+            'octopusviewer_show_media_selector' => $siteSettings->get('octopusviewer_show_media_selector', ''),
+            'octopusviewer_show_media_info' => $siteSettings->get('octopusviewer_show_media_info', ''),
+        ]);
+
+        $form = $event->getTarget();
+
+        $groups = $form->getOption('element_groups');
+        if (isset($groups)) {
+            $groups['octopusviewer'] = $fieldset->getLabel();
+            $form->setOption('element_groups', $groups);
+            foreach ($fieldset->getElements() as $element) {
+                $form->add($element);
+            }
+            $inputFilter = $form->getInputFilter();
+        } else {
+            $form->add($fieldset);
+            $inputFilter = $form->getInputFilter()->get('octopusviewer');
+        }
+
+        $inputFilter->add([
+            'name' => 'octopusviewer_show_media_selector',
+            'allow_empty' => true,
+        ]);
+        $inputFilter->add([
+            'name' => 'octopusviewer_show_media_info',
+            'allow_empty' => true,
+        ]);
     }
 }

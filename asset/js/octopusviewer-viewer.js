@@ -31,9 +31,20 @@
 
                     this.shadowRoot.querySelector('.octopusviewer-viewer').classList.add('loaded');
 
-                    const firstMedia = this.shadowRoot.querySelector('.octopusviewer-media-selector-element');
-                    if (firstMedia) {
-                        this.showMedia(firstMedia);
+                    const allMedia = this.shadowRoot.querySelectorAll('.octopusviewer-media-selector-element');
+                    if (allMedia.length > 0) {
+                        this.showMedia(allMedia[0]);
+                    }
+
+                    const shouldShowMediaSelector =
+                        this.showMediaSelector === 'always' ||
+                        (this.showMediaSelector === 'auto' && allMedia.length > 1);
+                    if (shouldShowMediaSelector) {
+                        this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.remove('hidden');
+                    }
+
+                    if (this.showMediaInfo === 'always') {
+                        this.shadowRoot.querySelector('.octopusviewer-media-info').classList.remove('hidden');
                     }
                 });
         }
@@ -123,11 +134,13 @@
             });
 
             mediaInfo.innerHTML = '';
-            fetch(mediaInfoUrl).then(response => {
-                return response.text();
-            }).then(text => {
-                mediaInfo.innerHTML = text;
-            });
+            if (this.showMediaInfo === 'always') {
+                fetch(mediaInfoUrl).then(response => {
+                    return response.text();
+                }).then(text => {
+                    mediaInfo.innerHTML = text;
+                });
+            }
 
             mediaElement.closest('.octopusviewer-media-selector').querySelectorAll('.octopusviewer-media-selector-element').forEach(e => {
                 e.classList.remove('octopusviewer-selected');
@@ -150,6 +163,22 @@
         set siteSlug (slug) {
             this.setAttribute('site-slug', slug);
         }
+
+        get showMediaSelector () {
+            return this.getAttribute('show-media-selector') ?? 'auto';
+        }
+
+        set showMediaSelector (showMediaSelector) {
+            this.setAttribute('show-media-selector', showMediaSelector);
+        }
+
+        get showMediaInfo () {
+            return this.getAttribute('show-media-info') ?? 'always';
+        }
+
+        set showMediaInfo (showMediaInfo) {
+            this.setAttribute('show-media-info', showMediaInfo);
+        }
     }
 
     const template = document.createElement('template');
@@ -160,14 +189,14 @@
         <a class="octopusviewer-fullscreen"><i class="octopusviewer-icon-fullscreen"></i></a>
     </div>
     <div class="octopusviewer-body">
-        <div class="octopusviewer-media-selector sidebar sidebar-left">
+        <div class="octopusviewer-media-selector sidebar sidebar-left hidden">
             <div class="sidebar-header collapse-toggle">
                 <i class="octopusviewer-icon-collapse"></i>
             </div>
             <div class="sidebar-content octopusviewer-media-selector-list"></div>
         </div>
         <div class="octopusviewer-media-view"></div>
-        <div class="octopusviewer-media-info sidebar sidebar-right">
+        <div class="octopusviewer-media-info sidebar sidebar-right hidden">
             <div class="sidebar-header collapse-toggle">
                 <i class="octopusviewer-icon-collapse"></i>
             </div>

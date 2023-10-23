@@ -105,6 +105,10 @@
     display: none;
 }
 
+.sidebar.hidden {
+    display: none;
+}
+
 .octopusviewer-media-selector-element {
     align-items: stretch;
     box-sizing: content-box;
