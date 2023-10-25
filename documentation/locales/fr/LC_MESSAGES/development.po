@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the OctopusViewer
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OctopusViewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-25 11:26+0200\n"
+"PO-Revision-Date: 2023-10-25 13:40+0200\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../../development/update-pdfjs.rst:2
+msgid "Update PDF.js"
+msgstr "Mettre à jour PDF.js"
+
+#: ../../development/update-pdfjs.rst:4
+msgid "To update PDF.js:"
+msgstr "Pour mettre à jour PDF.js:"
+
+#: ../../development/update-pdfjs.rst:6
+msgid ""
+"Go to https://github.com/mozilla/pdf.js/releases/latest and download the "
+"``pdfjs-<VERSION>-dist.zip`` file."
+msgstr ""
+"Aller à https://github.com/mozilla/pdf.js/releases/latest et télécharger "
+"le fichier ``pdfjs-<VERSION>-dist.zip``."
+
+#: ../../development/update-pdfjs.rst:9
+msgid "Remove the old files::"
+msgstr "Supprimer les anciens fichiers::"
+
+#: ../../development/update-pdfjs.rst:13
+msgid "Extract the .zip file contents inside ``asset/vendor/pdf.js``::"
+msgstr ""
+"Extraire le contenu du fichier .zip à l'intérieur de ``asset/vendor/pdf."
+"js``::"
+
+#: ../../development/update-pdfjs.rst:17
+msgid "Commit! ::"
+msgstr "*Commit*! ::"

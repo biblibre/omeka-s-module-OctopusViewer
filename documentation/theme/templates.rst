@@ -18,7 +18,5 @@ The following template files can be overriden by themes:
     The content of the left panel.
 
 This is not an exhaustive list. For the full list of template files, look at
-|the view directory in the sources|_
-
-.. |the view directory in the sources| replace:: the ``view`` directory in the sources
-.. _the view directory in the sources: https://github.com/biblibre/omeka-s-module-OctopusViewer/tree/master/view
+`the view directory in the sources
+<https://github.com/biblibre/omeka-s-module-OctopusViewer/tree/master/view>`_
