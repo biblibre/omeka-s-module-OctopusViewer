@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var Omeka\Api\Representation\MediaRepresentation[] $medias
+ */
+?>
 <?php foreach ($medias as $media): ?>
     <?php $title = $media->title() ?? $this->translate('[Untitled]') ?>
     <a
