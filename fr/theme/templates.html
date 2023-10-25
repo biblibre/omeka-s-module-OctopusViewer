@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personnaliser la visionneuse PDF &mdash; Documentation OctopusViewer </title>
+  <title>Templates &mdash; Documentation OctopusViewer </title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Templates" href="templates.html" />
-    <link rel="prev" title="Embarquer la visionneuse sur un autre site" href="../embed.html" /> 
+    <link rel="next" title="Mettre à jour PDF.js" href="../development/update-pdfjs.html" />
+    <link rel="prev" title="Personnaliser la visionneuse PDF" href="customize-pdf-viewer.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,8 +46,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Personnaliser la visionneuse PDF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize-pdf-viewer.html">Personnaliser la visionneuse PDF</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Templates</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Développement</span></p>
 <ul>
@@ -68,9 +68,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Personnaliser la visionneuse PDF</li>
+      <li class="breadcrumb-item active">Templates</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/theme/customize-pdf-viewer.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="../_sources/theme/templates.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -78,17 +78,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="customize-pdf-viewer">
-<h1>Personnaliser la visionneuse PDF<a class="headerlink" href="#customize-pdf-viewer" title="Lien permanent vers cette rubrique"></a></h1>
-<p>Les thèmes peuvent personnaliser la visionneuse PDF en créant un fichier <code class="docutils literal notranslate"><span class="pre">asset/css/pdfjs-viewer.css</span></code>. Ce fichier sera inclus dans l’iframe de la visionneuse PDF donc les styles définis dans ce fichier s’appliquent uniquement à la visionneuse PDF.</p>
+  <section id="templates">
+<h1>Templates<a class="headerlink" href="#templates" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Les fichiers de <em>template</em> suivants peuvent être surchargés par les thèmes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">octopus-viewer/helper/octopusviewer/for-item.phtml</span></code></dt><dd><p>Utilisé sur la page de détail d’un contenu et partout où la méthode <code class="docutils literal notranslate"><span class="pre">forItem</span></code> du <em>view helper</em> est utilisée.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">view/octopus-viewer/helper/octopusviewer/viewer.phtml</span></code></dt><dd><p>Utilisé dans la vue embarquée (quand elle est incluse dans une iframe par exemple) et partout où la méthode <code class="docutils literal notranslate"><span class="pre">viewer</span></code> du <em>view helper</em> est utilisée.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">view/octopus-viewer/site/media/info.phtml</span></code></dt><dd><p>Le contenu du panneau de droite.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">view/octopus-viewer/site/viewer/media-selector.phtml</span></code></dt><dd><p>Le contenu du panneau de gauche.</p>
+</dd>
+</dl>
+<p>Ce n’est pas une liste exhaustive. Pour la liste complète des fichiers de <em>template</em>, regarder <a class="reference external" href="https://github.com/biblibre/omeka-s-module-OctopusViewer/tree/master/view">le dossier view dans les sources</a></p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="../embed.html" class="btn btn-neutral float-left" title="Embarquer la visionneuse sur un autre site" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="templates.html" class="btn btn-neutral float-right" title="Templates" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="customize-pdf-viewer.html" class="btn btn-neutral float-left" title="Personnaliser la visionneuse PDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="../development/update-pdfjs.html" class="btn btn-neutral float-right" title="Mettre à jour PDF.js" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
