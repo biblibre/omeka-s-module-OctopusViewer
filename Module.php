@@ -33,6 +33,7 @@ class Module extends AbstractModule
             'octopusviewer_item_show' => $settings->get('octopusviewer_item_show'),
             'octopusviewer_show_media_selector' => $settings->get('octopusviewer_show_media_selector', 'auto'),
             'octopusviewer_show_media_info' => $settings->get('octopusviewer_show_media_info', 'auto'),
+            'octopusviewer_default_media_title' => $settings->get('octopusviewer_default_media_title', 'auto'),
         ]);
 
         return $renderer->formCollection($form, false);
@@ -55,6 +56,7 @@ class Module extends AbstractModule
         $settings->set('octopusviewer_item_show', $formData['octopusviewer_item_show']);
         $settings->set('octopusviewer_show_media_selector', $formData['octopusviewer_show_media_selector']);
         $settings->set('octopusviewer_show_media_info', $formData['octopusviewer_show_media_info']);
+        $settings->set('octopusviewer_default_media_title', $formData['octopusviewer_default_media_title']);
 
         return true;
     }
@@ -119,6 +121,10 @@ class Module extends AbstractModule
         ]);
         $inputFilter->add([
             'name' => 'octopusviewer_show_media_info',
+            'allow_empty' => true,
+        ]);
+        $inputFilter->add([
+            'name' => 'octopusviewer_default_media_title',
             'allow_empty' => true,
         ]);
     }

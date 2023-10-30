@@ -73,6 +73,22 @@ class ConfigForm extends Form
             ],
         ]);
 
+        $this->add([
+            'type' => Select::class,
+            'name' => 'octopusviewer_default_media_title',
+            'options' => [
+                'label' => 'Default media title', // @translate
+                'info' => 'Text used when a media has no title', // @translate
+                'value_options' => [
+                    'untitled' => '[Untitled]', // @translate
+                    'no_text' => 'No text', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'octopusviewer_default_media_title',
+            ],
+        ]);
+
         $this->getInputFilter()->add([
             'name' => 'octopusviewer_item_show',
             'required' => false,

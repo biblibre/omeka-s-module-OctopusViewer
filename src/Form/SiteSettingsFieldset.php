@@ -45,5 +45,23 @@ class SiteSettingsFieldset extends Fieldset
                 'id' => 'octopusviewer_show_media_info',
             ],
         ]);
+
+        $this->add([
+            'type' => Select::class,
+            'name' => 'octopusviewer_default_media_title',
+            'options' => [
+                'element_group' => 'octopusviewer',
+                'label' => 'Default media title', // @translate
+                'info' => 'Text used when a media has no title', // @translate
+                'empty_option' => 'Use global setting', // @translate
+                'value_options' => [
+                    'untitled' => '[Untitled]', // @translate
+                    'no_text' => 'No text', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'octopusviewer_default_media_title',
+            ],
+        ]);
     }
 }
