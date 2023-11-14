@@ -1,7 +1,20 @@
-#openFile {
+#openFile, #secondaryToolbar #secondaryOpenFile {
     display: none;
 }
 
-#download {
+#print, #secondaryToolbar #secondaryPrint {
+    display: none;
+}
+
+#download, #secondaryToolbar #secondaryDownload {
+    display: none;
+}
+
+#download + .verticalToolbarSeparator,
+#secondaryDownload + .horizontalToolbarSeparator {
+    display: none;
+}
+
+#editorModeButtons, #editorModeSeparator {
     display: none;
 }
