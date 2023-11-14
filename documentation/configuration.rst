@@ -86,6 +86,21 @@ Always
 Never
     Never show the media info.
 
+Default media title
+~~~~~~~~~~~~~~~~~~~
+
+This setting controls what is displayed in the media selector, next to the
+media thumbnail, if the media does not have a title. This global setting can be
+overriden in :ref:`site settings <site-settings>`.
+
+Possible values:
+
+[Untitled]
+    Display the text "[Untitled]". This is the default behaviour.
+
+No text
+    Display no text. Only the thumbnail will be visible.
+
 .. _site-settings:
 
 Site settings
@@ -137,3 +152,22 @@ Always
 
 Never
     Never show the media info.
+
+Default media title
+~~~~~~~~~~~~~~~~~~~
+
+This setting controls what is displayed in the media selector, next to the
+media thumbnail, if the media does not have a title. This setting overrides the
+global setting.
+
+Possible values:
+
+Use global setting
+    Use the value defined in the :ref:`global settings <global-settings>`. This
+    is the default value.
+
+[Untitled]
+    Display the text "[Untitled]".
+
+No text
+    Display no text. Only the thumbnail will be visible.

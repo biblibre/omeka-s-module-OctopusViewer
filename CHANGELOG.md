@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Hide all open, print, download, and editor buttons in PDF viewer
 - Add global and site settings to control if side panels should be displayed
+- Add global and site settings to control the text displayed when a media has
+  no title ("[Untitled]" or no text)
 
 ## [0.3.0] - 2023-10-04
 

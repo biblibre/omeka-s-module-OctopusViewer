@@ -3,8 +3,19 @@
  * @var Omeka\Api\Representation\MediaRepresentation[] $medias
  */
 ?>
+<?php
+$defaultMediaTitle = $this->siteSetting('octopusviewer_default_media_title', '') ?: $this->setting('octopusviewer_default_media_title', 'untitled');
+if ($defaultMediaTitle === 'no_text') {
+    $defaultTitle = '';
+} else {
+    $defaultTitle = $this->translate('[Untitled]');
+}
+?>
 <?php foreach ($medias as $media): ?>
-    <?php $title = $media->title() ?? $this->translate('[Untitled]') ?>
+    <?php
+    $displayTitle = $media->displayTitle('');
+    $title = $displayTitle !== '' && $displayTitle !== $media->source() ? $displayTitle : $defaultTitle;
+    ?>
     <a
         class="octopusviewer-media-selector-element"
         title="<?php echo $this->escapeHtml($title); ?>"
