@@ -86,3 +86,23 @@ For instance:
 
     The style is inlined for convenience, but you can remove it and use your
     own styles
+
+Optional attributes
+~~~~~~~~~~~~~~~~~~~
+
+The ``octopus-viewer`` HTML element also understands the following attributes:
+
+``show-media-selector``
+    Possible values: ``auto`` (default), ``always``, ``never``
+
+    Controls whether the media selector (left panel) should be displayed or
+    not. If ``auto``, the media selector will be displayed only if there is
+    more than one media to display. Other values can be used if you want the
+    media selector to be ``always`` or ``never`` displayed.
+
+``show-media-info``
+    Possible values: ``always`` (default), ``never``
+
+    Controls whether the media info (right panel) should be displayed or
+    not. If ``always``, it will always be displayed. If ``never`` it will never
+    be displayed.

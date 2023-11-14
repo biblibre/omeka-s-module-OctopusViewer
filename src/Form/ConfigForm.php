@@ -40,6 +40,39 @@ class ConfigForm extends Form
             ],
         ]);
 
+        $this->add([
+            'type' => Select::class,
+            'name' => 'octopusviewer_show_media_selector',
+            'options' => [
+                'label' => 'Show media selector', // @translate
+                'info' => 'This setting can be overriden in the site settings', // @translate
+                'value_options' => [
+                    'auto' => 'Only if there are several media', // @translate
+                    'always' => 'Always', // @translate
+                    'never' => 'Never', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'octopusviewer_show_media_selector',
+            ],
+        ]);
+
+        $this->add([
+            'type' => Select::class,
+            'name' => 'octopusviewer_show_media_info',
+            'options' => [
+                'label' => 'Show media info', // @translate
+                'info' => 'This setting can be overriden in the site settings', // @translate
+                'value_options' => [
+                    'always' => 'Always', // @translate
+                    'never' => 'Never', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'octopusviewer_show_media_info',
+            ],
+        ]);
+
         $this->getInputFilter()->add([
             'name' => 'octopusviewer_item_show',
             'required' => false,

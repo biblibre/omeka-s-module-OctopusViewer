@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 - Hide all open, print, download, and editor buttons in PDF viewer
+- Add global and site settings to control if side panels should be displayed
 
 ## [0.3.0] - 2023-10-04
 
