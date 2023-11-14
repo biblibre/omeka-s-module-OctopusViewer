@@ -40,10 +40,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iiif-image-servers.html">IIIF Image Servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Embed the viewer on another site</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#as-an-iframe">As an iframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#as-a-web-component">As a web component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#as-a-web-component">As a web component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#optional-attributes">Optional attributes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -51,6 +55,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="theme/customize-pdf-viewer.html">Customize PDF viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html">View helpers</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -158,6 +163,23 @@ define which media will be displayed),</p></li>
 <p>The style is inlined for convenience, but you can remove it and use your
 own styles</p>
 </div>
+<section id="optional-attributes">
+<h3>Optional attributes<a class="headerlink" href="#optional-attributes" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">octopus-viewer</span></code> HTML element also understands the following attributes:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">show-media-selector</span></code></dt><dd><p>Possible values: <code class="docutils literal notranslate"><span class="pre">auto</span></code> (default), <code class="docutils literal notranslate"><span class="pre">always</span></code>, <code class="docutils literal notranslate"><span class="pre">never</span></code></p>
+<p>Controls whether the media selector (left panel) should be displayed or
+not. If <code class="docutils literal notranslate"><span class="pre">auto</span></code>, the media selector will be displayed only if there is
+more than one media to display. Other values can be used if you want the
+media selector to be <code class="docutils literal notranslate"><span class="pre">always</span></code> or <code class="docutils literal notranslate"><span class="pre">never</span></code> displayed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">show-media-info</span></code></dt><dd><p>Possible values: <code class="docutils literal notranslate"><span class="pre">always</span></code> (default), <code class="docutils literal notranslate"><span class="pre">never</span></code></p>
+<p>Controls whether the media info (right panel) should be displayed or
+not. If <code class="docutils literal notranslate"><span class="pre">always</span></code>, it will always be displayed. If <code class="docutils literal notranslate"><span class="pre">never</span></code> it will never
+be displayed.</p>
+</dd>
+</dl>
+</section>
 </section>
 </section>
 

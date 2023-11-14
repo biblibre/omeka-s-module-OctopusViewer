@@ -58,6 +58,7 @@ full text of this license is given in the ``LICENSE`` file.
 .. toctree::
    :hidden:
 
+   configuration
    iiif-image-servers
    embed
 

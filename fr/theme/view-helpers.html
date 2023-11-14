@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Templates &mdash; Documentation OctopusViewer </title>
+  <title>View helpers &mdash; Documentation OctopusViewer </title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="View helpers" href="view-helpers.html" />
-    <link rel="prev" title="Personnaliser la visionneuse PDF" href="customize-pdf-viewer.html" /> 
+    <link rel="next" title="Mettre à jour PDF.js" href="../development/update-pdfjs.html" />
+    <link rel="prev" title="Templates" href="templates.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,8 +48,11 @@
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="customize-pdf-viewer.html">Personnaliser la visionneuse PDF</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Templates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="view-helpers.html">View helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">View helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#octopusviewer"><code class="docutils literal notranslate"><span class="pre">octopusViewer</span></code></a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Développement</span></p>
 <ul>
@@ -70,9 +73,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Templates</li>
+      <li class="breadcrumb-item active">View helpers</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/theme/templates.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="../_sources/theme/view-helpers.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -80,28 +83,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="templates">
-<h1>Templates<a class="headerlink" href="#templates" title="Lien permanent vers cette rubrique"></a></h1>
-<p>Les fichiers de <em>template</em> suivants peuvent être surchargés par les thèmes:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">octopus-viewer/helper/octopusviewer/for-item.phtml</span></code></dt><dd><p>Utilisé sur la page de détail d’un contenu et partout où la méthode <code class="docutils literal notranslate"><span class="pre">forItem</span></code> du <em>view helper</em> est utilisée.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">view/octopus-viewer/helper/octopusviewer/viewer.phtml</span></code></dt><dd><p>Utilisé dans la vue embarquée (quand elle est incluse dans une iframe par exemple) et partout où la méthode <code class="docutils literal notranslate"><span class="pre">viewer</span></code> du <em>view helper</em> est utilisée.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">view/octopus-viewer/site/media/info.phtml</span></code></dt><dd><p>Le contenu du panneau de droite.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">view/octopus-viewer/site/viewer/media-selector.phtml</span></code></dt><dd><p>Le contenu du panneau de gauche.</p>
-</dd>
-</dl>
-<p>Ce n’est pas une liste exhaustive. Pour la liste complète des fichiers de <em>template</em>, regarder <a class="reference external" href="https://github.com/biblibre/omeka-s-module-OctopusViewer/tree/master/view">le dossier view dans les sources</a></p>
+  <section id="view-helpers">
+<h1>View helpers<a class="headerlink" href="#view-helpers" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="octopusviewer">
+<h2><code class="docutils literal notranslate"><span class="pre">octopusViewer</span></code><a class="headerlink" href="#octopusviewer" title="Lien permanent vers cette rubrique"></a></h2>
+<p>You can use this view helper to display the viewer for all media of an item like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">forItem</span><span class="p">(</span><span class="nv">$itemRepresentation</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="customize-pdf-viewer.html" class="btn btn-neutral float-left" title="Personnaliser la visionneuse PDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="view-helpers.html" class="btn btn-neutral float-right" title="View helpers" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="templates.html" class="btn btn-neutral float-left" title="Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="../development/update-pdfjs.html" class="btn btn-neutral float-right" title="Mettre à jour PDF.js" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
