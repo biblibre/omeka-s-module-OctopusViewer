@@ -95,6 +95,7 @@ class Module extends AbstractModule
         $siteSettings = $services->get('Omeka\Settings\Site');
 
         $fieldset = $forms->get(SiteSettingsFieldset::class);
+        $fieldset->setName('octopusviewer');
         $fieldset->populateValues([
             'octopusviewer_show_media_selector' => $siteSettings->get('octopusviewer_show_media_selector', ''),
             'octopusviewer_show_media_info' => $siteSettings->get('octopusviewer_show_media_info', ''),
