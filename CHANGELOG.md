@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed error on site configuration page (Omeka S 3 only)
+- Fixed label of resource page block layout
 
 ## [0.4.0] - 2023-11-14
 

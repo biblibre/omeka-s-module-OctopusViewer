@@ -9,7 +9,7 @@ class OctopusViewer implements ResourcePageBlockLayoutInterface
 {
     public function getLabel() : string
     {
-        return 'Media viewer'; // @translate
+        return 'Octopus viewer'; // @translate
     }
 
     public function getCompatibleResourceNames() : array
