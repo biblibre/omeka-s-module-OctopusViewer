@@ -6,6 +6,13 @@
 #, fuzzy
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-12 13:34+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,6 +40,38 @@ msgid ""
 "corresponding value: {id}, {storage_id}, {filename}, {extension}"
 msgstr ""
 
+#: src/Form/ConfigForm.php:47 src/Form/SiteSettingsFieldset.php:19
+msgid "Show media selector"
+msgstr ""
+
+#: src/Form/ConfigForm.php:48 src/Form/ConfigForm.php:65
+msgid "This setting can be overriden in the site settings"
+msgstr ""
+
+#: src/Form/ConfigForm.php:50 src/Form/SiteSettingsFieldset.php:22
+msgid "Only if there are several media"
+msgstr ""
+
+#: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:37
+msgid "Show media info"
+msgstr ""
+
+#: src/Form/ConfigForm.php:80 src/Form/SiteSettingsFieldset.php:54
+msgid "Default media title"
+msgstr ""
+
+#: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:55
+msgid "Text used when a media has no title"
+msgstr ""
+
+#: src/Form/ConfigForm.php:84 src/Form/SiteSettingsFieldset.php:59
+msgid "No text"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:12
+msgid "Octopus Viewer"
+msgstr ""
+
 #: src/Site/ResourcePageBlockLayout/OctopusViewer.php:12
-msgid "Media viewer"
+msgid "Octopus viewer"
 msgstr ""
