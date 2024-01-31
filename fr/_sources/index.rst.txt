@@ -5,6 +5,10 @@ OctopusViewer gathers all your Omeka S media in a lightweight viewer.
 It's intended to be used as a replacement of other viewers like UniversalViewer
 or Mirador.
 
+However, unlike UniversalViewer and Mirador, OctopusViewer is not a IIIF
+viewer. In order to use IIIF manifests with OctopusViewer, they should be added
+to Omeka S as "IIIF presentation" media (requires Omeka S 4.0.0 or higher).
+
 Motivation
 ----------
 
