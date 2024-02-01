@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-25 13:27+0200\n"
-"PO-Revision-Date: 2023-10-25 13:40+0200\n"
+"POT-Creation-Date: 2024-02-01 11:51+0100\n"
+"PO-Revision-Date: 2024-02-01 11:59+0100\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -20,20 +20,52 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ../../theme/customize-pdf-viewer.rst:2
-msgid "Customize PDF viewer"
-msgstr "Personnaliser la visionneuse PDF"
+#: ../../theme/customize-viewer-appearance.rst:2
+msgid "Customize viewer appearance"
+msgstr "Personnaliser l'apparence de la visionneuse"
 
-#: ../../theme/customize-pdf-viewer.rst:4
+#: ../../theme/customize-viewer-appearance.rst:5
+msgid "octopusviewer-viewer-extra.css"
+msgstr "octopusviewer-viewer-extra.css"
+
+#: ../../theme/customize-viewer-appearance.rst:7
 msgid ""
-"Themes can customize the PDF viewer by creating a file ``asset/css/pdfjs-viewer."
-"css``. This file will be included in the PDF viewer's iframe so the styles set "
-"in this file only apply to the PDF viewer."
+"One of the simplest way is to add CSS to a file named ``asset/css/"
+"octopusviewer-viewer-extra.css``."
 msgstr ""
-"Les thèmes peuvent personnaliser la visionneuse PDF en créant un fichier "
-"``asset/css/pdfjs-viewer.css``. Ce fichier sera inclus dans l'iframe de la "
-"visionneuse PDF donc les styles définis dans ce fichier s'appliquent uniquement "
-"à la visionneuse PDF."
+"Une des façons les plus simples est d'ajouter du CSS à un fichier nommé "
+"``asset/css/octopusviewer-viewer-extra.css``."
+
+#: ../../theme/customize-viewer-appearance.rst:10
+msgid ""
+"It will be automatically loaded inside the viewer's shadow DOM (which "
+"means it won't affect anything but the viewer)."
+msgstr ""
+"Il sera automatiquement chargé à l'intérieur du *shadow DOM* de la "
+"visionneuse (ce qui signifie qu'il n'affectera que la visionneuse)."
+
+#: ../../theme/customize-viewer-appearance.rst:13
+msgid "This requires OctopusViewer 0.5.0 or higher."
+msgstr "Cela nécessite OctopusViewer 0.5.0 ou plus."
+
+#: ../../theme/customize-viewer-appearance.rst:16
+msgid "pdfjs-viewer.css"
+msgstr "pdfjs-viewer.css"
+
+#: ../../theme/customize-viewer-appearance.rst:18
+msgid ""
+"The PDF viewer is a little bit different because it's inside an iframe, "
+"so it requires another CSS file. Create a file named ``asset/css/pdfjs-"
+"viewer.css`` and it will be included in the PDF viewer's iframe."
+msgstr ""
+"La visionneuse PDF est un peu différente parce qu'elle est à l'intérieur "
+"d'une *iframe*, donc elle nécessite un autre fichier CSS. Créez un "
+"fichier nommé ``asset/css/pdfjs-viewer.css`` et il sera inclus dans "
+"l'*iframe* de la visionneuse PDF."
+
+#: ../../theme/customize-viewer-appearance.rst:22
+msgid "This requires OctopusViewer 0.3.0 or higher."
+msgstr "Cela nécessite OctopusViewer 0.3.0 ou plus."
 
 #: ../../theme/templates.rst:2
 msgid "Templates"
@@ -42,7 +74,8 @@ msgstr "Templates"
 #: ../../theme/templates.rst:4
 msgid "The following template files can be overriden by themes:"
 msgstr ""
-"Les fichiers de *template* suivants peuvent être surchargés par les thèmes:"
+"Les fichiers de *template* suivants peuvent être surchargés par les "
+"thèmes:"
 
 #: ../../theme/templates.rst:8
 msgid "``octopus-viewer/helper/octopusviewer/for-item.phtml``"
@@ -50,11 +83,11 @@ msgstr "``octopus-viewer/helper/octopusviewer/for-item.phtml``"
 
 #: ../../theme/templates.rst:7
 msgid ""
-"Used on the item \"show\" page and everywhere the view helper's ``forItem`` "
-"method is used."
+"Used on the item \"show\" page and everywhere the view helper's "
+"``forItem`` method is used."
 msgstr ""
-"Utilisé sur la page de détail d'un contenu et partout où la méthode ``forItem`` "
-"du *view helper* est utilisée."
+"Utilisé sur la page de détail d'un contenu et partout où la méthode "
+"``forItem`` du *view helper* est utilisée."
 
 #: ../../theme/templates.rst:12
 msgid "``view/octopus-viewer/helper/octopusviewer/viewer.phtml``"
@@ -65,8 +98,9 @@ msgid ""
 "Used in the embedded view (when included in an iframe for instance) and "
 "everywhere the view helper's ``viewer`` method is used."
 msgstr ""
-"Utilisé dans la vue embarquée (quand elle est incluse dans une iframe par "
-"exemple) et partout où la méthode ``viewer`` du *view helper* est utilisée."
+"Utilisé dans la vue embarquée (quand elle est incluse dans une iframe "
+"par exemple) et partout où la méthode ``viewer`` du *view helper* est "
+"utilisée."
 
 #: ../../theme/templates.rst:15
 msgid "``view/octopus-viewer/site/media/info.phtml``"
@@ -86,10 +120,56 @@ msgstr "Le contenu du panneau de gauche."
 
 #: ../../theme/templates.rst:20
 msgid ""
-"This is not an exhaustive list. For the full list of template files, look at "
-"`the view directory in the sources <https://github.com/biblibre/omeka-s-module-"
-"OctopusViewer/tree/master/view>`_"
+"This is not an exhaustive list. For the full list of template files, "
+"look at `the view directory in the sources <https://github.com/biblibre/"
+"omeka-s-module-OctopusViewer/tree/master/view>`_"
 msgstr ""
-"Ce n'est pas une liste exhaustive. Pour la liste complète des fichiers de "
-"*template*, regarder `le dossier view dans les sources <https://github.com/"
-"biblibre/omeka-s-module-OctopusViewer/tree/master/view>`_"
+"Ce n'est pas une liste exhaustive. Pour la liste complète des fichiers "
+"de *template*, regarder `le dossier view dans les sources <https://"
+"github.com/biblibre/omeka-s-module-OctopusViewer/tree/master/view>`_"
+
+#: ../../theme/view-helpers.rst:2
+msgid "View helpers"
+msgstr "*View helpers*"
+
+#: ../../theme/view-helpers.rst:7
+msgid "``octopusViewer``"
+msgstr "``octopusViewer``"
+
+#: ../../theme/view-helpers.rst:9
+msgid ""
+"You can use this view helper to display the viewer for all media of an "
+"item like this::"
+msgstr ""
+"Vous pouvez utiliser ce *view helper* pour afficher la visionneuse pour "
+"tous les médias d'un contenu comme ça::"
+
+#: ../../theme/view-helpers.rst:13
+msgid "Or you can display any media matching some criteria::"
+msgstr ""
+"Ou vous pouvez afficher n'importe quels médias correspondants à certains "
+"critères::"
+
+#: ../../theme/view-helpers.rst:17
+msgid "For instance, ::"
+msgstr "Par exemple, ::"
+
+#: ../../theme/view-helpers.rst:27
+msgid ""
+"The list of available parameters can be found in `Omeka S developer "
+"documentation (API reference) <https://omeka.org/s/docs/developer/api/"
+"api_reference/#parameters-for-media>`_."
+msgstr ""
+"La liste des paramètres disponibles se trouve dans la `documentation "
+"développeur Omeka S (référence API) <https://omeka.org/s/docs/developer/"
+"api/api_reference/#parameters-for-media>`_."
+
+#~ msgid ""
+#~ "Themes can customize the PDF viewer by creating a file ``asset/css/"
+#~ "pdfjs-viewer.css``. This file will be included in the PDF viewer's "
+#~ "iframe so the styles set in this file only apply to the PDF viewer."
+#~ msgstr ""
+#~ "Les thèmes peuvent personnaliser la visionneuse PDF en créant un "
+#~ "fichier ``asset/css/pdfjs-viewer.css``. Ce fichier sera inclus dans "
+#~ "l'iframe de la visionneuse PDF donc les styles définis dans ce "
+#~ "fichier s'appliquent uniquement à la visionneuse PDF."

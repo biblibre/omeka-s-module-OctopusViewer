@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 11:51+0100\n"
-"PO-Revision-Date: 2023-02-13 11:56+0100\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"POT-Creation-Date: 2024-02-01 12:17+0100\n"
+"PO-Revision-Date: 2024-02-01 12:23+0100\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
-"X-Generator: Poedit 2.4.2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.11.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: ../../embed.rst:2
 msgid "Embed the viewer on another site"
@@ -47,11 +48,11 @@ msgstr "``{BASE_URL}`` par l'URL de base d'Omeka,"
 
 #: ../../embed.rst:24 ../../embed.rst:67
 msgid ""
-"``{MEDIA_QUERY}`` by a list of URL parameters separated by ``&`` (this "
-"will define which media will be displayed),"
+"``{MEDIA_QUERY}`` by a list of URL parameters separated by ``&`` (this will "
+"define which media will be displayed),"
 msgstr ""
-"``{MEDIA_QUERY}`` par une liste de paramètres d'URL séparés par ``&`` "
-"(ça définira quels médias sont affichés),"
+"``{MEDIA_QUERY}`` par une liste de paramètres d'URL séparés par ``&`` (ça "
+"définira quels médias sont affichés),"
 
 #: ../../embed.rst:26 ../../embed.rst:69
 msgid "``{SITE_SLUG}`` by the identifier of an existing Omeka S site, and"
@@ -59,8 +60,7 @@ msgstr "``{SITE_SLUG}`` par l'identifiant d'un site Omeka S existant, et"
 
 #: ../../embed.rst:27 ../../embed.rst:70
 msgid "``{TITLE}`` by the text to be displayed in the viewer header."
-msgstr ""
-"``{TITLE}`` par le texte à afficher dans l'en-tête de la visionneuse."
+msgstr "``{TITLE}`` par le texte à afficher dans l'en-tête de la visionneuse."
 
 #: ../../embed.rst:29 ../../embed.rst:72
 msgid "For instance:"
@@ -77,8 +77,8 @@ msgstr "Cette fonctionnalité est expérimentale"
 #: ../../embed.rst:48
 msgid ""
 "If iframes cannot be used, the viewer can also be embedded on another "
-"website as a `web component <https://developer.mozilla.org/en-US/docs/"
-"Web/Web_Components>`_."
+"website as a `web component <https://developer.mozilla.org/en-US/docs/Web/"
+"Web_Components>`_."
 msgstr ""
 "Si les iframes ne peuvent pas être utilisées, la visionneuse peut aussi "
 "être embarquée sur un autre site en tant que `composant web <https://"
@@ -91,3 +91,54 @@ msgid ""
 msgstr ""
 "Le style est mis en ligne par commodité, mais vous pouvez le retirer et "
 "utiliser vos propres styles"
+
+#: ../../embed.rst:91
+msgid "Optional attributes"
+msgstr "Attributs optionnels"
+
+#: ../../embed.rst:93
+msgid ""
+"The ``octopusviewer-viewer`` HTML element also understands the following "
+"attributes:"
+msgstr ""
+"L'élément HTML ``octopusviewer-viewer`` comprend également les attributs "
+"suivants:"
+
+#: ../../embed.rst:101
+msgid "``show-media-selector``"
+msgstr "``show-media-selector``"
+
+#: ../../embed.rst:96
+msgid "Possible values: ``auto`` (default), ``always``, ``never``"
+msgstr "Valeurs possibles: ``auto`` (par défaut), ``always``, ``never``"
+
+#: ../../embed.rst:98
+msgid ""
+"Controls whether the media selector (left panel) should be displayed or "
+"not. If ``auto``, the media selector will be displayed only if there is "
+"more than one media to display. Other values can be used if you want the "
+"media selector to be ``always`` or ``never`` displayed."
+msgstr ""
+"Contrôle si le sélecteur de médias (panneau de gauche) est affiché ou non. "
+"Si ``auto``, le sélecteur de média sera affiché seulement s'il y a plus "
+"d'un média à afficher. Les autres valeurs peuvent être utilisées si vous "
+"voulez que le sélecteur de média soit toujours (``always``) ou jamais "
+"(``never``) affiché."
+
+#: ../../embed.rst:107
+msgid "``show-media-info``"
+msgstr "``show-media-info``"
+
+#: ../../embed.rst:104
+msgid "Possible values: ``always`` (default), ``never``"
+msgstr "Valeurs possibles: ``always`` (default), ``never``"
+
+#: ../../embed.rst:106
+msgid ""
+"Controls whether the media info (right panel) should be displayed or not. "
+"If ``always``, it will always be displayed. If ``never`` it will never be "
+"displayed."
+msgstr ""
+"Contrôle si les infos du média (panneau de droite) sont affichées ou non. "
+"Si ``always``, elles seront toujours affichées. Si ``never``, elles ne "
+"seront jamais affichées."

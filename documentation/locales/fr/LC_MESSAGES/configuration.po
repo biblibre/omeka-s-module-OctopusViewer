@@ -1,0 +1,307 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the OctopusViewer
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OctopusViewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-01 11:51+0100\n"
+"PO-Revision-Date: 2024-02-01 12:15+0100\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../../configuration.rst:2
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../configuration.rst:4
+msgid "Settings can be found in two places."
+msgstr "Les paramètres se trouvent dans deux endroits différents."
+
+#: ../../configuration.rst:6
+msgid ""
+"The module configuration page contains :ref:`global settings <global-settings>`"
+msgstr ""
+"La page de configuration du module contient :ref:`les paramètres globaux "
+"<global-settings>`"
+
+#: ../../configuration.rst:7
+msgid "The site configuration page contains :ref:`site settings <site-settings>`"
+msgstr ""
+"La page de configuration du site contient :ref:`les paramètres du site <site-"
+"settings>`"
+
+#: ../../configuration.rst:12
+msgid "Global settings"
+msgstr "Paramètres globaux"
+
+#: ../../configuration.rst:14
+msgid "Global settings can be found in the module configuration page."
+msgstr ""
+"Les paramètres globaux se trouvent dans la page de configuration du module."
+
+#: ../../configuration.rst:16
+msgid "Log in to the administration interface"
+msgstr "Connectez-vous à l'interface d'administration"
+
+#: ../../configuration.rst:17
+msgid ""
+"In the navigation menu on the left, click on the \"Modules\" link (under "
+"\"ADMIN\" section)"
+msgstr ""
+"Dans le menu de navigation à gauche, cliquez sur le lien \"Modules\" (sous la "
+"section \"ADMIN\")"
+
+#: ../../configuration.rst:18
+msgid "Find Octopus Viewer in the list"
+msgstr "Trouvez Octopus Viewer dans la liste"
+
+#: ../../configuration.rst:19
+msgid "Click on the corresponding \"Configure\" button"
+msgstr "Cliquez sur le bouton \"Configurer\" correspondant"
+
+#: ../../configuration.rst:24
+msgid "Show viewer on the item page"
+msgstr "Afficher la visionneuse sur la page de contenu"
+
+#: ../../configuration.rst:27
+msgid ""
+"This setting is mostly for Omeka S 3.2 and will likely be removed in the "
+"future."
+msgstr ""
+"Ce paramètre est principalement destiné à Omeka S 3.2 and sera probablement "
+"supprimé à l'avenir."
+
+#: ../../configuration.rst:29
+msgid ""
+"For Omeka S 4.x you should let this setting at its default value (\"No\") and "
+"use `resource page blocks <https://omeka.org/s/docs/user-manual/sites/"
+"site_theme/#configure-resource-pages>`_ instead."
+msgstr ""
+"Pour Omeka S 4.x vous devriez laisser ce paramètre à sa valeur par défaut "
+"(\"Non\") et utiliser les `blocs de page de ressource <https://omeka.org/s/"
+"docs/user-manual/sites/site_theme/#configure-resource-pages>`_ à la place."
+
+#: ../../configuration.rst:34
+msgid ""
+"This setting allow you to choose where the viewer will be placed on the item "
+"page."
+msgstr ""
+"Ce paramètre permet de choisir où la visionneuse sera placée sur la page de "
+"contenu."
+
+#: ../../configuration.rst:37 ../../configuration.rst:62
+#: ../../configuration.rst:81 ../../configuration.rst:96
+#: ../../configuration.rst:122 ../../configuration.rst:144
+#: ../../configuration.rst:163
+msgid "Possible values:"
+msgstr "Valeurs possibles:"
+
+#: ../../configuration.rst:41
+msgid "No"
+msgstr "Non"
+
+#: ../../configuration.rst:40
+msgid ""
+"Do not show the viewer. This can be useful if the theme is already displaying "
+"the viewer."
+msgstr ""
+"Ne pas afficher la visionneuse. Ça peut être utile si le thème affiche déjà la "
+"visionneuse."
+
+#: ../../configuration.rst:44
+msgid "Before the item content"
+msgstr "Avant le contenu"
+
+#: ../../configuration.rst:44
+msgid "Display the viewer before (above) the item content"
+msgstr "Affiche la visionneuse avant (au-dessus) du contenu"
+
+#: ../../configuration.rst:48
+msgid "After the item content"
+msgstr "Après le contenu"
+
+#: ../../configuration.rst:47
+msgid "Display the viewer after (below) the item content"
+msgstr "Affiche la visionneuse après (dessous) le contenu"
+
+#: ../../configuration.rst:51
+msgid "IIIF Image URI template"
+msgstr "Modèle d'URI IIIF Image"
+
+#: ../../configuration.rst:53
+msgid "See :doc:`iiif-image-servers`"
+msgstr "Voir :doc:`iiif-image-servers`"
+
+#: ../../configuration.rst:56 ../../configuration.rst:117
+msgid "Show media selector"
+msgstr "Afficher le sélecteur de médias"
+
+#: ../../configuration.rst:58
+msgid ""
+"This setting controls whether the media selector (the left panel) is shown or "
+"not.  This global setting can be overriden in :ref:`site settings <site-"
+"settings>`."
+msgstr ""
+"Ce paramètre contrôle si le sélecteur de médias (le panneau de gauche) est "
+"affiché ou non. Ce paramètre global peut être surchargé dans :ref:`les "
+"paramètres du site <site-settings>`."
+
+#: ../../configuration.rst:66 ../../configuration.rst:130
+msgid "Only if there are several media"
+msgstr "Seulement s'il y a plusieurs médias"
+
+#: ../../configuration.rst:65
+msgid ""
+"The media selector will be displayed only there is more than one media to "
+"show. This is the default value."
+msgstr ""
+"Le sélecteur de média sera affiché seulement s'il y a plus d'un média à "
+"afficher. C'est la valeur par défaut."
+
+#: ../../configuration.rst:69 ../../configuration.rst:84
+#: ../../configuration.rst:133 ../../configuration.rst:151
+msgid "Always"
+msgstr "Toujours"
+
+#: ../../configuration.rst:69 ../../configuration.rst:133
+msgid "Always show the media selector, even if there is only one media."
+msgstr ""
+"Toujours afficher le sélecteur de média, même s'il n'y a qu'un seul média."
+
+#: ../../configuration.rst:72 ../../configuration.rst:87
+#: ../../configuration.rst:136 ../../configuration.rst:154
+msgid "Never"
+msgstr "Jamais"
+
+#: ../../configuration.rst:72 ../../configuration.rst:136
+msgid "Never show the media selector."
+msgstr "Ne jamais afficher le sélecteur de média."
+
+#: ../../configuration.rst:75 ../../configuration.rst:139
+msgid "Show media info"
+msgstr "Afficher les infos du média"
+
+#: ../../configuration.rst:77
+msgid ""
+"This setting controls whether the media info (the right panel) is shown or "
+"not.  This global setting can be overriden in :ref:`site settings <site-"
+"settings>`."
+msgstr ""
+"Ce paramètre contrôle si les infos du média (le panneau de droite) est affiché "
+"ou non.  Ce paramètre global peut être surchargé dans :ref:`les paramètres du "
+"site <site-settings>`."
+
+#: ../../configuration.rst:84 ../../configuration.rst:151
+msgid "Always show the media info."
+msgstr "Toujours afficher les infos du média."
+
+#: ../../configuration.rst:87 ../../configuration.rst:154
+msgid "Never show the media info."
+msgstr "Ne jamais afficher les infos du média."
+
+#: ../../configuration.rst:90 ../../configuration.rst:157
+msgid "Default media title"
+msgstr "Titre du média par défaut"
+
+#: ../../configuration.rst:92
+msgid ""
+"This setting controls what is displayed in the media selector, next to the "
+"media thumbnail, if the media does not have a title. This global setting can "
+"be overriden in :ref:`site settings <site-settings>`."
+msgstr ""
+"Ce paramètre contrôle ce qui est affiché dans le sélecteur du média, à côté de "
+"la vignette du média, si le média n'a pas de titre. Ce paramètre global peut "
+"être surchargé dans :ref:`les paramètres du site <site-settings>`."
+
+#: ../../configuration.rst:99 ../../configuration.rst:170
+msgid "[Untitled]"
+msgstr "[Sans titre]"
+
+#: ../../configuration.rst:99
+msgid "Display the text \"[Untitled]\". This is the default behaviour."
+msgstr "Affiche le texte \"[Sans titre]\". C'est le comportement par défaut."
+
+#: ../../configuration.rst:102 ../../configuration.rst:172
+msgid "No text"
+msgstr "Aucun texte"
+
+#: ../../configuration.rst:102 ../../configuration.rst:173
+msgid "Display no text. Only the thumbnail will be visible."
+msgstr "N'affiche aucun texte. Seule la vignette sera visible."
+
+#: ../../configuration.rst:107
+msgid "Site settings"
+msgstr "Paramètres de site"
+
+#: ../../configuration.rst:109
+msgid ""
+"Site settings can be found in the `site settings page <https://omeka.org/s/"
+"docs/user-manual/sites/site_settings/#settings>`_."
+msgstr ""
+"Les paramètres de site se trouvent dans `la page des paramètres de site "
+"<https://omeka.org/s/docs/user-manual/sites/site_settings/#settings>`_."
+
+#: ../../configuration.rst:112
+msgid "In this page there is a section called \"Octopus Viewer\"."
+msgstr "Dans cette page il y a une section nommée \"Octopus Viewer\"."
+
+#: ../../configuration.rst:119
+msgid ""
+"This setting controls whether the media selector (the left panel) is shown or "
+"not. This setting overrides the global setting."
+msgstr ""
+"Ce paramètre contrôle si le sélecteur de média (le panneau de gauche) est "
+"affiché ou non. Ce paramètre surcharge le paramètre global."
+
+#: ../../configuration.rst:126 ../../configuration.rst:148
+#: ../../configuration.rst:167
+msgid "Use global setting"
+msgstr "Utiliser le paramètre global"
+
+#: ../../configuration.rst:125 ../../configuration.rst:147
+#: ../../configuration.rst:166
+msgid ""
+"Use the value defined in the :ref:`global settings <global-settings>`. This is "
+"the default value."
+msgstr ""
+"Utiliser la valeur définie dans :ref:`les paramètres globaux <global-"
+"settings>`. C'est la valeur par défaut."
+
+#: ../../configuration.rst:129
+msgid ""
+"The media selector will be displayed only there is more than one media to show."
+msgstr ""
+"Le sélecteur de média sera affiché seulement s'il y a plus d'un média à "
+"afficher."
+
+#: ../../configuration.rst:141
+msgid ""
+"This setting controls whether the media info (the right panel) is shown or "
+"not. This setting overrides the global setting."
+msgstr ""
+"Ce paramètre contrôle si les infos du média (le panneau de droite) est affiché "
+"ou non. Ce paramètre surcharge le paramètre global."
+
+#: ../../configuration.rst:159
+msgid ""
+"This setting controls what is displayed in the media selector, next to the "
+"media thumbnail, if the media does not have a title. This setting overrides "
+"the global setting."
+msgstr ""
+"Ce paramètre contrôle ce qui est affiché dans le sélecteur de médias, à côté "
+"de la vignette du média, si le média n'a pas de titre. Ce paramètre surcharge "
+"le paramètre global."
+
+#: ../../configuration.rst:170
+msgid "Display the text \"[Untitled]\"."
+msgstr "Afficher le texte \"[Sans titre]\"."

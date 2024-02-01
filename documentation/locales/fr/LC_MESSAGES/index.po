@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-25 11:26+0200\n"
-"PO-Revision-Date: 2023-10-25 13:40+0200\n"
+"POT-Creation-Date: 2024-02-01 11:51+0100\n"
+"PO-Revision-Date: 2024-02-01 12:22+0100\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ../../index.rst:64
+#: ../../index.rst:67
 msgid "Theme"
 msgstr "Thème"
 
-#: ../../index.rst:71
+#: ../../index.rst:74
 msgid "Development"
 msgstr "Développement"
 
@@ -35,26 +35,37 @@ msgstr "Manuel utilisateur de OctopusViewer"
 #: ../../index.rst:4
 msgid ""
 "OctopusViewer gathers all your Omeka S media in a lightweight viewer. It's "
-"intended to be used as a replacement of other viewers like UniversalViewer "
-"or Mirador."
+"intended to be used as a replacement of other viewers like UniversalViewer or "
+"Mirador."
 msgstr ""
-"OctopusViewer rassemble tous vos médias Omeka S dans une visionneuse "
-"légère. Elle est prévue pour être utilisée en remplacement d'autres "
-"visionneuses comme UniversalViewer ou Mirador."
+"OctopusViewer rassemble tous vos médias Omeka S dans une visionneuse légère. "
+"Elle est prévue pour être utilisée en remplacement d'autres visionneuses comme "
+"UniversalViewer ou Mirador."
 
-#: ../../index.rst:9
+#: ../../index.rst:8
+msgid ""
+"However, unlike UniversalViewer and Mirador, OctopusViewer is not a IIIF "
+"viewer. In order to use IIIF manifests with OctopusViewer, they should be added "
+"to Omeka S as \"IIIF presentation\" media (requires Omeka S 4.0.0 or higher)."
+msgstr ""
+"En revanche, contrairement à UniversalViewer et Mirador, OctopusViewer n'est "
+"pas une visionneuse IIIF. Pour utiliser des manifestes IIIF avec OctopusViewer, "
+"ils doivent être ajoutés à Omeka S en tant que média \"IIIF "
+"presentation\" (nécessite Omeka S 4.0.0 ou plus)."
+
+#: ../../index.rst:13
 msgid "Motivation"
 msgstr "Motivation"
 
-#: ../../index.rst:11
+#: ../../index.rst:15
 msgid ""
-"UniversalViewer and Mirador are great tools but they come with some "
-"limitations when using them in Omeka S:"
+"UniversalViewer and Mirador are great tools but they come with some limitations "
+"when using them in Omeka S:"
 msgstr ""
 "UniversalViewer et Mirador sont d'excellents outils mais ils ont quelques "
 "limites quand ils sont utilisés dans Omeka S:"
 
-#: ../../index.rst:14
+#: ../../index.rst:18
 msgid ""
 "They require a IIIF Presentation manifest, which often means an additional "
 "module should be installed"
@@ -62,114 +73,118 @@ msgstr ""
 "Ils nécessitent un manifeste IIIF, ce qui veut souvent dire que des modules "
 "supplémentaires doivent être installés"
 
-#: ../../index.rst:16
+#: ../../index.rst:20
 msgid "They support only a subset of Omeka S media types"
 msgstr "Ils supportent seulement un sous-ensemble des types de médias Omeka S"
 
-#: ../../index.rst:17
+#: ../../index.rst:21
 msgid "They are not easy to customize in Omeka S themes"
 msgstr "Ils ne sont pas faciles à personnaliser dans les thèmes Omeka S"
 
-#: ../../index.rst:19
+#: ../../index.rst:23
 msgid "The goals of OctopusViewer are:"
 msgstr "Les objectifs de OctopusViewer sont:"
 
-#: ../../index.rst:21
+#: ../../index.rst:25
 msgid ""
 "it should be able to display all types of media, falling back to a sensible "
 "default when a media cannot be rendered in a browser"
 msgstr ""
-"il doit être capable d'afficher tous les types de média, avec un affichage "
-"par défaut sensé dans les cas où le média ne peut pas être affiché dans un "
+"il doit être capable d'afficher tous les types de média, avec un affichage par "
+"défaut sensé dans les cas où le média ne peut pas être affiché dans un "
 "navigateur"
 
-#: ../../index.rst:23
+#: ../../index.rst:27
 msgid ""
-"it should use as few external dependencies as possible, favoring the tools "
-"that are already available on an empty Omeka S installation (like "
-"OpenSeadragon)"
+"it should use as few external dependencies as possible, favoring the tools that "
+"are already available on an empty Omeka S installation (like OpenSeadragon)"
 msgstr ""
-"il doit utiliser le moins de dépendances externes possible, en privilégiant "
-"les outils déjà disponibles dans Omeka S (comme OpenSeadragon)"
+"il doit utiliser le moins de dépendances externes possible, en privilégiant les "
+"outils déjà disponibles dans Omeka S (comme OpenSeadragon)"
 
-#: ../../index.rst:26
+#: ../../index.rst:30
 msgid ""
-"it should require no additional Omeka S modules, but should be extensible "
-"by them"
+"it should require no additional Omeka S modules, but should be extensible by "
+"them"
 msgstr ""
-"il ne doit dépendre d'aucun autre module Omeka S, mais doit pouvoir être "
-"étendu par d'autres modules"
+"il ne doit dépendre d'aucun autre module Omeka S, mais doit pouvoir être étendu "
+"par d'autres modules"
 
-#: ../../index.rst:28
+#: ../../index.rst:32
 msgid "it should be easily customizable in Omeka S themes"
 msgstr "il doit être facilement personnalisable dans les thèmes Omeka S"
 
-#: ../../index.rst:31
+#: ../../index.rst:35
 msgid "Features"
 msgstr "Fonctionnalités"
 
-#: ../../index.rst:33
+#: ../../index.rst:37
 msgid "A viewer split into 3 panels:"
 msgstr "Une visionneuse divisée en 3 panneaux:"
 
-#: ../../index.rst:35
+#: ../../index.rst:39
 msgid "the left panel contains a media selector"
 msgstr "le panneau de gauche contient un sélecteur de média"
 
-#: ../../index.rst:36
+#: ../../index.rst:40
 msgid "the center panel renders the media"
 msgstr "le panneau central affiche le média"
 
-#: ../../index.rst:37
+#: ../../index.rst:41
 msgid "the right panel displays metadata for the currently selected media"
 msgstr "le panneau de droite affiche les métadonnées du média sélectionné"
 
-#: ../../index.rst:39
+#: ../../index.rst:43
 msgid ""
-"Images are displayed within OpenSeadragon, allowing to zoom, rotate, and "
-"flip images"
+"Images are displayed within OpenSeadragon, allowing to zoom, rotate, and flip "
+"images"
 msgstr ""
-"Les images sont affichées dans OpenSeadragon, ce qui permet de zoomer, "
-"faire pivoter, et retourner les images"
+"Les images sont affichées dans OpenSeadragon, ce qui permet de zoomer, faire "
+"pivoter, et retourner les images"
 
-#: ../../index.rst:40
+#: ../../index.rst:44
 msgid "An optional IIIF Image server can be used"
 msgstr "Un serveur d'image IIIF optionnel peut-être utilisé"
 
-#: ../../index.rst:41
-msgid ""
-"PDF files are displayed with the browser's built-in PDF viewer, if it "
-"exists. If the browser doesn't support PDF (like in most mobile browsers), "
-"pdfjs is used."
+#: ../../index.rst:45
+msgid "PDF files are displayed with `pdfjs <https://mozilla.github.io/pdf.js/>`_."
 msgstr ""
-"Les fichiers PDF sont affichés dans le lecteur PDF intégré au navigateur, "
-"s'il existe. Si le navigateur ne supporte pas les PDF (comme la plupart des "
-"navigateurs sur mobile), pdfjs est utilisé."
+"Les fichiers PDF sont affichés avec `pdfjs <https://mozilla.github.io/pdf.js/"
+">`_."
 
-#: ../../index.rst:44
+#: ../../index.rst:46
 msgid "Fullscreen mode"
 msgstr "Mode plein écran"
 
-#: ../../index.rst:47
+#: ../../index.rst:49
 msgid "Installation"
 msgstr "Installation"
 
-#: ../../index.rst:49
+#: ../../index.rst:51
 msgid ""
-"See general end user documentation for `installing a module <http://omeka."
-"org/s/docs/user-manual/modules/#installing-modules>`_."
+"See general end user documentation for `installing a module <http://omeka.org/s/"
+"docs/user-manual/modules/#installing-modules>`_."
 msgstr ""
-"Voir la documentation utilisateur pour `installer un module <http://omeka."
-"org/s/docs/user-manual/modules/#installing-modules>`_."
+"Voir la documentation utilisateur pour `installer un module <http://omeka.org/s/"
+"docs/user-manual/modules/#installing-modules>`_."
 
-#: ../../index.rst:53
+#: ../../index.rst:55
 msgid "License"
 msgstr "Licence"
 
-#: ../../index.rst:55
+#: ../../index.rst:57
 msgid ""
-"OctopusViewer is distributed under the GNU General Public License, version "
-"3. The full text of this license is given in the ``LICENSE`` file."
+"OctopusViewer is distributed under the GNU General Public License, version 3. "
+"The full text of this license is given in the ``LICENSE`` file."
 msgstr ""
-"OctopusViewer est distribué sous la licence publique générale GNU, version "
-"3. Le texte complet de cette licence est dans le fichier ``LICENSE``."
+"OctopusViewer est distribué sous la licence publique générale GNU, version 3. "
+"Le texte complet de cette licence est dans le fichier ``LICENSE``."
+
+#~ msgid ""
+#~ "PDF files are displayed with the browser's built-in PDF viewer, if it "
+#~ "exists. If the browser doesn't support PDF (like in most mobile browsers), "
+#~ "pdfjs is used."
+#~ msgstr ""
+#~ "Les fichiers PDF sont affichés dans le lecteur PDF intégré au navigateur, "
+#~ "s'il existe. Si le navigateur ne supporte pas les PDF (comme la plupart des "
+#~ "navigateurs sur mobile), pdfjs est utilisé."
