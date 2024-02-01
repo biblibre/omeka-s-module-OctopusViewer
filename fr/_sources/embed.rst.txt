@@ -90,7 +90,7 @@ For instance:
 Optional attributes
 ~~~~~~~~~~~~~~~~~~~
 
-The ``octopus-viewer`` HTML element also understands the following attributes:
+The ``octopusviewer-viewer`` HTML element also understands the following attributes:
 
 ``show-media-selector``
     Possible values: ``auto`` (default), ``always``, ``never``

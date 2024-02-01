@@ -46,7 +46,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Theme</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="customize-pdf-viewer.html">Customize PDF viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize-viewer-appearance.html">Customize viewer appearance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">View helpers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#octopusviewer"><code class="docutils literal notranslate"><span class="pre">octopusViewer</span></code></a></li>
@@ -90,6 +90,21 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">forItem</span><span class="p">(</span><span class="nv">$itemRepresentation</span><span class="p">)</span> <span class="cp">?&gt;</span>
 </pre></div>
 </div>
+<p>Or you can display any media matching some criteria:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">viewer</span><span class="p">(</span><span class="nv">$media_query</span><span class="p">,</span> <span class="nv">$viewer_title</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>For instance,</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">viewer</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s1">&#39;media_type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;item_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(),</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Pictures&#39;</span>
+<span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>The list of available parameters can be found in <a class="reference external" href="https://omeka.org/s/docs/developer/api/api_reference/#parameters-for-media">Omeka S developer documentation (API reference)</a>.</p>
 </section>
 </section>
 

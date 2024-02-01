@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Personnaliser la visionneuse PDF" href="theme/customize-pdf-viewer.html" />
+    <link rel="next" title="Personnaliser l’apparence de la visionneuse" href="theme/customize-viewer-appearance.html" />
     <link rel="prev" title="IIPImage" href="iiif-image-servers/iipimage.html" /> 
 </head>
 
@@ -46,7 +46,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Embarquer la visionneuse sur un autre site</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#as-an-iframe">En tant qu’iframe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#as-a-web-component">En tant que composant web</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#optional-attributes">Optional attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-attributes">Attributs optionnels</a></li>
 </ul>
 </li>
 </ul>
@@ -54,9 +54,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="theme/customize-pdf-viewer.html">Personnaliser la visionneuse PDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/customize-viewer-appearance.html">Personnaliser l’apparence de la visionneuse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme/templates.html">Templates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html">View helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html"><em>View helpers</em></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Développement</span></p>
 <ul>
@@ -161,19 +161,14 @@
 <p>Le style est mis en ligne par commodité, mais vous pouvez le retirer et utiliser vos propres styles</p>
 </div>
 <section id="optional-attributes">
-<h3>Optional attributes<a class="headerlink" href="#optional-attributes" title="Lien permanent vers cette rubrique"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">octopus-viewer</span></code> HTML element also understands the following attributes:</p>
+<h3>Attributs optionnels<a class="headerlink" href="#optional-attributes" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’élément HTML <code class="docutils literal notranslate"><span class="pre">octopusviewer-viewer</span></code> comprend également les attributs suivants:</p>
 <dl>
-<dt><code class="docutils literal notranslate"><span class="pre">show-media-selector</span></code></dt><dd><p>Possible values: <code class="docutils literal notranslate"><span class="pre">auto</span></code> (default), <code class="docutils literal notranslate"><span class="pre">always</span></code>, <code class="docutils literal notranslate"><span class="pre">never</span></code></p>
-<p>Controls whether the media selector (left panel) should be displayed or
-not. If <code class="docutils literal notranslate"><span class="pre">auto</span></code>, the media selector will be displayed only if there is
-more than one media to display. Other values can be used if you want the
-media selector to be <code class="docutils literal notranslate"><span class="pre">always</span></code> or <code class="docutils literal notranslate"><span class="pre">never</span></code> displayed.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">show-media-selector</span></code></dt><dd><p>Valeurs possibles: <code class="docutils literal notranslate"><span class="pre">auto</span></code> (par défaut), <code class="docutils literal notranslate"><span class="pre">always</span></code>, <code class="docutils literal notranslate"><span class="pre">never</span></code></p>
+<p>Contrôle si le sélecteur de médias (panneau de gauche) est affiché ou non. Si <code class="docutils literal notranslate"><span class="pre">auto</span></code>, le sélecteur de média sera affiché seulement s’il y a plus d’un média à afficher. Les autres valeurs peuvent être utilisées si vous voulez que le sélecteur de média soit toujours (<code class="docutils literal notranslate"><span class="pre">always</span></code>) ou jamais (<code class="docutils literal notranslate"><span class="pre">never</span></code>) affiché.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">show-media-info</span></code></dt><dd><p>Possible values: <code class="docutils literal notranslate"><span class="pre">always</span></code> (default), <code class="docutils literal notranslate"><span class="pre">never</span></code></p>
-<p>Controls whether the media info (right panel) should be displayed or
-not. If <code class="docutils literal notranslate"><span class="pre">always</span></code>, it will always be displayed. If <code class="docutils literal notranslate"><span class="pre">never</span></code> it will never
-be displayed.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">show-media-info</span></code></dt><dd><p>Valeurs possibles: <code class="docutils literal notranslate"><span class="pre">always</span></code> (default), <code class="docutils literal notranslate"><span class="pre">never</span></code></p>
+<p>Contrôle si les infos du média (panneau de droite) sont affichées ou non. Si <code class="docutils literal notranslate"><span class="pre">always</span></code>, elles seront toujours affichées. Si <code class="docutils literal notranslate"><span class="pre">never</span></code>, elles ne seront jamais affichées.</p>
 </dd>
 </dl>
 </section>
@@ -185,7 +180,7 @@ be displayed.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
         <a href="iiif-image-servers/iipimage.html" class="btn btn-neutral float-left" title="IIPImage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="theme/customize-pdf-viewer.html" class="btn btn-neutral float-right" title="Personnaliser la visionneuse PDF" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="theme/customize-viewer-appearance.html" class="btn btn-neutral float-right" title="Personnaliser l’apparence de la visionneuse" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customize PDF viewer &mdash; OctopusViewer  documentation</title>
+  <title>Customize viewer appearance &mdash; OctopusViewer  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -46,7 +46,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Theme</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Customize PDF viewer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customize viewer appearance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#octopusviewer-viewer-extra-css">octopusviewer-viewer-extra.css</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pdfjs-viewer-css">pdfjs-viewer.css</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="view-helpers.html">View helpers</a></li>
 </ul>
@@ -69,9 +73,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Customize PDF viewer</li>
+      <li class="breadcrumb-item active">Customize viewer appearance</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/theme/customize-pdf-viewer.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/theme/customize-viewer-appearance.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -79,11 +83,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="customize-pdf-viewer">
-<h1>Customize PDF viewer<a class="headerlink" href="#customize-pdf-viewer" title="Permalink to this heading"></a></h1>
-<p>Themes can customize the PDF viewer by creating a file
-<code class="docutils literal notranslate"><span class="pre">asset/css/pdfjs-viewer.css</span></code>. This file will be included in the PDF viewer’s
-iframe so the styles set in this file only apply to the PDF viewer.</p>
+  <section id="customize-viewer-appearance">
+<h1>Customize viewer appearance<a class="headerlink" href="#customize-viewer-appearance" title="Permalink to this heading"></a></h1>
+<section id="octopusviewer-viewer-extra-css">
+<h2>octopusviewer-viewer-extra.css<a class="headerlink" href="#octopusviewer-viewer-extra-css" title="Permalink to this heading"></a></h2>
+<p>One of the simplest way is to add CSS to a file named
+<code class="docutils literal notranslate"><span class="pre">asset/css/octopusviewer-viewer-extra.css</span></code>.</p>
+<p>It will be automatically loaded inside the viewer’s shadow DOM (which means it
+won’t affect anything but the viewer).</p>
+<p>This requires OctopusViewer 0.5.0 or higher.</p>
+</section>
+<section id="pdfjs-viewer-css">
+<h2>pdfjs-viewer.css<a class="headerlink" href="#pdfjs-viewer-css" title="Permalink to this heading"></a></h2>
+<p>The PDF viewer is a little bit different because it’s inside an iframe, so it
+requires another CSS file. Create a file named <code class="docutils literal notranslate"><span class="pre">asset/css/pdfjs-viewer.css</span></code>
+and it will be included in the PDF viewer’s iframe.</p>
+<p>This requires OctopusViewer 0.3.0 or higher.</p>
+</section>
 </section>
 
 

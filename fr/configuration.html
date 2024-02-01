@@ -42,18 +42,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#global-settings">Global settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#show-viewer-on-the-item-page">Show viewer on the item page</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#iiif-image-uri-template">IIIF Image URI template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#show-media-selector">Show media selector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#show-media-info">Show media info</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#default-media-title">Default media title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#global-settings">Paramètres globaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#show-viewer-on-the-item-page">Afficher la visionneuse sur la page de contenu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iiif-image-uri-template">Modèle d’URI IIIF Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#show-media-selector">Afficher le sélecteur de médias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#show-media-info">Afficher les infos du média</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-media-title">Titre du média par défaut</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#site-settings">Site settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Show media selector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Show media info</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Default media title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#site-settings">Paramètres de site</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Afficher le sélecteur de médias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Afficher les infos du média</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Titre du média par défaut</a></li>
 </ul>
 </li>
 </ul>
@@ -63,9 +63,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="theme/customize-pdf-viewer.html">Personnaliser la visionneuse PDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/customize-viewer-appearance.html">Personnaliser l’apparence de la visionneuse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme/templates.html">Templates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html">View helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html"><em>View helpers</em></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Développement</span></p>
 <ul>
@@ -98,139 +98,122 @@
              
   <section id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers cette rubrique"></a></h1>
-<p>Settings can be found in two places.</p>
+<p>Les paramètres se trouvent dans deux endroits différents.</p>
 <ul class="simple">
-<li><p>The module configuration page contains <a class="reference internal" href="#global-settings"><span class="std std-ref">global settings</span></a></p></li>
-<li><p>The site configuration page contains <a class="reference internal" href="#site-settings"><span class="std std-ref">site settings</span></a></p></li>
+<li><p>La page de configuration du module contient <a class="reference internal" href="#global-settings"><span class="std std-ref">les paramètres globaux</span></a></p></li>
+<li><p>La page de configuration du site contient <a class="reference internal" href="#site-settings"><span class="std std-ref">les paramètres du site</span></a></p></li>
 </ul>
 <section id="global-settings">
-<span id="id1"></span><h2>Global settings<a class="headerlink" href="#global-settings" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Global settings can be found in the module configuration page.</p>
+<span id="id1"></span><h2>Paramètres globaux<a class="headerlink" href="#global-settings" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Les paramètres globaux se trouvent dans la page de configuration du module.</p>
 <ol class="arabic simple">
-<li><p>Log in to the administration interface</p></li>
-<li><p>In the navigation menu on the left, click on the « Modules » link (under « ADMIN » section)</p></li>
-<li><p>Find Octopus Viewer in the list</p></li>
-<li><p>Click on the corresponding « Configure » button</p></li>
+<li><p>Connectez-vous à l’interface d’administration</p></li>
+<li><p>Dans le menu de navigation à gauche, cliquez sur le lien « Modules » (sous la section « ADMIN »)</p></li>
+<li><p>Trouvez Octopus Viewer dans la liste</p></li>
+<li><p>Cliquez sur le bouton « Configurer » correspondant</p></li>
 </ol>
 <img alt="_images/global-settings.png" src="_images/global-settings.png" />
 <section id="show-viewer-on-the-item-page">
-<h3>Show viewer on the item page<a class="headerlink" href="#show-viewer-on-the-item-page" title="Lien permanent vers cette rubrique"></a></h3>
+<h3>Afficher la visionneuse sur la page de contenu<a class="headerlink" href="#show-viewer-on-the-item-page" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This setting is mostly for Omeka S 3.2 and will likely be removed in the future.</p>
-<p>For Omeka S 4.x you should let this setting at its default value (« No ») and
-use <a class="reference external" href="https://omeka.org/s/docs/user-manual/sites/site_theme/#configure-resource-pages">resource page blocks</a>
-instead.</p>
+<p>Ce paramètre est principalement destiné à Omeka S 3.2 and sera probablement supprimé à l’avenir.</p>
+<p>Pour Omeka S 4.x vous devriez laisser ce paramètre à sa valeur par défaut (« Non ») et utiliser les <a class="reference external" href="https://omeka.org/s/docs/user-manual/sites/site_theme/#configure-resource-pages">blocs de page de ressource</a> à la place.</p>
 </div>
-<p>This setting allow you to choose where the viewer will be placed on the item
-page.</p>
-<p>Possible values:</p>
+<p>Ce paramètre permet de choisir où la visionneuse sera placée sur la page de contenu.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>No</dt><dd><p>Do not show the viewer. This can be useful if the theme is already
-displaying the viewer.</p>
+<dt>Non</dt><dd><p>Ne pas afficher la visionneuse. Ça peut être utile si le thème affiche déjà la visionneuse.</p>
 </dd>
-<dt>Before the item content</dt><dd><p>Display the viewer before (above) the item content</p>
+<dt>Avant le contenu</dt><dd><p>Affiche la visionneuse avant (au-dessus) du contenu</p>
 </dd>
-<dt>After the item content</dt><dd><p>Display the viewer after (below) the item content</p>
+<dt>Après le contenu</dt><dd><p>Affiche la visionneuse après (dessous) le contenu</p>
 </dd>
 </dl>
 </section>
 <section id="iiif-image-uri-template">
-<h3>IIIF Image URI template<a class="headerlink" href="#iiif-image-uri-template" title="Lien permanent vers cette rubrique"></a></h3>
-<p>See <a class="reference internal" href="iiif-image-servers.html"><span class="doc">Serveurs d’image IIIF</span></a></p>
+<h3>Modèle d’URI IIIF Image<a class="headerlink" href="#iiif-image-uri-template" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Voir <a class="reference internal" href="iiif-image-servers.html"><span class="doc">Serveurs d’image IIIF</span></a></p>
 </section>
 <section id="show-media-selector">
-<h3>Show media selector<a class="headerlink" href="#show-media-selector" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls whether the media selector (the left panel) is shown or
-not.  This global setting can be overriden in <a class="reference internal" href="#site-settings"><span class="std std-ref">site settings</span></a>.</p>
-<p>Possible values:</p>
+<h3>Afficher le sélecteur de médias<a class="headerlink" href="#show-media-selector" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle si le sélecteur de médias (le panneau de gauche) est affiché ou non. Ce paramètre global peut être surchargé dans <a class="reference internal" href="#site-settings"><span class="std std-ref">les paramètres du site</span></a>.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>Only if there are several media</dt><dd><p>The media selector will be displayed only there is more than one media to
-show. This is the default value.</p>
+<dt>Seulement s’il y a plusieurs médias</dt><dd><p>Le sélecteur de média sera affiché seulement s’il y a plus d’un média à afficher. C’est la valeur par défaut.</p>
 </dd>
-<dt>Always</dt><dd><p>Always show the media selector, even if there is only one media.</p>
+<dt>Toujours</dt><dd><p>Toujours afficher le sélecteur de média, même s’il n’y a qu’un seul média.</p>
 </dd>
-<dt>Never</dt><dd><p>Never show the media selector.</p>
+<dt>Jamais</dt><dd><p>Ne jamais afficher le sélecteur de média.</p>
 </dd>
 </dl>
 </section>
 <section id="show-media-info">
-<h3>Show media info<a class="headerlink" href="#show-media-info" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls whether the media info (the right panel) is shown or
-not.  This global setting can be overriden in <a class="reference internal" href="#site-settings"><span class="std std-ref">site settings</span></a>.</p>
-<p>Possible values:</p>
+<h3>Afficher les infos du média<a class="headerlink" href="#show-media-info" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle si les infos du média (le panneau de droite) est affiché ou non.  Ce paramètre global peut être surchargé dans <a class="reference internal" href="#site-settings"><span class="std std-ref">les paramètres du site</span></a>.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>Always</dt><dd><p>Always show the media info.</p>
+<dt>Toujours</dt><dd><p>Toujours afficher les infos du média.</p>
 </dd>
-<dt>Never</dt><dd><p>Never show the media info.</p>
+<dt>Jamais</dt><dd><p>Ne jamais afficher les infos du média.</p>
 </dd>
 </dl>
 </section>
 <section id="default-media-title">
-<h3>Default media title<a class="headerlink" href="#default-media-title" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls what is displayed in the media selector, next to the
-media thumbnail, if the media does not have a title. This global setting can be
-overriden in <a class="reference internal" href="#site-settings"><span class="std std-ref">site settings</span></a>.</p>
-<p>Possible values:</p>
+<h3>Titre du média par défaut<a class="headerlink" href="#default-media-title" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle ce qui est affiché dans le sélecteur du média, à côté de la vignette du média, si le média n’a pas de titre. Ce paramètre global peut être surchargé dans <a class="reference internal" href="#site-settings"><span class="std std-ref">les paramètres du site</span></a>.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>[Untitled]</dt><dd><p>Display the text « [Untitled] ». This is the default behaviour.</p>
+<dt>[Sans titre]</dt><dd><p>Affiche le texte « [Sans titre] ». C’est le comportement par défaut.</p>
 </dd>
-<dt>No text</dt><dd><p>Display no text. Only the thumbnail will be visible.</p>
+<dt>Aucun texte</dt><dd><p>N’affiche aucun texte. Seule la vignette sera visible.</p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="site-settings">
-<span id="id2"></span><h2>Site settings<a class="headerlink" href="#site-settings" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Site settings can be found in the <a class="reference external" href="https://omeka.org/s/docs/user-manual/sites/site_settings/#settings">site settings page</a>.</p>
-<p>In this page there is a section called « Octopus Viewer ».</p>
+<span id="id2"></span><h2>Paramètres de site<a class="headerlink" href="#site-settings" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Les paramètres de site se trouvent dans <a class="reference external" href="https://omeka.org/s/docs/user-manual/sites/site_settings/#settings">la page des paramètres de site</a>.</p>
+<p>Dans cette page il y a une section nommée « Octopus Viewer ».</p>
 <img alt="_images/site-settings.png" src="_images/site-settings.png" />
 <section id="id3">
-<h3>Show media selector<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls whether the media selector (the left panel) is shown or
-not. This setting overrides the global setting.</p>
-<p>Possible values:</p>
+<h3>Afficher le sélecteur de médias<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle si le sélecteur de média (le panneau de gauche) est affiché ou non. Ce paramètre surcharge le paramètre global.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>Use global setting</dt><dd><p>Use the value defined in the <a class="reference internal" href="#global-settings"><span class="std std-ref">global settings</span></a>. This
-is the default value.</p>
+<dt>Utiliser le paramètre global</dt><dd><p>Utiliser la valeur définie dans <a class="reference internal" href="#global-settings"><span class="std std-ref">les paramètres globaux</span></a>. C’est la valeur par défaut.</p>
 </dd>
-<dt>Only if there are several media</dt><dd><p>The media selector will be displayed only there is more than one media to
-show.</p>
+<dt>Seulement s’il y a plusieurs médias</dt><dd><p>Le sélecteur de média sera affiché seulement s’il y a plus d’un média à afficher.</p>
 </dd>
-<dt>Always</dt><dd><p>Always show the media selector, even if there is only one media.</p>
+<dt>Toujours</dt><dd><p>Toujours afficher le sélecteur de média, même s’il n’y a qu’un seul média.</p>
 </dd>
-<dt>Never</dt><dd><p>Never show the media selector.</p>
+<dt>Jamais</dt><dd><p>Ne jamais afficher le sélecteur de média.</p>
 </dd>
 </dl>
 </section>
 <section id="id4">
-<h3>Show media info<a class="headerlink" href="#id4" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls whether the media info (the right panel) is shown or
-not. This setting overrides the global setting.</p>
-<p>Possible values:</p>
+<h3>Afficher les infos du média<a class="headerlink" href="#id4" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle si les infos du média (le panneau de droite) est affiché ou non. Ce paramètre surcharge le paramètre global.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>Use global setting</dt><dd><p>Use the value defined in the <a class="reference internal" href="#global-settings"><span class="std std-ref">global settings</span></a>. This
-is the default value.</p>
+<dt>Utiliser le paramètre global</dt><dd><p>Utiliser la valeur définie dans <a class="reference internal" href="#global-settings"><span class="std std-ref">les paramètres globaux</span></a>. C’est la valeur par défaut.</p>
 </dd>
-<dt>Always</dt><dd><p>Always show the media info.</p>
+<dt>Toujours</dt><dd><p>Toujours afficher les infos du média.</p>
 </dd>
-<dt>Never</dt><dd><p>Never show the media info.</p>
+<dt>Jamais</dt><dd><p>Ne jamais afficher les infos du média.</p>
 </dd>
 </dl>
 </section>
 <section id="id5">
-<h3>Default media title<a class="headerlink" href="#id5" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls what is displayed in the media selector, next to the
-media thumbnail, if the media does not have a title. This setting overrides the
-global setting.</p>
-<p>Possible values:</p>
+<h3>Titre du média par défaut<a class="headerlink" href="#id5" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle ce qui est affiché dans le sélecteur de médias, à côté de la vignette du média, si le média n’a pas de titre. Ce paramètre surcharge le paramètre global.</p>
+<p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>Use global setting</dt><dd><p>Use the value defined in the <a class="reference internal" href="#global-settings"><span class="std std-ref">global settings</span></a>. This
-is the default value.</p>
+<dt>Utiliser le paramètre global</dt><dd><p>Utiliser la valeur définie dans <a class="reference internal" href="#global-settings"><span class="std std-ref">les paramètres globaux</span></a>. C’est la valeur par défaut.</p>
 </dd>
-<dt>[Untitled]</dt><dd><p>Display the text « [Untitled] ».</p>
+<dt>[Sans titre]</dt><dd><p>Afficher le texte « [Sans titre] ».</p>
 </dd>
-<dt>No text</dt><dd><p>Display no text. Only the thumbnail will be visible.</p>
+<dt>Aucun texte</dt><dd><p>N’affiche aucun texte. Seule la vignette sera visible.</p>
 </dd>
 </dl>
 </section>

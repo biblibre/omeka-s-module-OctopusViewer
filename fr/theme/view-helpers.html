@@ -47,9 +47,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="customize-pdf-viewer.html">Personnaliser la visionneuse PDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize-viewer-appearance.html">Personnaliser l’apparence de la visionneuse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">View helpers</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><em>View helpers</em></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#octopusviewer"><code class="docutils literal notranslate"><span class="pre">octopusViewer</span></code></a></li>
 </ul>
 </li>
@@ -73,7 +73,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">View helpers</li>
+      <li class="breadcrumb-item active"><em>View helpers</em></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/theme/view-helpers.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
@@ -84,13 +84,28 @@
            <div itemprop="articleBody">
              
   <section id="view-helpers">
-<h1>View helpers<a class="headerlink" href="#view-helpers" title="Lien permanent vers cette rubrique"></a></h1>
+<h1><em>View helpers</em><a class="headerlink" href="#view-helpers" title="Lien permanent vers cette rubrique"></a></h1>
 <section id="octopusviewer">
 <h2><code class="docutils literal notranslate"><span class="pre">octopusViewer</span></code><a class="headerlink" href="#octopusviewer" title="Lien permanent vers cette rubrique"></a></h2>
-<p>You can use this view helper to display the viewer for all media of an item like this:</p>
+<p>Vous pouvez utiliser ce <em>view helper</em> pour afficher la visionneuse pour tous les médias d’un contenu comme ça:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">forItem</span><span class="p">(</span><span class="nv">$itemRepresentation</span><span class="p">)</span> <span class="cp">?&gt;</span>
 </pre></div>
 </div>
+<p>Ou vous pouvez afficher n’importe quels médias correspondants à certains critères:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">viewer</span><span class="p">(</span><span class="nv">$media_query</span><span class="p">,</span> <span class="nv">$viewer_title</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>Par exemple,</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">octopusViewer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">viewer</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s1">&#39;media_type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;item_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(),</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Pictures&#39;</span>
+<span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>La liste des paramètres disponibles se trouve dans la <a class="reference external" href="https://omeka.org/s/docs/developer/api/api_reference/#parameters-for-media">documentation développeur Omeka S (référence API)</a>.</p>
 </section>
 </section>
 

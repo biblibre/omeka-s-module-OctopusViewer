@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personnaliser la visionneuse PDF &mdash; Documentation OctopusViewer </title>
+  <title>Personnaliser l’apparence de la visionneuse &mdash; Documentation OctopusViewer </title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -47,9 +47,13 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Personnaliser la visionneuse PDF</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Personnaliser l’apparence de la visionneuse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#octopusviewer-viewer-extra-css">octopusviewer-viewer-extra.css</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pdfjs-viewer-css">pdfjs-viewer.css</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="view-helpers.html">View helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view-helpers.html"><em>View helpers</em></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Développement</span></p>
 <ul>
@@ -70,9 +74,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Personnaliser la visionneuse PDF</li>
+      <li class="breadcrumb-item active">Personnaliser l’apparence de la visionneuse</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/theme/customize-pdf-viewer.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="../_sources/theme/customize-viewer-appearance.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -80,9 +84,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="customize-pdf-viewer">
-<h1>Personnaliser la visionneuse PDF<a class="headerlink" href="#customize-pdf-viewer" title="Lien permanent vers cette rubrique"></a></h1>
-<p>Les thèmes peuvent personnaliser la visionneuse PDF en créant un fichier <code class="docutils literal notranslate"><span class="pre">asset/css/pdfjs-viewer.css</span></code>. Ce fichier sera inclus dans l’iframe de la visionneuse PDF donc les styles définis dans ce fichier s’appliquent uniquement à la visionneuse PDF.</p>
+  <section id="customize-viewer-appearance">
+<h1>Personnaliser l’apparence de la visionneuse<a class="headerlink" href="#customize-viewer-appearance" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="octopusviewer-viewer-extra-css">
+<h2>octopusviewer-viewer-extra.css<a class="headerlink" href="#octopusviewer-viewer-extra-css" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Une des façons les plus simples est d’ajouter du CSS à un fichier nommé <code class="docutils literal notranslate"><span class="pre">asset/css/octopusviewer-viewer-extra.css</span></code>.</p>
+<p>Il sera automatiquement chargé à l’intérieur du <em>shadow DOM</em> de la visionneuse (ce qui signifie qu’il n’affectera que la visionneuse).</p>
+<p>Cela nécessite OctopusViewer 0.5.0 ou plus.</p>
+</section>
+<section id="pdfjs-viewer-css">
+<h2>pdfjs-viewer.css<a class="headerlink" href="#pdfjs-viewer-css" title="Lien permanent vers cette rubrique"></a></h2>
+<p>La visionneuse PDF est un peu différente parce qu’elle est à l’intérieur d’une <em>iframe</em>, donc elle nécessite un autre fichier CSS. Créez un fichier nommé <code class="docutils literal notranslate"><span class="pre">asset/css/pdfjs-viewer.css</span></code> et il sera inclus dans l”<em>iframe</em> de la visionneuse PDF.</p>
+<p>Cela nécessite OctopusViewer 0.3.0 ou plus.</p>
+</section>
 </section>
 
 

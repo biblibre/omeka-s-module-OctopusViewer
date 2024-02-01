@@ -42,9 +42,7 @@ Features
 
 * Images are displayed within OpenSeadragon, allowing to zoom, rotate, and flip images
 * An optional IIIF Image server can be used
-* PDF files are displayed with the browser's built-in PDF viewer, if it exists.
-  If the browser doesn't support PDF (like in most mobile browsers), pdfjs is
-  used.
+* PDF files are displayed with `pdfjs <https://mozilla.github.io/pdf.js/>`_.
 * Fullscreen mode
 
 Installation

@@ -46,9 +46,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="theme/customize-pdf-viewer.html">Personnaliser la visionneuse PDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/customize-viewer-appearance.html">Personnaliser l’apparence de la visionneuse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme/templates.html">Templates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html">View helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html"><em>View helpers</em></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Développement</span></p>
 <ul>
@@ -82,9 +82,7 @@
   <section id="octopusviewer-user-manual">
 <h1>Manuel utilisateur de OctopusViewer<a class="headerlink" href="#octopusviewer-user-manual" title="Lien permanent vers cette rubrique"></a></h1>
 <p>OctopusViewer rassemble tous vos médias Omeka S dans une visionneuse légère. Elle est prévue pour être utilisée en remplacement d’autres visionneuses comme UniversalViewer ou Mirador.</p>
-<p>However, unlike UniversalViewer and Mirador, OctopusViewer is not a IIIF
-viewer. In order to use IIIF manifests with OctopusViewer, they should be added
-to Omeka S as « IIIF presentation » media (requires Omeka S 4.0.0 or higher).</p>
+<p>En revanche, contrairement à UniversalViewer et Mirador, OctopusViewer n’est pas une visionneuse IIIF. Pour utiliser des manifestes IIIF avec OctopusViewer, ils doivent être ajoutés à Omeka S en tant que média « IIIF presentation » (nécessite Omeka S 4.0.0 ou plus).</p>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Lien permanent vers cette rubrique"></a></h2>
 <p>UniversalViewer et Mirador sont d’excellents outils mais ils ont quelques limites quand ils sont utilisés dans Omeka S:</p>
@@ -113,7 +111,7 @@ to Omeka S as « IIIF presentation » media (requires Omeka S 4.0.0 or higher)
 </li>
 <li><p>Les images sont affichées dans OpenSeadragon, ce qui permet de zoomer, faire pivoter, et retourner les images</p></li>
 <li><p>Un serveur d’image IIIF optionnel peut-être utilisé</p></li>
-<li><p>Les fichiers PDF sont affichés dans le lecteur PDF intégré au navigateur, s’il existe. Si le navigateur ne supporte pas les PDF (comme la plupart des navigateurs sur mobile), pdfjs est utilisé.</p></li>
+<li><p>Les fichiers PDF sont affichés avec <a class="reference external" href="https://mozilla.github.io/pdf.js/">pdfjs</a>.</p></li>
 <li><p>Mode plein écran</p></li>
 </ul>
 </section>
