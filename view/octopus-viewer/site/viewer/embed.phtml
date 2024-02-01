@@ -1,10 +1,15 @@
 <?php
-$translate = $this->plugin('translate');
 $this->headMeta()->setCharset('utf-8');
 $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
 $this->headTitle('OctopusViewer');
+
+$query = $this->params()->fromQuery();
+$title = $query['octopusviewer_title'] ?? '';
+unset($query['octopusviewer_title']);
 ?>
-<?php $viewer = $this->octopusViewer()->viewer($this->params()->fromQuery()); ?>
+
+<?php $viewer = $this->octopusViewer()->viewer($query, $title); ?>
+
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html')->setAttribute('lang', $this->lang()); ?>
     <head>

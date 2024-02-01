@@ -3,15 +3,6 @@
  * @var Omeka\Api\Representation\ItemRepresentation $item
  */
 ?>
-<?php $showMediaSelector = $this->siteSetting('octopusviewer_show_media_selector', '') ?: $this->setting('octopusviewer_show_media_selector', 'auto'); ?>
-<?php $showMediaInfo = $this->siteSetting('octopusviewer_show_media_info', '') ?: $this->setting('octopusviewer_show_media_info', 'always'); ?>
 <div class="octopusviewer-wrapper">
-    <octopusviewer-viewer
-        media-query="<?php echo http_build_query(['item_id' => $item->id() ]); ?>"
-        site-slug="<?php echo $this->layout()->site->slug(); ?>"
-        show-media-selector="<?= $this->escapeHtml($showMediaSelector) ?>"
-        show-media-info="<?= $this->escapeHtml($showMediaInfo) ?>"
-    >
-        <span slot="title"><?php echo $this->escapeHtml($item->displayTitle()); ?></span>
-    </octopusviewer-viewer>
+    <?= $this->octopusViewer()->viewer(['item_id' => $item->id()], $item->displayTitle()); ?>
 </div>

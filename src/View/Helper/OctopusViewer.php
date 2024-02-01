@@ -16,7 +16,7 @@ class OctopusViewer extends AbstractHelper
         $this->mediaRendererManager = $mediaRendererManager;
     }
 
-    public function viewer(array $query)
+    public function viewer(array $query, string $title = '')
     {
         $view = $this->getView();
 
@@ -24,6 +24,7 @@ class OctopusViewer extends AbstractHelper
 
         $args = [
             'query' => $query,
+            'title' => $title,
         ];
 
         return $view->partial('octopus-viewer/helper/octopusviewer/viewer', $args);
