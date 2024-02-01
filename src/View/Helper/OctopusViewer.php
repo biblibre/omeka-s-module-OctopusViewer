@@ -25,6 +25,7 @@ class OctopusViewer extends AbstractHelper
         $args = [
             'query' => $query,
             'title' => $title,
+            'extraStylesheet' => $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true),
         ];
 
         return $view->partial('octopus-viewer/helper/octopusviewer/viewer', $args);

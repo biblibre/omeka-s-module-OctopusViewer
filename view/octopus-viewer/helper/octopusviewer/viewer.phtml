@@ -11,6 +11,7 @@
     site-slug="<?php echo $this->layout()->site->slug(); ?>"
     show-media-selector="<?= $this->escapeHtml($showMediaSelector) ?>"
     show-media-info="<?= $this->escapeHtml($showMediaInfo) ?>"
+    extra-stylesheet="<?= $this->escapeHtml($extraStylesheet); ?>"
 >
     <?php if (!empty($title)): ?>
         <span slot="title"><?= $this->escapeHtml($title); ?></span>

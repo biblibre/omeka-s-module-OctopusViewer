@@ -13,10 +13,11 @@
         }
 
         connectedCallback () {
-            const link = document.createElement('link');
-            link.setAttribute('rel', 'stylesheet');
-            link.setAttribute('href', new URL('/modules/OctopusViewer/asset/css/octopusviewer-viewer.css', baseUrl));
-            this.shadowRoot.appendChild(link);
+            this.appendStylesheet('/modules/OctopusViewer/asset/css/octopusviewer-viewer.css');
+            if (this.extraStylesheet) {
+                this.appendStylesheet(this.extraStylesheet);
+            }
+
             this.shadowRoot.appendChild(template.content.cloneNode(true));
 
             const mediaSelectorPromise = this.fetchMediaSelector();
@@ -148,6 +149,13 @@
             mediaElement.classList.add('octopusviewer-selected');
         }
 
+        appendStylesheet (url) {
+            const link = document.createElement('link');
+            link.setAttribute('rel', 'stylesheet');
+            link.setAttribute('href', new URL(url, baseUrl));
+            this.shadowRoot.appendChild(link);
+        }
+
         get mediaQuery () {
             return this.getAttribute('media-query');
         }
@@ -178,6 +186,14 @@
 
         set showMediaInfo (showMediaInfo) {
             this.setAttribute('show-media-info', showMediaInfo);
+        }
+
+        get extraStylesheet () {
+            return this.getAttribute('extra-stylesheet') ?? '';
+        }
+
+        set extraStylesheet (extraStylesheet) {
+            this.setAttribute('extra-stylesheet', extraStylesheet);
         }
     }
 
