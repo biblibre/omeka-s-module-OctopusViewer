@@ -5,6 +5,7 @@ namespace OctopusViewer;
 return [
     'controllers' => [
         'invokables' => [
+            'OctopusViewer\Controller\Pdfjs' => Controller\PdfjsController::class,
             'OctopusViewer\Controller\Site\Media' => Controller\Site\MediaController::class,
         ],
         'factories' => [
@@ -71,6 +72,20 @@ return [
                                 ],
                             ],
                         ],
+                    ],
+                ],
+            ],
+            // This route is only useful to add a Content-Security-Policy
+            // header to the response.
+            // Other than that, it only renders the pdfjs viewer.html file
+            'octopusviewer-pdfjs-viewer' => [
+                'type' => \Laminas\Router\Http\Literal::class,
+                'options' => [
+                    'route' => '/modules/OctopusViewer/asset/vendor/pdf.js/web/viewer',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'OctopusViewer\Controller',
+                        'controller' => 'pdfjs',
+                        'action' => 'viewer',
                     ],
                 ],
             ],
