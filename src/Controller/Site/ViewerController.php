@@ -54,4 +54,16 @@ class ViewerController extends AbstractActionController
 
         return $view;
     }
+
+    public function pdfjsViewerAction()
+    {
+        $response = $this->getResponse();
+        $headers = $response->getHeaders();
+        $headers->addHeaderLine('Content-Security-Policy', "frame-ancestors *");
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+
+        return $view;
+    }
 }
