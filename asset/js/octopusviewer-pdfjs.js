@@ -14,16 +14,6 @@
             iframe.allow = 'fullscreen';
             iframe.style = 'width: 100%; height: 100%; border: none';
 
-            if (config.css_url) {
-                iframe.addEventListener('load', function (event) {
-                    const doc = this.contentDocument;
-                    const link = doc.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = config.css_url;
-                    doc.head.append(link);
-                });
-            }
-
             this.append(iframe);
         }
     }
