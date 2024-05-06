@@ -21,7 +21,7 @@ class Iiif extends AbstractMediaRenderer
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
         $config = [
-            'prefixUrl' => $view->assetUrl('vendor/openseadragon/images/', 'Omeka', false, false, true),
+            'prefixUrl' => $view->serverUrl($view->assetUrl('vendor/openseadragon/images/', 'Omeka', false, false)),
             'showRotationControl' => true,
             'showFlipControl' => true,
             'showFullPageControl' => false,

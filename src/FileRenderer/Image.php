@@ -29,7 +29,7 @@ class Image implements FileRendererInterface
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
         $config = [
-            'prefixUrl' => $view->serverUrl() . $view->assetUrl('vendor/openseadragon/images/', 'Omeka', false, false),
+            'prefixUrl' => $view->serverUrl($view->assetUrl('vendor/openseadragon/images/', 'Omeka', false, false)),
             'showRotationControl' => true,
             'showFlipControl' => true,
             'showFullPageControl' => false,
