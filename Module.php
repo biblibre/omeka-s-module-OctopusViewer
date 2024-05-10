@@ -20,6 +20,7 @@ class Module extends AbstractModule
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
         $acl->allow(null, 'OctopusViewer\Controller\Site\Media');
         $acl->allow(null, 'OctopusViewer\Controller\Site\Viewer');
+        $acl->allow(null, 'OctopusViewer\Controller\Pdfjs');
     }
 
     public function getConfigForm(PhpRenderer $renderer)

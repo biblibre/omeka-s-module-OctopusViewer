@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Fix ACL for `OctopusViewer\Controller\PdfJs`
+
 ## [0.5.3] - 2024-05-06
 
 - Make OpenSeadragon's prefixUrl absolute also on Omeka S < 4.0 (IIIF renderer)
