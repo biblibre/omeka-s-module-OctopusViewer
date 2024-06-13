@@ -100,6 +100,7 @@ class Module extends AbstractModule
         $fieldset->populateValues([
             'octopusviewer_show_media_selector' => $siteSettings->get('octopusviewer_show_media_selector', ''),
             'octopusviewer_show_media_info' => $siteSettings->get('octopusviewer_show_media_info', ''),
+            'octopusviewer_default_media_title' => $siteSettings->get('octopusviewer_default_media_title', ''),
         ]);
 
         $form = $event->getTarget();
