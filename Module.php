@@ -55,6 +55,7 @@ class Module extends AbstractModule
         $formData = $form->getData();
         $settings->set('octopusviewer_iiif_image_uri_template', $formData['octopusviewer_iiif_image_uri_template']);
         $settings->set('octopusviewer_item_show', $formData['octopusviewer_item_show']);
+        $settings->set('octopusviewer_media_show', $formData['octopusviewer_media_show']);
         $settings->set('octopusviewer_show_media_selector', $formData['octopusviewer_show_media_selector']);
         $settings->set('octopusviewer_show_media_info', $formData['octopusviewer_show_media_info']);
         $settings->set('octopusviewer_default_media_title', $formData['octopusviewer_default_media_title']);
@@ -65,12 +66,20 @@ class Module extends AbstractModule
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
         $settings = $this->getServiceLocator()->get('Omeka\Settings');
-        $show = $settings->get('octopusviewer_item_show');
-        if ($show) {
+        $showItem = $settings->get('octopusviewer_item_show');
+        if ($showItem) {
             $sharedEventManager->attach(
                 'Omeka\Controller\Site\Item',
-                "view.show.$show",
+                "view.show.$showItem",
                 [$this, 'handleSiteItemViewShow']
+            );
+        }
+        $showMedia = $settings->get('octopusviewer_media_show');
+        if ($showMedia) {
+            $sharedEventManager->attach(
+                'Omeka\Controller\Site\Media',
+                "view.show.$showMedia",
+                [$this, 'handleSiteMediaViewShow']
             );
         }
 
@@ -87,6 +96,13 @@ class Module extends AbstractModule
         $view = $event->getTarget();
 
         echo $view->octopusViewer()->forItem($view->item);
+    }
+
+    public function handleSiteMediaViewShow(Event $event)
+    {
+        $view = $event->getTarget();
+
+        echo $view->octopusViewer()->forMedia($view->media);
     }
 
     public function onSiteSettingsFormAddElements(Event $event)

@@ -28,6 +28,23 @@ class ConfigForm extends Form
         ]);
 
         $this->add([
+            'type' => Select::class,
+            'name' => 'octopusviewer_media_show',
+            'options' => [
+                'label' => 'Show viewer on the media page', // @translate
+                'value_options' => [
+                    '' => 'No', // @translate
+                    'before' => 'Before the media content', // @translate
+                    'after' => 'After the media content', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'octopusviewer_media_show',
+                'required' => false,
+            ],
+        ]);
+
+        $this->add([
             'type' => Text::class,
             'name' => 'octopusviewer_iiif_image_uri_template',
             'options' => [
