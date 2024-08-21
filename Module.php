@@ -32,6 +32,7 @@ class Module extends AbstractModule
         $form->setData([
             'octopusviewer_iiif_image_uri_template' => $settings->get('octopusviewer_iiif_image_uri_template'),
             'octopusviewer_item_show' => $settings->get('octopusviewer_item_show'),
+            'octopusviewer_media_show' => $settings->get('octopusviewer_media_show'),
             'octopusviewer_show_media_selector' => $settings->get('octopusviewer_show_media_selector', 'auto'),
             'octopusviewer_show_media_info' => $settings->get('octopusviewer_show_media_info', 'auto'),
             'octopusviewer_default_media_title' => $settings->get('octopusviewer_default_media_title', 'auto'),

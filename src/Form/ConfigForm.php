@@ -110,5 +110,9 @@ class ConfigForm extends Form
             'name' => 'octopusviewer_item_show',
             'required' => false,
         ]);
+        $this->getInputFilter()->add([
+            'name' => 'octopusviewer_media_show',
+            'required' => false,
+        ]);
     }
 }
