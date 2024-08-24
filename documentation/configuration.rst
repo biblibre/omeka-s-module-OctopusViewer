@@ -171,3 +171,6 @@ Use global setting
 
 No text
     Display no text. Only the thumbnail will be visible.
+
+Filename
+    Displays the filename
