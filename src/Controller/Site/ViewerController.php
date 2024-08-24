@@ -18,7 +18,9 @@ class ViewerController extends AbstractActionController
 
     public function mediaSelectorAction()
     {
-        $medias = $this->api()->search('media', $this->params()->fromQuery())->getContent();
+        $item_id = $this->params()->fromQuery()['item_id'];
+        $item = $this->api()->read('items', $item_id)->getContent();
+        $medias = $item->media();
 
         $view = new ViewModel();
         $view->setTerminal(true);
