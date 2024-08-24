@@ -14,7 +14,8 @@ if ($defaultMediaTitle === 'no_text') {
 <?php foreach ($medias as $media): ?>
     <?php
     $displayTitle = $media->displayTitle('');
-    $title = $displayTitle !== '' && $displayTitle !== $media->source() ? $displayTitle : $defaultTitle;
+    $defaultTitleForThisEntry = $defaultMediaTitle === 'filename' ? ($media->source() ?? '') : $defaultTitle;
+    $title = $displayTitle !== '' && $displayTitle !== $media->source() ? $displayTitle : $defaultTitleForThisEntry;
     ?>
     <a
         class="octopusviewer-media-selector-element"

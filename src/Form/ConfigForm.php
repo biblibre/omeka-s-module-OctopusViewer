@@ -82,6 +82,7 @@ class ConfigForm extends Form
                 'value_options' => [
                     'untitled' => '[Untitled]', // @translate
                     'no_text' => 'No text', // @translate
+                    'filename' => 'Filename', // @translate
                 ],
             ],
             'attributes' => [
