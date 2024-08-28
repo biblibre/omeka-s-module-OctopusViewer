@@ -51,31 +51,31 @@ msgstr ""
 
 #: src/Form/ConfigForm.php:47 src/Form/SiteSettingsFieldset.php:19
 msgid "Show media selector"
-msgstr ""
+msgstr "Afficher le sélecteur de médias"
 
 #: src/Form/ConfigForm.php:48 src/Form/ConfigForm.php:65
 msgid "This setting can be overriden in the site settings"
-msgstr ""
+msgstr "Ce paramètre peut être surchargé dans les paramètres du site"
 
 #: src/Form/ConfigForm.php:50 src/Form/SiteSettingsFieldset.php:22
 msgid "Only if there are several media"
-msgstr ""
+msgstr "Seulement s'il y a plusieurs médias"
 
 #: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:37
 msgid "Show media info"
-msgstr ""
+msgstr "Afficher les infos du média"
 
 #: src/Form/ConfigForm.php:80 src/Form/SiteSettingsFieldset.php:54
 msgid "Default media title"
-msgstr ""
+msgstr "Titre du média par défaut"
 
 #: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:55
 msgid "Text used when a media has no title"
-msgstr ""
+msgstr "Texte utilisé quand un média n'a pas de titre"
 
 #: src/Form/ConfigForm.php:84 src/Form/SiteSettingsFieldset.php:59
 msgid "No text"
-msgstr ""
+msgstr "Aucun texte"
 
 #: src/Form/ConfigForm.php:97 src/Form/SiteSettingsFieldset.php:72
 msgid "Show download link"
@@ -93,11 +93,11 @@ msgstr ""
 
 #: src/Form/SiteSettingsFieldset.php:12
 msgid "Octopus Viewer"
-msgstr ""
+msgstr "Octopus Viewer"
 
 #: src/Site/ResourcePageBlockLayout/OctopusViewer.php:12
 msgid "Octopus viewer"
-msgstr ""
+msgstr "Octopus viewer"
 
 #~ msgid "Media viewer"
 #~ msgstr "Media viewer"
