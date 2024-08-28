@@ -47,12 +47,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#show-media-selector">Show media selector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#show-media-info">Show media info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#default-media-title">Default media title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#show-download-link">Show download link</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#site-settings">Site settings</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Show media selector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">Show media info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Default media title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Show download link</a></li>
 </ul>
 </li>
 </ul>
@@ -178,6 +180,23 @@ overriden in <a class="reference internal" href="#site-settings"><span class="st
 </dd>
 </dl>
 </section>
+<section id="show-download-link">
+<h3>Show download link<a class="headerlink" href="#show-download-link" title="Permalink to this heading"></a></h3>
+<p>This setting controls whether a download link is shown or not next to the media
+title. This global setting can be overriden in <a class="reference internal" href="#site-settings"><span class="std std-ref">site settings</span></a>.</p>
+<p>Possible values:</p>
+<dl class="simple">
+<dt>No</dt><dd><p>Do not show a download link. This is the default behaviour.</p>
+</dd>
+<dt>Yes</dt><dd><p>Show a download link.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This does not work for media types where the original file is not stored in
+Omeka (Youtube videos for instance)</p>
+</div>
+</section>
 </section>
 <section id="site-settings">
 <span id="id2"></span><h2>Site settings<a class="headerlink" href="#site-settings" title="Permalink to this heading"></a></h2>
@@ -232,6 +251,26 @@ is the default value.</p>
 <dt>No text</dt><dd><p>Display no text. Only the thumbnail will be visible.</p>
 </dd>
 </dl>
+</section>
+<section id="id6">
+<h3>Show download link<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>This setting controls whether a download link is shown or not next to the media
+title. This setting overrides the global setting.</p>
+<p>Possible values:</p>
+<dl class="simple">
+<dt>Use global setting</dt><dd><p>Use the value defined in the <a class="reference internal" href="#global-settings"><span class="std std-ref">global settings</span></a>. This
+is the default value.</p>
+</dd>
+<dt>No</dt><dd><p>Do not show a download link. This is the default behaviour.</p>
+</dd>
+<dt>Yes</dt><dd><p>Show a download link.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This does not work for media types where the original file is not stored in
+Omeka (Youtube videos for instance)</p>
+</div>
 </section>
 </section>
 </section>
