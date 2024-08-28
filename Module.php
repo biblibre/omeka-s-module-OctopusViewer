@@ -35,6 +35,7 @@ class Module extends AbstractModule
             'octopusviewer_show_media_selector' => $settings->get('octopusviewer_show_media_selector', 'auto'),
             'octopusviewer_show_media_info' => $settings->get('octopusviewer_show_media_info', 'auto'),
             'octopusviewer_default_media_title' => $settings->get('octopusviewer_default_media_title', 'auto'),
+            'octopusviewer_show_download_link' => $settings->get('octopusviewer_show_download_link', 'no'),
         ]);
 
         return $renderer->formCollection($form, false);
@@ -58,6 +59,7 @@ class Module extends AbstractModule
         $settings->set('octopusviewer_show_media_selector', $formData['octopusviewer_show_media_selector']);
         $settings->set('octopusviewer_show_media_info', $formData['octopusviewer_show_media_info']);
         $settings->set('octopusviewer_default_media_title', $formData['octopusviewer_default_media_title']);
+        $settings->set('octopusviewer_show_download_link', $formData['octopusviewer_show_download_link']);
 
         return true;
     }
@@ -101,6 +103,7 @@ class Module extends AbstractModule
             'octopusviewer_show_media_selector' => $siteSettings->get('octopusviewer_show_media_selector', ''),
             'octopusviewer_show_media_info' => $siteSettings->get('octopusviewer_show_media_info', ''),
             'octopusviewer_default_media_title' => $siteSettings->get('octopusviewer_default_media_title', ''),
+            'octopusviewer_show_download_link' => $siteSettings->get('octopusviewer_show_download_link', ''),
         ]);
 
         $form = $event->getTarget();
@@ -128,6 +131,10 @@ class Module extends AbstractModule
         ]);
         $inputFilter->add([
             'name' => 'octopusviewer_default_media_title',
+            'allow_empty' => true,
+        ]);
+        $inputFilter->add([
+            'name' => 'octopusviewer_show_download_link',
             'allow_empty' => true,
         ]);
     }

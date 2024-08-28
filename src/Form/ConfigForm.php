@@ -89,6 +89,23 @@ class ConfigForm extends Form
             ],
         ]);
 
+        $this->add([
+            'type' => Select::class,
+            'name' => 'octopusviewer_show_download_link',
+            'options' => [
+                'element_group' => 'octopusviewer',
+                'label' => 'Show download link', // @translate
+                'info' => 'Show a link next to each media title to download the original file when available (does not work with some media types like Youtube videos for instance)', // @translate
+                'value_options' => [
+                    'no' => 'No', // @translate
+                    'yes' => 'Yes', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'octopusviewer_show_download_link',
+            ],
+        ]);
+
         $this->getInputFilter()->add([
             'name' => 'octopusviewer_item_show',
             'required' => false,

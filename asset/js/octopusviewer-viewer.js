@@ -96,6 +96,12 @@
             const mediaSelector = this.shadowRoot.querySelector('.octopusviewer-media-selector');
 
             mediaSelector.addEventListener('click', ev => {
+                // Allow download link to be clicked
+                if (ev.target.closest('a[href]')) {
+                    ev.stopPropagation();
+                    return;
+                }
+
                 ev.preventDefault();
                 const el = ev.target.closest('.octopusviewer-media-selector-element');
                 if (!el) {

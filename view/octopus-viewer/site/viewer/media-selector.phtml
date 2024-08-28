@@ -16,7 +16,7 @@ if ($defaultMediaTitle === 'no_text') {
     $displayTitle = $media->displayTitle('');
     $title = $displayTitle !== '' && $displayTitle !== $media->source() ? $displayTitle : $defaultTitle;
     ?>
-    <a
+    <div
         class="octopusviewer-media-selector-element"
         title="<?php echo $this->escapeHtml($title); ?>"
         data-media-id="<?php echo $media->id(); ?>"
@@ -29,5 +29,7 @@ if ($defaultMediaTitle === 'no_text') {
         <div class="octopusviewer-title">
             <span><?php echo $title; ?></span>
         </div>
-    </a>
+
+        <?= $this->partial('octopus-viewer/site/viewer/media-download-link', ['media' => $media]); ?>
+    </div>
 <?php endforeach; ?>

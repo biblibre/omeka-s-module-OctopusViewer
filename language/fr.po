@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 10:38+0100\n"
+"POT-Creation-Date: 2024-08-28 15:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: none\n"
@@ -16,7 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: view/octopus-viewer/site/viewer/media-download-link.phtml:3
+msgid "Download"
+msgstr "Télécharger"
 
 #: src/Form/ConfigForm.php:17
 msgid "Show viewer on the item page"
@@ -45,6 +49,55 @@ msgstr ""
 "remplacées par leur valeur correspondante: {id}, {storage_id}, {filename}, "
 "{extension}"
 
+#: src/Form/ConfigForm.php:47 src/Form/SiteSettingsFieldset.php:19
+msgid "Show media selector"
+msgstr ""
+
+#: src/Form/ConfigForm.php:48 src/Form/ConfigForm.php:65
+msgid "This setting can be overriden in the site settings"
+msgstr ""
+
+#: src/Form/ConfigForm.php:50 src/Form/SiteSettingsFieldset.php:22
+msgid "Only if there are several media"
+msgstr ""
+
+#: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:37
+msgid "Show media info"
+msgstr ""
+
+#: src/Form/ConfigForm.php:80 src/Form/SiteSettingsFieldset.php:54
+msgid "Default media title"
+msgstr ""
+
+#: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:55
+msgid "Text used when a media has no title"
+msgstr ""
+
+#: src/Form/ConfigForm.php:84 src/Form/SiteSettingsFieldset.php:59
+msgid "No text"
+msgstr ""
+
+#: src/Form/ConfigForm.php:97 src/Form/SiteSettingsFieldset.php:72
+msgid "Show download link"
+msgstr "Afficher un lien de téléchargement"
+
+#: src/Form/ConfigForm.php:98 src/Form/SiteSettingsFieldset.php:73
+msgid ""
+"Show a link next to each media title to download the original file when "
+"available (does not work with some media types like Youtube videos for "
+"instance)"
+msgstr ""
+"Affiche un lien à côté de chaque titre de média pour télécharger le fichier "
+"original quand il est disponible (ne fonctionne pas avec certains types de "
+"média tels que les vidéos Youtube par exemple)"
+
+#: src/Form/SiteSettingsFieldset.php:12
+msgid "Octopus Viewer"
+msgstr ""
+
 #: src/Site/ResourcePageBlockLayout/OctopusViewer.php:12
-msgid "Media viewer"
-msgstr "Media viewer"
+msgid "Octopus viewer"
+msgstr ""
+
+#~ msgid "Media viewer"
+#~ msgstr "Media viewer"

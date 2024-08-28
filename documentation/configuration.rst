@@ -101,6 +101,24 @@ Possible values:
 No text
     Display no text. Only the thumbnail will be visible.
 
+Show download link
+~~~~~~~~~~~~~~~~~~
+
+This setting controls whether a download link is shown or not next to the media
+title. This global setting can be overriden in :ref:`site settings <site-settings>`.
+
+Possible values:
+
+No
+    Do not show a download link. This is the default behaviour.
+
+Yes
+    Show a download link.
+
+.. note::
+   This does not work for media types where the original file is not stored in
+   Omeka (Youtube videos for instance)
+
 .. _site-settings:
 
 Site settings
@@ -171,3 +189,25 @@ Use global setting
 
 No text
     Display no text. Only the thumbnail will be visible.
+
+Show download link
+~~~~~~~~~~~~~~~~~~
+
+This setting controls whether a download link is shown or not next to the media
+title. This setting overrides the global setting.
+
+Possible values:
+
+Use global setting
+    Use the value defined in the :ref:`global settings <global-settings>`. This
+    is the default value.
+
+No
+    Do not show a download link. This is the default behaviour.
+
+Yes
+    Show a download link.
+
+.. note::
+   This does not work for media types where the original file is not stored in
+   Omeka (Youtube videos for instance)
