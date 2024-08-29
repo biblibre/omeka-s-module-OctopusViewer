@@ -153,7 +153,7 @@
                     return response.json();
                 }).then(data => {
                     mediaInfo.innerHTML = data.content;
-                    mediaInfoFooter.innerHTML = data.footer;
+                    mediaInfoFooter.innerHTML = data.footer.trim();
                 });
             }
 
