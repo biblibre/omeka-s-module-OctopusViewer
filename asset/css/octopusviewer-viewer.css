@@ -98,10 +98,12 @@
 }
 
 .sidebar-content {
+    flex-grow: 1;
     overflow-y: auto;
 }
 
-.sidebar.collapsed .sidebar-content {
+.sidebar.collapsed .sidebar-content,
+.sidebar.collapsed .sidebar-footer {
     display: none;
 }
 
@@ -155,7 +157,8 @@
     background-color: #f0f0f0;
 }
 
-.octopusviewer-media-info-metadata {
+.octopusviewer-media-info-metadata,
+.octopusviewer-media-info-footer:not(:empty) {
     padding: 6px;
 }
 
@@ -205,6 +208,14 @@
     width: 100%;
 }
 
+a.octopusviewer-download {
+    text-decoration: none;
+}
+
+.octopusviewer-media-selector .octopusviewer-download span {
+    display: none;
+}
+
 [class*=octopusviewer-icon-] {
     display: inline-block;
     line-height: 0;
@@ -218,4 +229,7 @@
 }
 .octopusviewer-icon-collapse::before {
     content: url(../image/collapse.png);
+}
+.octopusviewer-icon-download::before {
+    content: url(../image/download.png);
 }

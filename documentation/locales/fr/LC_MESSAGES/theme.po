@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-01 11:51+0100\n"
-"PO-Revision-Date: 2024-02-01 11:59+0100\n"
+"POT-Creation-Date: 2024-08-29 08:46+0200\n"
+"PO-Revision-Date: 2024-08-29 08:47+0200\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -111,14 +111,22 @@ msgid "The content of the right panel."
 msgstr "Le contenu du panneau de droite."
 
 #: ../../theme/templates.rst:18
+msgid "``view/octopus-viewer/site/media/info-footer.phtml``"
+msgstr "``view/octopus-viewer/site/media/info-footer.phtml``"
+
+#: ../../theme/templates.rst:18
+msgid "The footer of the right panel."
+msgstr "Le pied de page du panneau de droite."
+
+#: ../../theme/templates.rst:21
 msgid "``view/octopus-viewer/site/viewer/media-selector.phtml``"
 msgstr "``view/octopus-viewer/site/viewer/media-selector.phtml``"
 
-#: ../../theme/templates.rst:18
+#: ../../theme/templates.rst:21
 msgid "The content of the left panel."
 msgstr "Le contenu du panneau de gauche."
 
-#: ../../theme/templates.rst:20
+#: ../../theme/templates.rst:23
 msgid ""
 "This is not an exhaustive list. For the full list of template files, "
 "look at `the view directory in the sources <https://github.com/biblibre/"

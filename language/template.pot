@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-28 15:46+0200\n"
+"POT-Creation-Date: 2024-08-29 08:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: view/octopus-viewer/site/viewer/media-download-link.phtml:3
+#: view/octopus-viewer/site/viewer/media-download-link.phtml:2
+#: view/octopus-viewer/site/viewer/media-download-link.phtml:4
 msgid "Download"
 msgstr ""
 
@@ -81,6 +82,18 @@ msgid ""
 "Show a link next to each media title to download the original file when "
 "available (does not work with some media types like Youtube videos for "
 "instance)"
+msgstr ""
+
+#: src/Form/ConfigForm.php:101 src/Form/SiteSettingsFieldset.php:77
+msgid "In the media selector panel"
+msgstr ""
+
+#: src/Form/ConfigForm.php:102 src/Form/SiteSettingsFieldset.php:78
+msgid "In the media information panel"
+msgstr ""
+
+#: src/Form/ConfigForm.php:103 src/Form/SiteSettingsFieldset.php:79
+msgid "In the media selector panel and in the media information panel"
 msgstr ""
 
 #: src/Form/SiteSettingsFieldset.php:12

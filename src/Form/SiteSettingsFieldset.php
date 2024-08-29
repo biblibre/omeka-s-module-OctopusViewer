@@ -74,7 +74,9 @@ class SiteSettingsFieldset extends Fieldset
                 'empty_option' => 'Use global setting', // @translate
                 'value_options' => [
                     'no' => 'No', // @translate
-                    'yes' => 'Yes', // @translate
+                    'media-selector' => 'In the media selector panel', // @translate
+                    'media-info' => 'In the media information panel', // @translate
+                    'media-selector|media-info' => 'In the media selector panel and in the media information panel', // @translate
                 ],
             ],
             'attributes' => [

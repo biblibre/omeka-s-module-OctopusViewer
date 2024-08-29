@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-28 15:46+0200\n"
+"POT-Creation-Date: 2024-08-29 08:31+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: none\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: view/octopus-viewer/site/viewer/media-download-link.phtml:3
+#: view/octopus-viewer/site/viewer/media-download-link.phtml:2
+#: view/octopus-viewer/site/viewer/media-download-link.phtml:4
 msgid "Download"
 msgstr "Télécharger"
 
@@ -90,6 +91,20 @@ msgstr ""
 "Affiche un lien à côté de chaque titre de média pour télécharger le fichier "
 "original quand il est disponible (ne fonctionne pas avec certains types de "
 "média tels que les vidéos Youtube par exemple)"
+
+#: src/Form/ConfigForm.php:101 src/Form/SiteSettingsFieldset.php:77
+msgid "In the media selector panel"
+msgstr "Dans panneau de sélection de média"
+
+#: src/Form/ConfigForm.php:102 src/Form/SiteSettingsFieldset.php:78
+msgid "In the media information panel"
+msgstr "Dans le panneau d'information du média"
+
+#: src/Form/ConfigForm.php:103 src/Form/SiteSettingsFieldset.php:79
+msgid "In the media selector panel and in the media information panel"
+msgstr ""
+"Dans le panneau de sélection de média et dans le panneau d'information du "
+"média"
 
 #: src/Form/SiteSettingsFieldset.php:12
 msgid "Octopus Viewer"

@@ -1,0 +1,9 @@
+<?php
+/**
+ * @var Omeka\Api\Representation\MediaRepresentation $media
+ */
+?>
+<?php $showDownloadLink = $this->siteSetting('octopusviewer_show_download_link', '') ?: $this->setting('octopusviewer_show_download_link', 'no'); ?>
+<?php if ($showDownloadLink === 'media-info' || $showDownloadLink === 'media-selector|media-info'): ?>
+    <?= $this->partial('octopus-viewer/site/viewer/media-download-link', ['media' => $media]); ?>
+<?php endif; ?>

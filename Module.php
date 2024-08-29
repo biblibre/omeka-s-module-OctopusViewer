@@ -2,11 +2,13 @@
 
 namespace OctopusViewer;
 
+use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Mvc\Controller\AbstractController;
 use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use OctopusViewer\Form\ConfigForm;
 use OctopusViewer\Form\SiteSettingsFieldset;
@@ -77,6 +79,24 @@ class Module extends AbstractModule
         }
 
         $sharedEventManager->attach('Omeka\Form\SiteSettingsForm', 'form.add_elements', [$this, 'onSiteSettingsFormAddElements']);
+    }
+
+    public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $services)
+    {
+        $connection = $services->get('Omeka\Connection');
+        if (Comparator::lessThan($oldVersion, '0.7.0')) {
+            $sql = <<<'SQL'
+            UPDATE setting SET value = '"media-selector"'
+            WHERE id = 'octopusviewer_show_download_link' AND value = '"yes"';
+            SQL;
+            $connection->exec($sql);
+
+            $sql = <<<'SQL'
+            UPDATE site_setting SET value = '"media-selector"'
+            WHERE id = 'octopusviewer_show_download_link' AND value = '"yes"';
+            SQL;
+            $connection->exec($sql);
+        }
     }
 
     public function getConfig()

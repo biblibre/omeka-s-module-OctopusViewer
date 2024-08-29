@@ -96,7 +96,7 @@
             const mediaSelector = this.shadowRoot.querySelector('.octopusviewer-media-selector');
 
             mediaSelector.addEventListener('click', ev => {
-                // Allow download link to be clicked
+                // Allow links to be clicked
                 if (ev.target.closest('a[href]')) {
                     ev.stopPropagation();
                     return;
@@ -114,6 +114,12 @@
             });
 
             this.shadowRoot.querySelector('.octopusviewer-viewer').addEventListener('click', ev => {
+                // Allow links to be clicked
+                if (ev.target.closest('a[href]')) {
+                    ev.stopPropagation();
+                    return;
+                }
+
                 ev.preventDefault();
                 const el = ev.target.closest('.collapse-toggle');
                 if (!el) {
@@ -132,6 +138,7 @@
             const mediaInfoUrl = new URL(mediaElement.getAttribute('data-octopusviewer-info-url'), baseUrl);
             const mediaView = octopusViewer.querySelector('.octopusviewer-media-view');
             const mediaInfo = octopusViewer.querySelector('.octopusviewer-media-info-metadata');
+            const mediaInfoFooter = octopusViewer.querySelector('.octopusviewer-media-info-footer');
 
             mediaView.innerHTML = '';
             fetch(mediaRenderUrl).then(response => {
@@ -143,9 +150,10 @@
             mediaInfo.innerHTML = '';
             if (this.showMediaInfo === 'always') {
                 fetch(mediaInfoUrl).then(response => {
-                    return response.text();
-                }).then(text => {
-                    mediaInfo.innerHTML = text;
+                    return response.json();
+                }).then(data => {
+                    mediaInfo.innerHTML = data.content;
+                    mediaInfoFooter.innerHTML = data.footer;
                 });
             }
 
@@ -223,6 +231,7 @@
                 <i class="octopusviewer-icon-collapse"></i>
             </div>
             <div class="sidebar-content octopusviewer-media-info-metadata"></div>
+            <div class="sidebar-footer octopusviewer-media-info-footer"></div>
         </div>
     </div>
     <div class="octopusviewer-footer"></div>
