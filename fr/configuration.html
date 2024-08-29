@@ -48,14 +48,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#show-media-selector">Afficher le sélecteur de médias</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#show-media-info">Afficher les infos du média</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#default-media-title">Titre du média par défaut</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#show-download-link">Show download link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#show-download-link">Afficher un lien de téléchargement</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#site-settings">Paramètres de site</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Afficher le sélecteur de médias</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">Afficher les infos du média</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Titre du média par défaut</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Show download link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Afficher un lien de téléchargement</a></li>
 </ul>
 </li>
 </ul>
@@ -114,7 +114,7 @@
 <li><p>Trouvez Octopus Viewer dans la liste</p></li>
 <li><p>Cliquez sur le bouton « Configurer » correspondant</p></li>
 </ol>
-<img alt="_images/global-settings.png" src="_images/global-settings.png" />
+<img alt="_images/global-settings.fr.png" src="_images/global-settings.fr.png" />
 <section id="show-viewer-on-the-item-page">
 <h3>Afficher la visionneuse sur la page de contenu<a class="headerlink" href="#show-viewer-on-the-item-page" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="admonition note">
@@ -173,20 +173,22 @@
 </dl>
 </section>
 <section id="show-download-link">
-<h3>Show download link<a class="headerlink" href="#show-download-link" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls whether a download link is shown or not next to the media
-title. This global setting can be overriden in <a class="reference internal" href="#site-settings"><span class="std std-ref">site settings</span></a>.</p>
+<h3>Afficher un lien de téléchargement<a class="headerlink" href="#show-download-link" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle si un lien de téléchargement est affiché ou non. Ce paramètre global peut être surchargé dans <a class="reference internal" href="#site-settings"><span class="std std-ref">les paramètres du site</span></a>.</p>
 <p>Valeurs possibles:</p>
 <dl class="simple">
-<dt>Non</dt><dd><p>Do not show a download link. This is the default behaviour.</p>
+<dt>Non</dt><dd><p>N’affiche pas de lien de téléchargement. C’est le comportement par défaut.</p>
 </dd>
-<dt>Yes</dt><dd><p>Show a download link.</p>
+<dt>Dans le panneau de sélection de média</dt><dd><p>Affiche un lien de téléchargement à côté de chaque titre de média.</p>
+</dd>
+<dt>Dans le panneau d’information du média</dt><dd><p>Affiche un lien de téléchargement dans le panneau d’information du média.</p>
+</dd>
+<dt>Dans le panneau de sélection de média et dans le panneau d’information du média.</dt><dd><p>Affiche des liens de téléchargement dans les deux panneaux.</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This does not work for media types where the original file is not stored in
-Omeka (Youtube videos for instance)</p>
+<p>Cela ne fonctionne pas pour les types de média où le fichier original n’est pas stocké dans Omeka (les vidéos Youtube par exemple)</p>
 </div>
 </section>
 </section>
@@ -194,7 +196,7 @@ Omeka (Youtube videos for instance)</p>
 <span id="id2"></span><h2>Paramètres de site<a class="headerlink" href="#site-settings" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Les paramètres de site se trouvent dans <a class="reference external" href="https://omeka.org/s/docs/user-manual/sites/site_settings/#settings">la page des paramètres de site</a>.</p>
 <p>Dans cette page il y a une section nommée « Octopus Viewer ».</p>
-<img alt="_images/site-settings.png" src="_images/site-settings.png" />
+<img alt="_images/site-settings.fr.png" src="_images/site-settings.fr.png" />
 <section id="id3">
 <h3>Afficher le sélecteur de médias<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Ce paramètre contrôle si le sélecteur de média (le panneau de gauche) est affiché ou non. Ce paramètre surcharge le paramètre global.</p>
@@ -237,22 +239,24 @@ Omeka (Youtube videos for instance)</p>
 </dl>
 </section>
 <section id="id6">
-<h3>Show download link<a class="headerlink" href="#id6" title="Lien permanent vers cette rubrique"></a></h3>
-<p>This setting controls whether a download link is shown or not next to the media
-title. This setting overrides the global setting.</p>
+<h3>Afficher un lien de téléchargement<a class="headerlink" href="#id6" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce paramètre contrôle si un lien de téléchargement est affiché ou non. Ce paramètre surcharge le paramètre global.</p>
 <p>Valeurs possibles:</p>
 <dl class="simple">
 <dt>Utiliser le paramètre global</dt><dd><p>Utiliser la valeur définie dans <a class="reference internal" href="#global-settings"><span class="std std-ref">les paramètres globaux</span></a>. C’est la valeur par défaut.</p>
 </dd>
-<dt>Non</dt><dd><p>Do not show a download link. This is the default behaviour.</p>
+<dt>Non</dt><dd><p>N’affiche pas de lien de téléchargement. C’est le comportement par défaut.</p>
 </dd>
-<dt>Yes</dt><dd><p>Show a download link.</p>
+<dt>Dans le panneau de sélection de média</dt><dd><p>Affiche un lien de téléchargement à côté de chaque titre de média.</p>
+</dd>
+<dt>Dans le panneau d’information du média</dt><dd><p>Affiche un lien de téléchargement dans le panneau d’information du média.</p>
+</dd>
+<dt>Dans le panneau de sélection de média et dans le panneau d’information du média.</dt><dd><p>Affiche des liens de téléchargement dans les deux panneaux.</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This does not work for media types where the original file is not stored in
-Omeka (Youtube videos for instance)</p>
+<p>Cela ne fonctionne pas pour les types de média où le fichier original n’est pas stocké dans Omeka (les vidéos Youtube par exemple)</p>
 </div>
 </section>
 </section>

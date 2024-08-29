@@ -104,16 +104,22 @@ No text
 Show download link
 ~~~~~~~~~~~~~~~~~~
 
-This setting controls whether a download link is shown or not next to the media
-title. This global setting can be overriden in :ref:`site settings <site-settings>`.
+This setting controls whether a download link is shown or not. This global
+setting can be overriden in :ref:`site settings <site-settings>`.
 
 Possible values:
 
 No
     Do not show a download link. This is the default behaviour.
 
-Yes
-    Show a download link.
+In the media selector panel
+    Show a download link next to each media title.
+
+In the media information panel
+    Show a download link in the media information panel.
+
+In the media selector panel and in the media information panel.
+    Show download links in both panels.
 
 .. note::
    This does not work for media types where the original file is not stored in
@@ -205,8 +211,14 @@ Use global setting
 No
     Do not show a download link. This is the default behaviour.
 
-Yes
-    Show a download link.
+In the media selector panel
+    Show a download link next to each media title.
+
+In the media information panel
+    Show a download link in the media information panel.
+
+In the media selector panel and in the media information panel.
+    Show download links in both panels.
 
 .. note::
    This does not work for media types where the original file is not stored in
