@@ -6,10 +6,10 @@ return [
     'controllers' => [
         'invokables' => [
             'OctopusViewer\Controller\Pdfjs' => Controller\PdfjsController::class,
-            'OctopusViewer\Controller\Site\Media' => Controller\Site\MediaController::class,
         ],
         'factories' => [
             'OctopusViewer\Controller\Site\Viewer' => Service\Controller\Site\ViewerControllerFactory::class,
+            'OctopusViewer\Controller\Site\Media' => Service\Controller\Site\MediaControllerFactory::class,
         ],
     ],
     'octopusviewer_file_renderers' => [
