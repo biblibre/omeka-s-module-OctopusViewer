@@ -1,5 +1,5 @@
 <?php if ($media->hasOriginal()): ?>
-    <a class="octopusviewer-download" href="<?= $media->originalUrl() ?>" download title="<?= $this->escapeHtml($this->translate('Download')) ?>">
+    <a class="octopusviewer-download" href="<?= $media->originalUrl() ?>" target="_blank" title="<?= $this->escapeHtml($this->translate('Download')) ?>">
         <i class="octopusviewer-icon-download"></i>
         <span><?= $this->translate('Download') ?></span>
     </a>

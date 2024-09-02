@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Use `target="_blank"` instead of `download` attribute as the `download`
+  attribute only works with same-origin URLs (which is not guaranteed, for
+  instance with the AnyCloud module)
+
 ## [0.7.1] - 2024-08-29
 
 - Trim media information panel footer so that the `:empty` CSS pseudo-selector
