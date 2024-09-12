@@ -14,6 +14,12 @@ To update PDF.js:
 
     unzip pdfjs-<VERSION>-dist.zip -d asset/vendor/pdf.js
 
-4. Commit! ::
+4. Edit ``asset/vendor/pdf.js/web/viewer.js`` and add
+   ``window.location.origin`` to ``HOSTED_VIEWER_ORIGINS``. It should look like
+   this::
+
+    const HOSTED_VIEWER_ORIGINS = ["null", "http://mozilla.github.io", "https://mozilla.github.io", window.location.origin];
+
+5. Commit! ::
 
     git add asset/vendor/pdf.js && git commit -m 'Update PDF.js to <VERSION>'
