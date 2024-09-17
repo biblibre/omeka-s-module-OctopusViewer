@@ -1,0 +1,8 @@
+<?php
+/**
+ * @var Omeka\Api\Representation\MediaRepresentation $media
+ */
+?>
+<div class="octopusviewer-wrapper">
+    <?= $this->octopusViewer()->viewer(['media_id' => $media->id()], $media->displayTitle()); ?>
+</div>

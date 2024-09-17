@@ -50,6 +50,20 @@ class OctopusViewer extends AbstractHelper
         return $view->partial('octopus-viewer/helper/octopusviewer/for-item', $args);
     }
 
+    public function forMedia(MediaRepresentation $media)
+    {
+        $view = $this->getView();
+
+        $view->headLink()->appendStylesheet($view->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
+        $view->headScript()->appendFile($view->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
+
+        $args = [
+            'media' => $media,
+        ];
+
+        return $view->partial('octopus-viewer/helper/octopusviewer/for-media', $args);
+    }
+
     public function renderMedia(MediaRepresentation $media)
     {
         try {
