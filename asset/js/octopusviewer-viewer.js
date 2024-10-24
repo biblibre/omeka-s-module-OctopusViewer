@@ -3,7 +3,7 @@
 
     const src = document.currentScript.src;
     const baseUrlEnd = src.indexOf('/modules/OctopusViewer/asset/js/octopusviewer-viewer.js');
-    const baseUrl = src.substring(0, baseUrlEnd);
+    const baseUrl = src.substring(0, baseUrlEnd) + '/';
 
     class OctopusViewerViewer extends HTMLElement {
         constructor() {
@@ -13,7 +13,7 @@
         }
 
         connectedCallback () {
-            this.appendStylesheet('/modules/OctopusViewer/asset/css/octopusviewer-viewer.css');
+            this.appendStylesheet('modules/OctopusViewer/asset/css/octopusviewer-viewer.css');
             if (this.extraStylesheet) {
                 this.appendStylesheet(this.extraStylesheet);
             }
@@ -51,14 +51,14 @@
         }
 
         fetchMediaSelector () {
-            const mediaSelectorUrl = new URL('/s/' + this.siteSlug + '/octopusviewer/viewer/media-selector', baseUrl);
+            const mediaSelectorUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/media-selector', baseUrl);
             mediaSelectorUrl.search = this.mediaQuery;
 
             return fetch(mediaSelectorUrl).then(res => res.text())
         }
 
         loadJsDependencies () {
-            const jsDependenciesUrl = new URL('/s/' + this.siteSlug + '/octopusviewer/viewer/js-dependencies', baseUrl);
+            const jsDependenciesUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/js-dependencies', baseUrl);
             return fetch(jsDependenciesUrl)
                 .then(res => res.json())
                 .then(data => {
