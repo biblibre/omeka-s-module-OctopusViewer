@@ -18,24 +18,30 @@
                 this.appendStylesheet(this.extraStylesheet);
             }
 
-            this.shadowRoot.appendChild(template.content.cloneNode(true));
-
             const mediaSelectorPromise = this.fetchMediaSelector();
             const jsDependenciesPromise = this.loadJsDependencies();
 
             Promise.all([mediaSelectorPromise, jsDependenciesPromise])
                 .then(([mediaSelectorHTML]) => {
+                    const mediaSelectorContainer = document.createElement('div');
+                    mediaSelectorContainer.innerHTML = mediaSelectorHTML;
+
+                    const allMedia = mediaSelectorContainer.querySelectorAll('.octopusviewer-media-selector-element');
+                    if (allMedia.length === 0) {
+                        this.remove();
+                        return;
+                    }
+
+                    this.shadowRoot.appendChild(template.content.cloneNode(true));
+
                     const mediaSelector = this.shadowRoot.querySelector('.octopusviewer-media-selector-list');
-                    mediaSelector.innerHTML = mediaSelectorHTML;
+                    mediaSelector.replaceChildren(...mediaSelectorContainer.childNodes);
 
                     this.attachEventListeners();
 
                     this.shadowRoot.querySelector('.octopusviewer-viewer').classList.add('loaded');
 
-                    const allMedia = this.shadowRoot.querySelectorAll('.octopusviewer-media-selector-element');
-                    if (allMedia.length > 0) {
-                        this.showMedia(allMedia[0]);
-                    }
+                    this.showMedia(allMedia[0]);
 
                     const shouldShowMediaSelector =
                         this.showMediaSelector === 'always' ||
