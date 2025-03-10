@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Use dedicated event to add input filters to the site settings form. Not using
+  the dedicated event was causing problems if other modules added elements to
+  the form after this module
+
 ## [0.8.2] - 2024-11-29
 
 - Fix media order on item page

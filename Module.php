@@ -89,6 +89,7 @@ class Module extends AbstractModule
         }
 
         $sharedEventManager->attach('Omeka\Form\SiteSettingsForm', 'form.add_elements', [$this, 'onSiteSettingsFormAddElements']);
+        $sharedEventManager->attach('Omeka\Form\SiteSettingsForm', 'form.add_input_filters', [$this, 'onSiteSettingsFormAddInputFilters']);
     }
 
     public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $services)
@@ -152,10 +153,17 @@ class Module extends AbstractModule
             foreach ($fieldset->getElements() as $element) {
                 $form->add($element);
             }
-            $inputFilter = $form->getInputFilter();
         } else {
             $form->add($fieldset);
-            $inputFilter = $form->getInputFilter()->get('octopusviewer');
+        }
+    }
+
+    public function onSiteSettingsFormAddInputFilters(Event $event)
+    {
+        $inputFilter = $event->getParam('inputFilter');
+
+        if ($inputFilter->has('octopusviewer')) {
+            $inputFilter = $inputFilter->get('octopusviewer');
         }
 
         $inputFilter->add([
