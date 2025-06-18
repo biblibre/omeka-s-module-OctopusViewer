@@ -50,7 +50,7 @@ See general end user documentation for
 ## Documentation
 
 The full documentation can be found here:
-https://biblibre.github.io/omeka-s-module-OctopusViewer/
+<https://biblibre.github.io/omeka-s-module-OctopusViewer/>
 
 ## Sponsors
 
