@@ -6,10 +6,23 @@
     const baseUrl = src.substring(0, baseUrlEnd) + '/';
 
     class OctopusViewerViewer extends HTMLElement {
-        constructor() {
+        static get observedAttributes() {
+            return ['media-id'];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) return;
+
+            if (name === 'media-id') {
+                for (const el of this.shadowRoot.querySelectorAll('octopusviewer-media-selector,octopusviewer-media-view,octopusviewer-media-info')) {
+                    el.mediaId = newValue;
+                }
+            }
+        }
+        constructor () {
             super();
 
-            const shadowRoot = this.attachShadow({ mode: "open" });
+            this.attachShadow({ mode: 'open' });
         }
 
         connectedCallback () {
@@ -18,65 +31,327 @@
                 this.appendStylesheet(this.extraStylesheet);
             }
 
-            const mediaSelectorPromise = this.fetchMediaSelector();
-            const jsDependenciesPromise = this.loadJsDependencies();
+            // TODO Remove viewer if no media
 
-            Promise.all([mediaSelectorPromise, jsDependenciesPromise])
-                .then(([mediaSelectorHTML]) => {
-                    const mediaSelectorContainer = document.createElement('div');
-                    mediaSelectorContainer.innerHTML = mediaSelectorHTML;
+            this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-                    const allMedia = mediaSelectorContainer.querySelectorAll('.octopusviewer-media-selector-element');
-                    if (allMedia.length === 0) {
-                        this.remove();
-                        return;
-                    }
+            const mediaSelector = document.createElement('octopusviewer-media-selector');
+            const mediaView = document.createElement('octopusviewer-media-view');
+            const mediaInfo = document.createElement('octopusviewer-media-info');
 
-                    this.shadowRoot.appendChild(template.content.cloneNode(true));
+            for (const el of [mediaSelector, mediaView, mediaInfo]) {
+                for (const property of ['mediaQuery', 'siteSlug', 'showMediaSelector', 'showMediaInfo', 'mediaId']) {
+                    el[property] = this[property];
+                }
+            }
 
-                    const mediaSelector = this.shadowRoot.querySelector('.octopusviewer-media-selector-list');
-                    mediaSelector.replaceChildren(...mediaSelectorContainer.childNodes);
+            this.shadowRoot.querySelector('.octopusviewer-media-selector .sidebar-content').appendChild(mediaSelector);
+            this.shadowRoot.querySelector('.octopusviewer-media-view').appendChild(mediaView);
+            this.shadowRoot.querySelector('.octopusviewer-media-info-metadata').appendChild(mediaInfo);
 
-                    this.attachEventListeners();
+            this.shadowRoot.addEventListener('click', this);
+            this.shadowRoot.addEventListener('octopus:media-list-loaded', this);
 
-                    this.shadowRoot.querySelector('.octopusviewer-viewer').classList.add('loaded');
+            this.shadowRoot.querySelector('.octopusviewer-viewer').classList.add('loaded');
 
-                    this.showMedia(allMedia[0]);
-
-                    const shouldShowMediaSelector =
-                        this.showMediaSelector === 'always' ||
-                        (this.showMediaSelector === 'auto' && allMedia.length > 1);
-                    if (shouldShowMediaSelector) {
-                        this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.remove('hidden');
-                    }
-
-                    if (this.showMediaInfo === 'always') {
-                        this.shadowRoot.querySelector('.octopusviewer-media-info').classList.remove('hidden');
-                    }
-                });
+            if (this.showMediaInfo === 'always') {
+                this.shadowRoot.querySelector('.octopusviewer-media-info').classList.remove('hidden');
+            }
         }
 
-        fetchMediaSelector () {
-            const mediaSelectorUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/media-selector', baseUrl);
-            mediaSelectorUrl.search = this.mediaQuery;
+        disconnectedCallback () {
+            this.shadowRoot.removeEventListener('click', this);
+            this.shadowRoot.removeEventListener('octopus:media-list-loaded', this);
+        }
 
-            return fetch(mediaSelectorUrl).then(res => res.text())
+        handleEvent (ev) {
+            if (ev.type === 'click') {
+                return this.#onClick(ev);
+            }
+            if (ev.type === 'octopus:media-list-loaded') {
+                return this.#onMediaListLoaded(ev);
+            }
+        }
+
+        appendStylesheet (url) {
+            const link = document.createElement('link');
+            link.setAttribute('rel', 'stylesheet');
+            link.setAttribute('href', new URL(url, baseUrl));
+            this.shadowRoot.appendChild(link);
+        }
+
+        get mediaId () {
+            return this.getAttribute('media-id');
+        }
+
+        set mediaId (mediaId) {
+            this.setAttribute('media-id', mediaId ?? '');
+        }
+
+        get mediaQuery () {
+            return this.getAttribute('media-query');
+        }
+
+        set mediaQuery (query) {
+            this.setAttribute('media-query', query ?? '');
+        }
+
+        get siteSlug () {
+            return this.getAttribute('site-slug');
+        }
+
+        set siteSlug (slug) {
+            this.setAttribute('site-slug', slug ?? '');
+        }
+
+        get showMediaSelector () {
+            return this.getAttribute('show-media-selector') ?? 'auto';
+        }
+
+        set showMediaSelector (showMediaSelector) {
+            this.setAttribute('show-media-selector', showMediaSelector ?? '');
+        }
+
+        get showMediaInfo () {
+            return this.getAttribute('show-media-info') ?? 'always';
+        }
+
+        set showMediaInfo (showMediaInfo) {
+            this.setAttribute('show-media-info', showMediaInfo ?? '');
+        }
+
+        get extraStylesheet () {
+            return this.getAttribute('extra-stylesheet') ?? '';
+        }
+
+        set extraStylesheet (extraStylesheet) {
+            this.setAttribute('extra-stylesheet', extraStylesheet ?? '');
+        }
+
+        #onClick (ev) {
+            // Allow links to be clicked
+            if (ev.target.closest('a[href]')) {
+                ev.stopPropagation();
+                return;
+            }
+
+            ev.preventDefault();
+            const el = ev.target.closest('.collapse-toggle');
+            if (!el) {
+                return;
+            }
+
+            ev.stopPropagation();
+
+            ev.target.closest('.sidebar').classList.toggle('collapsed');
+        }
+
+        #onMediaListLoaded (ev) {
+            const shouldShowMediaSelector =
+                this.showMediaSelector === 'always' ||
+                (this.showMediaSelector === 'auto' && ev.detail.media.length > 1);
+
+            if (shouldShowMediaSelector) {
+                this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.remove('hidden');
+            } else {
+                this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.add('hidden');
+            }
+        }
+
+    }
+
+    const template = document.createElement('template');
+    template.innerHTML = `
+<div class="octopusviewer-viewer">
+    <div class="octopusviewer-header">
+        <div class="octopusviewer-title"><slot name="title"></slot></div>
+    </div>
+    <div class="octopusviewer-body">
+        <div class="octopusviewer-media-selector sidebar sidebar-left hidden">
+            <div class="sidebar-header collapse-toggle">
+                <i class="octopusviewer-icon-collapse"></i>
+            </div>
+            <div class="sidebar-content"></div>
+        </div>
+        <div class="octopusviewer-media-view"></div>
+        <div class="octopusviewer-media-info sidebar sidebar-right hidden">
+            <div class="sidebar-header collapse-toggle">
+                <i class="octopusviewer-icon-collapse"></i>
+            </div>
+            <div class="sidebar-content octopusviewer-media-info-metadata"></div>
+        </div>
+    </div>
+</div>
+    `;
+
+    window.customElements.define('octopusviewer-viewer', OctopusViewerViewer);
+
+    class OctopusViewerMediaInfo extends HTMLElement {
+        static get observedAttributes() {
+            return ['media-id'];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) return;
+
+            if (name === 'media-id') {
+                this.#loadInfo();
+            }
+        }
+
+        connectedCallback () {
+            this.getRootNode().addEventListener('octopus:media-select', this);
+        }
+
+        disconnectedCallback () {
+            this.getRootNode().removeEventListener('octopus:media-select', this);
+        }
+
+        handleEvent (ev) {
+            if (ev.type === 'octopus:media-select') {
+                return this.#onMediaSelect(ev);
+            }
+        }
+
+        get mediaId () {
+            return this.getAttribute('media-id');
+        }
+
+        set mediaId (mediaId) {
+            this.setAttribute('media-id', mediaId ?? '');
+        }
+
+        get mediaQuery () {
+            return this.getAttribute('media-query');
+        }
+
+        set mediaQuery (query) {
+            this.setAttribute('media-query', query ?? '');
+        }
+
+        get siteSlug () {
+            return this.getAttribute('site-slug');
+        }
+
+        set siteSlug (slug) {
+            this.setAttribute('site-slug', slug ?? '');
+        }
+
+        get showMediaSelector () {
+            return this.getAttribute('show-media-selector') ?? 'auto';
+        }
+
+        set showMediaSelector (showMediaSelector) {
+            this.setAttribute('show-media-selector', showMediaSelector ?? '');
+        }
+
+        get showMediaInfo () {
+            return this.getAttribute('show-media-info') ?? 'always';
+        }
+
+        set showMediaInfo (showMediaInfo) {
+            this.setAttribute('show-media-info', showMediaInfo ?? '');
+        }
+
+        #loadInfo () {
+            if (this.mediaId) {
+                const mediaInfoUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${this.mediaId}/info`, baseUrl);
+
+                fetch(mediaInfoUrl).then(response => {
+                    return response.json();
+                }).then(data => {
+                    this.innerHTML = data.content;
+                }, err => {
+                    console.error(err);
+                    this.innerHTML = '';
+                });
+            } else {
+                this.innerHTML = '';
+            }
+        }
+
+        #onMediaSelect (ev) {
+            this.mediaId = ev.detail.mediaId;
+        }
+    }
+
+    window.customElements.define('octopusviewer-media-info', OctopusViewerMediaInfo);
+
+    class OctopusViewerMediaView extends HTMLElement {
+        #jsDepsPromise;
+
+        static get observedAttributes() {
+            return ['media-id'];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) return;
+
+            if (name === 'media-id') {
+                const mediaId = newValue;
+
+                this.loadJsDependencies().then(() => {
+                    if (mediaId) {
+                        const mediaRenderUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${mediaId}/render`, baseUrl);
+                        fetch(mediaRenderUrl).then(response => {
+                            return response.text();
+                        }).then(html => {
+                            this.replaceChildren(viewTemplate.content.cloneNode(true));
+                            this.querySelector('.octopusviewer-media-view-main').innerHTML = html;
+                        });
+                    } else {
+                        this.replaceChildren(viewTemplate.content.cloneNode(true));
+                    }
+                });
+            }
+        }
+
+        connectedCallback () {
+            if (window.Omeka?.jsTranslate) {
+                viewTemplate.content.querySelector('.octopusviewer-download').setAttribute('title', Omeka.jsTranslate('Download'));
+                viewTemplate.content.querySelector('.octopusviewer-fullscreen').setAttribute('title', Omeka.jsTranslate('Toggle fullscreen'));
+            }
+            this.appendChild(viewTemplate.content.cloneNode(true));
+
+            this.loadJsDependencies();
+
+            this.addEventListener('click', this.#onClick)
+            this.getRootNode().addEventListener('octopus:media-select', this);
+        }
+
+        disconnectedCallback () {
+            this.removeEventListener('click', this);
+            this.getRootNode().removeEventListener('octopus:media-select', this);
+        }
+
+        handleEvent (ev) {
+            if (ev.type === 'click') {
+                return this.#onClick(ev);
+            }
+            if (ev.type === 'octopus:media-select') {
+                return this.#onMediaSelect(ev);
+            }
         }
 
         loadJsDependencies () {
-            const jsDependenciesUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/js-dependencies', baseUrl);
-            return fetch(jsDependenciesUrl)
-                .then(res => res.json())
-                .then(data => {
-                    const promises = [];
-                    for (const jsDependency of data.jsDependencies) {
-                        if (document.scripts.namedItem(jsDependency)) {
-                            continue;
+            if (!this.#jsDepsPromise) {
+                const jsDependenciesUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/js-dependencies', baseUrl);
+                this.#jsDepsPromise = fetch(jsDependenciesUrl)
+                    .then(res => res.json())
+                    .then(data => {
+                        const promises = [];
+                        for (const jsDependency of data.jsDependencies) {
+                            if (document.scripts.namedItem(jsDependency)) {
+                                continue;
+                            }
+                            promises.push(this.loadScript(jsDependency));
                         }
-                        promises.push(this.loadScript(jsDependency));
-                    }
-                    return Promise.allSettled(promises);
-                });
+                        return Promise.allSettled(promises);
+                    });
+
+            }
+
+            return this.#jsDepsPromise;
         }
 
         loadScript (src) {
@@ -90,90 +365,75 @@
             });
         }
 
-        attachEventListeners () {
-            this.shadowRoot.querySelector('.octopusviewer-fullscreen').addEventListener('click', () => {
-                if (document.fullscreenElement === this) {
-                    document.exitFullscreen();
-                } else {
-                    this.shadowRoot.querySelector('.octopusviewer-viewer').requestFullscreen();
-                }
-            });
-
-            const mediaSelector = this.shadowRoot.querySelector('.octopusviewer-media-selector');
-
-            mediaSelector.addEventListener('click', ev => {
-                // Allow links to be clicked
-                if (ev.target.closest('a[href]')) {
-                    ev.stopPropagation();
-                    return;
-                }
-
+        #onClick (ev) {
+            if (ev.target.closest('.octopusviewer-fullscreen')) {
                 ev.preventDefault();
-                const el = ev.target.closest('.octopusviewer-media-selector-element');
-                if (!el) {
-                    return;
-                }
 
-                ev.stopPropagation();
-
-                this.showMedia(el);
-            });
-
-            this.shadowRoot.querySelector('.octopusviewer-viewer').addEventListener('click', ev => {
-                // Allow links to be clicked
-                if (ev.target.closest('a[href]')) {
-                    ev.stopPropagation();
-                    return;
-                }
-
+                this.toggleFullscreen();
+            } else if (ev.target.closest('.octopusviewer-download')) {
                 ev.preventDefault();
-                const el = ev.target.closest('.collapse-toggle');
-                if (!el) {
-                    return;
-                }
 
-                ev.stopPropagation();
-
-                ev.target.closest('.sidebar').classList.toggle('collapsed');
-            });
+                this.download();
+            }
         }
 
-        showMedia (mediaElement) {
-            const octopusViewer = this.shadowRoot.querySelector('.octopusviewer-viewer');
-            const mediaRenderUrl = new URL(mediaElement.getAttribute('data-octopusviewer-render-url'), baseUrl);
-            const mediaInfoUrl = new URL(mediaElement.getAttribute('data-octopusviewer-info-url'), baseUrl);
-            const mediaView = octopusViewer.querySelector('.octopusviewer-media-view');
-            const mediaInfo = octopusViewer.querySelector('.octopusviewer-media-info-metadata');
-            const mediaInfoFooter = octopusViewer.querySelector('.octopusviewer-media-info-footer');
+        #onMediaSelect (ev) {
+            this.mediaId = ev.detail.mediaId;
+        }
 
-            mediaView.innerHTML = '';
-            fetch(mediaRenderUrl).then(response => {
-                return response.text();
-            }).then(text => {
-                mediaView.innerHTML = text;
-            });
-
-            mediaInfo.innerHTML = '';
-            if (this.showMediaInfo === 'always') {
-                fetch(mediaInfoUrl).then(response => {
-                    return response.json();
-                }).then(data => {
-                    mediaInfo.innerHTML = data.content;
-                    mediaInfoFooter.innerHTML = data.footer.trim();
-                });
+        toggleFullscreen () {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+                return;
             }
 
-            mediaElement.closest('.octopusviewer-media-selector').querySelectorAll('.octopusviewer-media-selector-element').forEach(e => {
-                e.classList.remove('octopusviewer-selected');
-            });
-            mediaElement.classList.add('octopusviewer-selected');
+            const rootNode = this.getRootNode();
+            if (rootNode instanceof ShadowRoot) {
+                rootNode.host.requestFullscreen();
+            } else {
+                // Recreate full viewer with sidebars
+                const viewer = document.createElement('octopusviewer-viewer');
+
+                const title = document.createElement('span');
+                title.setAttribute('slot', 'title');
+                title.innerText = this.fullscreenTitle;
+                viewer.appendChild(title);
+
+                viewer.mediaQuery = this.mediaQuery;
+                viewer.siteSlug = this.siteSlug;
+                viewer.mediaId = this.mediaId;
+                viewer.showMediaSelector = this.showMediaSelector;
+                viewer.showMediaInfo = this.showMediaInfo;
+
+                viewer.style.position = 'absolute';
+                viewer.style.top = '-20000px';
+                viewer.style.left = '-20000px';
+
+                viewer.addEventListener('fullscreenchange', () => {
+                    if (!document.fullscreenElement) {
+                        viewer.remove();
+                    }
+                });
+                document.body.appendChild(viewer);
+                viewer.requestFullscreen();
+            }
         }
 
-        appendStylesheet (url) {
-            const link = document.createElement('link');
-            link.setAttribute('rel', 'stylesheet');
-            link.setAttribute('href', new URL(url, baseUrl));
-            this.shadowRoot.appendChild(link);
+        download () {
+            const mediaDownloadUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${this.mediaId}/download`, baseUrl);
+            fetch(mediaDownloadUrl)
+                .then(res => res.json())
+                .then(data => {
+                    window.open(data.originalUrl, '_blank');
+                }).catch(console.error);
+        }
+
+        get mediaId () {
+            return this.getAttribute('media-id');
+        }
+
+        set mediaId (mediaId) {
+            this.setAttribute('media-id', mediaId ?? '');
         }
 
         get mediaQuery () {
@@ -181,7 +441,7 @@
         }
 
         set mediaQuery (query) {
-            this.setAttribute('media-query', query);
+            this.setAttribute('media-query', query ?? '');
         }
 
         get siteSlug () {
@@ -189,7 +449,7 @@
         }
 
         set siteSlug (slug) {
-            this.setAttribute('site-slug', slug);
+            this.setAttribute('site-slug', slug ?? '');
         }
 
         get showMediaSelector () {
@@ -197,7 +457,7 @@
         }
 
         set showMediaSelector (showMediaSelector) {
-            this.setAttribute('show-media-selector', showMediaSelector);
+            this.setAttribute('show-media-selector', showMediaSelector ?? '');
         }
 
         get showMediaInfo () {
@@ -205,44 +465,183 @@
         }
 
         set showMediaInfo (showMediaInfo) {
-            this.setAttribute('show-media-info', showMediaInfo);
+            this.setAttribute('show-media-info', showMediaInfo ?? '');
         }
 
-        get extraStylesheet () {
-            return this.getAttribute('extra-stylesheet') ?? '';
+        get fullscreenTitle () {
+            return this.getAttribute('fullscreen-title') ?? '';
         }
 
-        set extraStylesheet (extraStylesheet) {
-            this.setAttribute('extra-stylesheet', extraStylesheet);
+        set fullscreenTitle (fullscreenTitle) {
+            this.setAttribute('fullscreen-title', fullscreenTitle ?? '');
         }
     }
 
-    const template = document.createElement('template');
-    template.innerHTML = `
-<div class="octopusviewer-viewer">
-    <div class="octopusviewer-header">
-        <div class="octopusviewer-title"><slot name="title"></slot></div>
-        <a class="octopusviewer-fullscreen"><i class="octopusviewer-icon-fullscreen"></i></a>
-    </div>
-    <div class="octopusviewer-body">
-        <div class="octopusviewer-media-selector sidebar sidebar-left hidden">
-            <div class="sidebar-header collapse-toggle">
-                <i class="octopusviewer-icon-collapse"></i>
-            </div>
-            <div class="sidebar-content octopusviewer-media-selector-list"></div>
+    const viewTemplate = document.createElement('template');
+    viewTemplate.innerHTML = `
+        <div class="octopusviewer-media-view-main"></div>
+        <div class="octopusviewer-media-view-controls">
+            <a class="octopusviewer-download" title="Download"><i class="octopusviewer-icon-download"></i></a>
+            <a class="octopusviewer-fullscreen" title="Toggle fullscreen"><i class="octopusviewer-icon-fullscreen"></i></a>
         </div>
-        <div class="octopusviewer-media-view"></div>
-        <div class="octopusviewer-media-info sidebar sidebar-right hidden">
-            <div class="sidebar-header collapse-toggle">
-                <i class="octopusviewer-icon-collapse"></i>
-            </div>
-            <div class="sidebar-content octopusviewer-media-info-metadata"></div>
-            <div class="sidebar-footer octopusviewer-media-info-footer"></div>
-        </div>
-    </div>
-    <div class="octopusviewer-footer"></div>
-</div>
     `;
 
-    window.customElements.define('octopusviewer-viewer', OctopusViewerViewer);
+    window.customElements.define('octopusviewer-media-view', OctopusViewerMediaView);
+
+    class OctopusViewerMediaSelector extends HTMLElement {
+        static get observedAttributes() {
+            return ['media-id'];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (name === 'media-id') {
+                const mediaId = newValue;
+                this.#markMediaAsSelected(mediaId);
+            }
+        }
+
+        connectedCallback () {
+            this.fetchMediaSelector().then(mediaSelectorHTML => {
+                const mediaSelectorContainer = document.createElement('div');
+                mediaSelectorContainer.innerHTML = mediaSelectorHTML;
+
+                const allMedia = mediaSelectorContainer.querySelectorAll('.octopusviewer-media-selector-element');
+                if (allMedia.length === 0) {
+                    return;
+                }
+
+                this.appendChild(selectorTemplate.content.cloneNode(true));
+
+                const mediaSelector = this.querySelector('.octopusviewer-media-selector-list');
+                mediaSelector.replaceChildren(...mediaSelectorContainer.childNodes);
+
+                this.#dispatchMediaListLoadedEvent();
+
+                if (this.mediaId) {
+                    this.#markMediaAsSelected(this.mediaId);
+                } else {
+                    this.mediaId = allMedia[0].dataset.mediaId;
+                    this.#dispatchMediaSelectEvent();
+                }
+            });
+
+            this.addEventListener('click', this.#onClick)
+        }
+
+        disconnectedCallback () {
+            this.removeEventListener('click', this.#onClick);
+        }
+
+        fetchMediaSelector () {
+            const mediaSelectorUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/media-selector', baseUrl);
+            mediaSelectorUrl.search = this.mediaQuery;
+
+            return fetch(mediaSelectorUrl).then(res => res.text())
+        }
+
+        #markMediaAsSelected (mediaId) {
+            const mediaElement = this.querySelector('[data-media-id="' + mediaId + '"]');
+            if (mediaElement) {
+                mediaElement.closest('.octopusviewer-media-selector-list').querySelectorAll('.octopusviewer-media-selector-element').forEach(e => {
+                    e.classList.remove('octopusviewer-selected');
+                });
+                mediaElement.classList.add('octopusviewer-selected');
+            }
+        }
+
+        #onClick (ev) {
+            // Allow links to be clicked
+            if (ev.target.closest('a[href]')) {
+                ev.stopPropagation();
+                return;
+            }
+
+            ev.preventDefault();
+            const el = ev.target.closest('[data-media-id]');
+            if (!el) {
+                return;
+            }
+
+            ev.stopPropagation();
+
+            this.mediaId = el.dataset.mediaId;
+
+            this.#dispatchMediaSelectEvent();
+        }
+
+        #dispatchMediaSelectEvent () {
+            this.dispatchEvent(
+                new CustomEvent(
+                    'octopus:media-select',
+                    {
+                        bubbles: true,
+                        detail: { mediaId: this.mediaId },
+                    }
+                )
+            );
+        }
+
+        #dispatchMediaListLoadedEvent () {
+            const media = [];
+
+            for (const el of this.querySelectorAll('.octopusviewer-media-selector-element[data-media-id]')) {
+                media.push({ id: el.dataset.mediaId });
+            }
+
+            this.dispatchEvent(
+                new CustomEvent(
+                    'octopus:media-list-loaded',
+                    {
+                        bubbles: true,
+                        detail: { media },
+                    }
+                )
+            );
+        }
+
+        get mediaId () {
+            return this.getAttribute('media-id');
+        }
+
+        set mediaId (mediaId) {
+            this.setAttribute('media-id', mediaId ?? '');
+        }
+
+        get mediaQuery () {
+            return this.getAttribute('media-query');
+        }
+
+        set mediaQuery (query) {
+            this.setAttribute('media-query', query ?? '');
+        }
+
+        get siteSlug () {
+            return this.getAttribute('site-slug');
+        }
+
+        set siteSlug (slug) {
+            this.setAttribute('site-slug', slug ?? '');
+        }
+
+        get showMediaSelector () {
+            return this.getAttribute('show-media-selector') ?? 'auto';
+        }
+
+        set showMediaSelector (showMediaSelector) {
+            this.setAttribute('show-media-selector', showMediaSelector ?? '');
+        }
+
+        get showMediaInfo () {
+            return this.getAttribute('show-media-info') ?? 'always';
+        }
+
+        set showMediaInfo (showMediaInfo) {
+            this.setAttribute('show-media-info', showMediaInfo ?? '');
+        }
+    }
+
+    const selectorTemplate = document.createElement('template');
+    selectorTemplate.innerHTML = `<div class="octopusviewer-media-selector-list"></div>`;
+
+    window.customElements.define('octopusviewer-media-selector', OctopusViewerMediaSelector);
 })();

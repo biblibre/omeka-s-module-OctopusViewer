@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 08:31+0200\n"
+"POT-Creation-Date: 2025-10-28 13:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,10 @@ msgstr ""
 #: view/octopus-viewer/site/viewer/media-download-link.phtml:2
 #: view/octopus-viewer/site/viewer/media-download-link.phtml:4
 msgid "Download"
+msgstr ""
+
+#: config/module.config.php:17
+msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/Form/ConfigForm.php:17
@@ -35,69 +39,92 @@ msgid "After the item content"
 msgstr ""
 
 #: src/Form/ConfigForm.php:34
+msgid "Show viewer on the media page"
+msgstr ""
+
+#: src/Form/ConfigForm.php:37
+msgid "Before the media content"
+msgstr ""
+
+#: src/Form/ConfigForm.php:38
+msgid "After the media content"
+msgstr ""
+
+#: src/Form/ConfigForm.php:51
 msgid "IIIF Image URI template"
 msgstr ""
 
-#: src/Form/ConfigForm.php:35
+#: src/Form/ConfigForm.php:52
 msgid ""
 "If set, it will be used to build an IIIF base URI for media stored locally. "
 "The following expressions can be used and will be replaced by their "
 "corresponding value: {id}, {storage_id}, {filename}, {extension}"
 msgstr ""
 
-#: src/Form/ConfigForm.php:47 src/Form/SiteSettingsFieldset.php:19
+#: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:19
 msgid "Show media selector"
 msgstr ""
 
-#: src/Form/ConfigForm.php:48 src/Form/ConfigForm.php:65
+#: src/Form/ConfigForm.php:65 src/Form/ConfigForm.php:82
 msgid "This setting can be overriden in the site settings"
 msgstr ""
 
-#: src/Form/ConfigForm.php:50 src/Form/SiteSettingsFieldset.php:22
+#: src/Form/ConfigForm.php:67 src/Form/SiteSettingsFieldset.php:22
 msgid "Only if there are several media"
 msgstr ""
 
-#: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:37
+#: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:37
 msgid "Show media info"
 msgstr ""
 
-#: src/Form/ConfigForm.php:80 src/Form/SiteSettingsFieldset.php:54
+#: src/Form/ConfigForm.php:97 src/Form/SiteSettingsFieldset.php:54
 msgid "Default media title"
 msgstr ""
 
-#: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:55
+#: src/Form/ConfigForm.php:98 src/Form/SiteSettingsFieldset.php:55
 msgid "Text used when a media has no title"
 msgstr ""
 
-#: src/Form/ConfigForm.php:84 src/Form/SiteSettingsFieldset.php:59
+#: src/Form/ConfigForm.php:101 src/Form/SiteSettingsFieldset.php:59
 msgid "No text"
 msgstr ""
 
-#: src/Form/ConfigForm.php:97 src/Form/SiteSettingsFieldset.php:72
+#: src/Form/ConfigForm.php:114 src/Form/SiteSettingsFieldset.php:72
 msgid "Show download link"
 msgstr ""
 
-#: src/Form/ConfigForm.php:98 src/Form/SiteSettingsFieldset.php:73
+#: src/Form/ConfigForm.php:115 src/Form/SiteSettingsFieldset.php:73
 msgid ""
-"Show a link next to each media title to download the original file when "
-"available (does not work with some media types like Youtube videos for "
-"instance)"
+"Show a link to download the original file when available (does not work with "
+"some media types like Youtube videos for instance)"
 msgstr ""
 
-#: src/Form/ConfigForm.php:101 src/Form/SiteSettingsFieldset.php:77
+#: src/Form/ConfigForm.php:118 src/Form/SiteSettingsFieldset.php:77
 msgid "In the media selector panel"
 msgstr ""
 
-#: src/Form/ConfigForm.php:102 src/Form/SiteSettingsFieldset.php:78
-msgid "In the media information panel"
+#: src/Form/ConfigForm.php:119 src/Form/SiteSettingsFieldset.php:78
+msgid "In the controls (below media view by default)"
 msgstr ""
 
-#: src/Form/ConfigForm.php:103 src/Form/SiteSettingsFieldset.php:79
-msgid "In the media selector panel and in the media information panel"
+#: src/Form/ConfigForm.php:120 src/Form/SiteSettingsFieldset.php:79
+msgid "In the media selector panel and in the controls"
 msgstr ""
 
 #: src/Form/SiteSettingsFieldset.php:12
 msgid "Octopus Viewer"
+msgstr ""
+
+#: src/Site/ResourcePageBlockLayout/OctopusViewerMediaInfo.php:13
+msgid "Octopus viewer media metadata"
+msgstr ""
+
+#: src/Site/ResourcePageBlockLayout/OctopusViewerMediaView.php:13
+msgid "Octopus viewer media view"
+msgstr ""
+
+#: src/Site/ResourcePageBlockLayout/OctopusViewerMediaSelector.php:12
+msgid "Octopus viewer media selector"
 msgstr ""
 
 #: src/Site/ResourcePageBlockLayout/OctopusViewer.php:12

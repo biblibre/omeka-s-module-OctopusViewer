@@ -35,7 +35,22 @@ class MediaController extends AbstractActionController
 
         $view = new JsonModel([
             'content' => $partialHelper('octopus-viewer/site/media/info', $values),
-            'footer' => $partialHelper('octopus-viewer/site/media/info-footer', $values),
+        ]);
+
+        $this->getResponse()->getHeaders()->addHeaderLine('Access-Control-Allow-Origin', '*');
+
+        return $view;
+    }
+
+    public function downloadAction()
+    {
+        $partialHelper = $this->viewHelpers()->get('partial');
+
+        $mediaId = $this->params()->fromRoute('id');
+        $media = $this->api()->read('media', $mediaId)->getContent();
+
+        $view = new JsonModel([
+            'originalUrl' => $media->originalUrl(),
         ]);
 
         $this->getResponse()->getHeaders()->addHeaderLine('Access-Control-Allow-Origin', '*');

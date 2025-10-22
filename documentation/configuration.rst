@@ -115,11 +115,11 @@ No
 In the media selector panel
     Show a download link next to each media title.
 
-In the media information panel
-    Show a download link in the media information panel.
+In the controls
+    Show a download link in the controls, which are below the media view by default.
 
-In the media selector panel and in the media information panel.
-    Show download links in both panels.
+In the media selector panel and in the controls
+    Show download links in both places.
 
 .. note::
    This does not work for media types where the original file is not stored in
@@ -214,11 +214,11 @@ No
 In the media selector panel
     Show a download link next to each media title.
 
-In the media information panel
-    Show a download link in the media information panel.
+In the controls
+    Show a download link in the controls, which are below the media view by default.
 
-In the media selector panel and in the media information panel.
-    Show download links in both panels.
+In the media selector panel and in the controls
+    Show download links in both places.
 
 .. note::
    This does not work for media types where the original file is not stored in

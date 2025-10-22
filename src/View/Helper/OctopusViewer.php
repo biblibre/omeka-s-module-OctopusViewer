@@ -6,6 +6,7 @@ use Laminas\View\Helper\AbstractHelper;
 use OctopusViewer\MediaRenderer\Manager as MediaRendererManager;
 use Omeka\Api\Representation\ItemRepresentation;
 use Omeka\Api\Representation\MediaRepresentation;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class OctopusViewer extends AbstractHelper
 {
@@ -16,16 +17,20 @@ class OctopusViewer extends AbstractHelper
         $this->mediaRendererManager = $mediaRendererManager;
     }
 
-    public function viewer(array $query, string $title = '')
+    public function viewer(array $query, string $title = '', array $attributes = [])
     {
         $view = $this->getView();
 
-        $view->headScript()->appendFile($view->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
+        $attributes['media-query'] ??= http_build_query($query);
+        $attributes['site-slug'] ??= $view->layout()->site->slug();
+        $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
+        $attributes['show-media-info'] ??= $view->siteSetting('octopusviewer_show_media_info', '') ?: $view->setting('octopusviewer_show_media_info', 'always');
+        $attributes['extra-stylesheet'] ??= $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true);
 
         $args = [
             'query' => $query,
             'title' => $title,
-            'extraStylesheet' => $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true),
+            'attributes' => $attributes,
         ];
 
         return $view->partial('octopus-viewer/helper/octopusviewer/viewer', $args);
@@ -33,15 +38,12 @@ class OctopusViewer extends AbstractHelper
 
     public function forItem(ItemRepresentation $item)
     {
-        $media = $item->media();
-        if (empty($media)) {
+        $media = $item->primaryMedia();
+        if (!$media) {
             return '';
         }
 
         $view = $this->getView();
-
-        $view->headLink()->appendStylesheet($view->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
-        $view->headScript()->appendFile($view->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
 
         $args = [
             'item' => $item,
@@ -53,9 +55,6 @@ class OctopusViewer extends AbstractHelper
     public function forMedia(MediaRepresentation $media)
     {
         $view = $this->getView();
-
-        $view->headLink()->appendStylesheet($view->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
-        $view->headScript()->appendFile($view->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
 
         $args = [
             'media' => $media,
@@ -73,5 +72,48 @@ class OctopusViewer extends AbstractHelper
         }
 
         return $mediaRenderer->render($this->getView(), $media);
+    }
+
+    public function mediaSelector(array $attributes = [])
+    {
+        $view = $this->getView();
+
+        $attributes['site-slug'] ??= $view->layout()->site->slug();
+        $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
+
+        $args = [
+            'attributes' => $attributes,
+        ];
+
+        return $view->partial('octopus-viewer/helper/octopusviewer/media-selector', $args);
+    }
+
+    public function mediaView(array $attributes = [])
+    {
+        $view = $this->getView();
+
+        $attributes['site-slug'] ??= $view->layout()->site->slug();
+        $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
+        $attributes['show-media-info'] ??= $view->siteSetting('octopusviewer_show_media_info', '') ?: $view->setting('octopusviewer_show_media_info', 'always');
+        $attributes['extra-stylesheet'] ??= $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true);
+
+        $args = [
+            'attributes' => $attributes,
+        ];
+
+        return $view->partial('octopus-viewer/helper/octopusviewer/media-view', $args);
+    }
+
+    public function mediaInfo(array $attributes = [])
+    {
+        $view = $this->getView();
+
+        $attributes['site-slug'] ??= $view->layout()->site->slug();
+
+        $args = [
+            'attributes' => $attributes,
+        ];
+
+        return $view->partial('octopus-viewer/helper/octopusviewer/media-info', $args);
     }
 }

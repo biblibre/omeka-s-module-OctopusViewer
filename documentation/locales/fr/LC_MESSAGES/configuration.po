@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OctopusViewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 08:46+0200\n"
-"PO-Revision-Date: 2024-08-29 08:54+0200\n"
+"POT-Creation-Date: 2025-10-28 13:12+0100\n"
+"PO-Revision-Date: 2025-10-28 13:22+0100\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Babel 2.11.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #: ../../configuration.rst:2
 msgid "Configuration"
@@ -264,21 +264,23 @@ msgid "Show a download link next to each media title."
 msgstr "Affiche un lien de téléchargement à côté de chaque titre de média."
 
 #: ../../configuration.rst:119 ../../configuration.rst:218
-msgid "In the media information panel"
-msgstr "Dans le panneau d'information du média"
+msgid "In the controls"
+msgstr "Dans les contrôles"
 
 #: ../../configuration.rst:119 ../../configuration.rst:218
-msgid "Show a download link in the media information panel."
-msgstr "Affiche un lien de téléchargement dans le panneau d'information du média."
-
-#: ../../configuration.rst:122 ../../configuration.rst:221
-msgid "In the media selector panel and in the media information panel."
+msgid ""
+"Show a download link in the controls, which are below the media view by default."
 msgstr ""
-"Dans le panneau de sélection de média et dans le panneau d'information du média."
+"Affiche un lien de téléchargement dans les contrôles, qui sont sous la vue du "
+"média par défaut."
 
 #: ../../configuration.rst:122 ../../configuration.rst:221
-msgid "Show download links in both panels."
-msgstr "Affiche des liens de téléchargement dans les deux panneaux."
+msgid "In the media selector panel and in the controls"
+msgstr "Dans le panneau de sélection de média et dans les contrôles"
+
+#: ../../configuration.rst:122 ../../configuration.rst:221
+msgid "Show download links in both places."
+msgstr "Affiche des liens de téléchargement dans les deux endroits."
 
 #: ../../configuration.rst:125 ../../configuration.rst:224
 msgid ""
@@ -361,3 +363,10 @@ msgid ""
 msgstr ""
 "Ce paramètre contrôle si un lien de téléchargement est affiché ou non. Ce "
 "paramètre surcharge le paramètre global."
+
+#~ msgid "In the media information panel"
+#~ msgstr "Dans le panneau d'information du média"
+
+#~ msgid "Show a download link in the media information panel."
+#~ msgstr ""
+#~ "Affiche un lien de téléchargement dans le panneau d'information du média."

@@ -70,13 +70,13 @@ class SiteSettingsFieldset extends Fieldset
             'options' => [
                 'element_group' => 'octopusviewer',
                 'label' => 'Show download link', // @translate
-                'info' => 'Show a link next to each media title to download the original file when available (does not work with some media types like Youtube videos for instance)', // @translate
+                'info' => 'Show a link to download the original file when available (does not work with some media types like Youtube videos for instance)', // @translate
                 'empty_option' => 'Use global setting', // @translate
                 'value_options' => [
                     'no' => 'No', // @translate
                     'media-selector' => 'In the media selector panel', // @translate
-                    'media-info' => 'In the media information panel', // @translate
-                    'media-selector|media-info' => 'In the media selector panel and in the media information panel', // @translate
+                    'controls' => 'In the controls (below media view by default)', // @translate
+                    'media-selector|controls' => 'In the media selector panel and in the controls', // @translate
                 ],
             ],
             'attributes' => [

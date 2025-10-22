@@ -1,7 +1,12 @@
 octopusviewer-viewer {
     display: block;
-    height: 50vmin;
-    min-height: 450px;
     margin: 1em 0;
     box-shadow: 0 0 5px 2px #e0e0e0;
+    height: 50vmin;
+    min-height: 450px;
+}
+
+.octopusviewer-media-view {
+    height: 50vmin;
+    min-height: 450px;
 }

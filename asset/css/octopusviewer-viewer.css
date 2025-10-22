@@ -1,9 +1,49 @@
-.octopusviewer-viewer {
+:root, .octopusviewer-viewer {
     --octopusviewer-font-size: 14px;
     --octopusviewer-line-height: 1.3;
     --octopusviewer-border-color: #e0e0e0;
     --octopusviewer-thumbnail-size: 50px;
+    --octopusviewer-controls-background-color: #f0f0f0;
+}
 
+octopusviewer-media-view,
+octopusviewer-media-info,
+octopusviewer-media-selector {
+    font-size: var(--octopusviewer-font-size);
+    line-height: var(--octopusviewer-line-height);
+}
+
+.octopusviewer-media-view {
+    display: flex;
+}
+.octopusviewer-media-view > octopusviewer-media-view {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+octopusviewer-media-view {
+    position: relative;
+    line-height: var(--octopusviewer-line-height);
+}
+
+octopusviewer-media-view .octopusviewer-media-view-main {
+    flex-grow: 1;
+}
+octopusviewer-media-view .octopusviewer-media-view-controls {
+    background-color: var(--octopusviewer-controls-background-color);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    line-height: 1;
+    gap: 5px;
+}
+
+octopusviewer-media-view .octopusviewer-media-view-controls > * {
+    padding: 5px;
+}
+
+.octopusviewer-viewer {
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -14,6 +54,10 @@
 }
 
 .octopusviewer-header {
+    display: none;
+}
+
+:host(:fullscreen) .octopusviewer-header {
     align-items: center;
     border-bottom: 1px solid var(--octopusviewer-border-color);
     display: flex;
@@ -26,7 +70,8 @@
     font-weight: bold;
 }
 
-.octopusviewer-fullscreen {
+.octopusviewer-fullscreen,
+.octopusviewer-download {
     cursor: pointer;
 }
 
@@ -157,8 +202,7 @@
     background-color: #f0f0f0;
 }
 
-.octopusviewer-media-info-metadata,
-.octopusviewer-media-info-footer:not(:empty) {
+.octopusviewer-media-info-metadata {
     padding: 6px;
 }
 
@@ -212,7 +256,7 @@ a.octopusviewer-download {
     text-decoration: none;
 }
 
-.octopusviewer-media-selector .octopusviewer-download span {
+.octopusviewer-media-selector-list .octopusviewer-download span {
     display: none;
 }
 

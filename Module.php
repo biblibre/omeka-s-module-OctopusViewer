@@ -108,6 +108,20 @@ class Module extends AbstractModule
             SQL;
             $connection->exec($sql);
         }
+
+        if (Comparator::lessThan($oldVersion, '0.9.0')) {
+            $sql = <<<'SQL'
+            UPDATE setting SET value = REPLACE(value, 'media-info', 'controls')
+            WHERE id = 'octopusviewer_show_download_link'
+            SQL;
+            $connection->exec($sql);
+
+            $sql = <<<'SQL'
+            UPDATE site_setting SET value = REPLACE(value, 'media-info', 'controls')
+            WHERE id = 'octopusviewer_show_download_link';
+            SQL;
+            $connection->exec($sql);
+        }
     }
 
     public function getConfig()

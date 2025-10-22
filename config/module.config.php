@@ -12,6 +12,10 @@ return [
             'OctopusViewer\Controller\Site\Viewer' => Service\Controller\Site\ViewerControllerFactory::class,
         ],
     ],
+    'js_translate_strings' => [
+        'Download', // @translate
+        'Toggle fullscreen', // @translate
+    ],
     'octopusviewer_file_renderers' => [
         'factories' => [
             'image' => Service\FileRenderer\ImageFactory::class,
@@ -41,6 +45,9 @@ return [
     'resource_page_block_layouts' => [
         'invokables' => [
             'octopusViewer' => Site\ResourcePageBlockLayout\OctopusViewer::class,
+            'octopusViewerMediaSelector' => Site\ResourcePageBlockLayout\OctopusViewerMediaSelector::class,
+            'octopusViewerMediaView' => Site\ResourcePageBlockLayout\OctopusViewerMediaView::class,
+            'octopusViewerMediaInfo' => Site\ResourcePageBlockLayout\OctopusViewerMediaInfo::class,
         ],
     ],
     'router' => [

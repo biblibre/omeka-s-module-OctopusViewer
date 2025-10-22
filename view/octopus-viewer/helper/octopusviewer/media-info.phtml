@@ -1,0 +1,10 @@
+<?php
+/**
+ * @var string[] $attributes
+ */
+
+$this->headLink()->appendStylesheet($this->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
+$this->headLink()->appendStylesheet($this->assetUrl('css/octopusviewer-viewer.css', 'OctopusViewer'));
+$this->headScript()->appendFile($this->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
+?>
+<octopusviewer-media-info <?= $this->htmlAttributes($attributes) ?>></octopusviewer-media-info>
