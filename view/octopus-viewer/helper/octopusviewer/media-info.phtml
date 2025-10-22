@@ -1,0 +1,10 @@
+<?php
+/**
+ * @var Omeka\Api\Representation\AbstractResourceEntityRepresentation $resource
+ */
+?>
+<?php $media = $resource->resourceName() === 'items' ? $resource->primaryMedia() : $resource ?>
+<octopusviewer-media-info
+    site-slug="<?php echo $this->layout()->site->slug(); ?>"
+    <?= $media ? sprintf('media-id="%s"', $media->id()) : '' ?>
+></octopusviewer-media-info>

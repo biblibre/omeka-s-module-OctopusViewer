@@ -41,6 +41,9 @@ return [
     'resource_page_block_layouts' => [
         'invokables' => [
             'octopusViewer' => Site\ResourcePageBlockLayout\OctopusViewer::class,
+            'octopusViewerMediaSelector' => Site\ResourcePageBlockLayout\OctopusViewerMediaSelector::class,
+            'octopusViewerMediaView' => Site\ResourcePageBlockLayout\OctopusViewerMediaView::class,
+            'octopusViewerMediaInfo' => Site\ResourcePageBlockLayout\OctopusViewerMediaInfo::class,
         ],
     ],
     'router' => [

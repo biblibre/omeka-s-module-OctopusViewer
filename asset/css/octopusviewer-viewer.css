@@ -1,9 +1,30 @@
-.octopusviewer-viewer {
+:root {
     --octopusviewer-font-size: 14px;
     --octopusviewer-line-height: 1.3;
     --octopusviewer-border-color: #e0e0e0;
     --octopusviewer-thumbnail-size: 50px;
+}
 
+octopusviewer-media-view {
+    display: block;
+    height: 50vmin;
+    min-height: 450px;
+}
+
+octopusviewer-media-view {
+    position: relative;
+}
+
+octopusviewer-media-view .octopusviewer-media-view-main {
+    height: 100%;
+}
+octopusviewer-media-view .octopusviewer-media-view-controls {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.octopusviewer-viewer {
     background-color: #fff;
     display: flex;
     flex-direction: column;
