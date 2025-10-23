@@ -3,16 +3,27 @@
     --octopusviewer-line-height: 1.3;
     --octopusviewer-border-color: #e0e0e0;
     --octopusviewer-thumbnail-size: 50px;
+    --octopusviewer-controls-background-color: #f0f0f0;
 }
 
-octopusviewer-media-view {
-    display: block;
-    height: 50vmin;
-    min-height: 450px;
+octopusviewer-media-view,
+octopusviewer-media-info,
+octopusviewer-media-selector {
+    font-size: var(--octopusviewer-font-size);
+    line-height: var(--octopusviewer-line-height);
+}
+
+.octopusviewer-media-view {
+    display: flex;
+    min-height: 50vmin;
+}
+.octopusviewer-media-view > octopusviewer-media-view {
+    flex-grow: 1;
 }
 
 octopusviewer-media-view {
     position: relative;
+    line-height: var(--octopusviewer-line-height);
 }
 
 octopusviewer-media-view .octopusviewer-media-view-main {
@@ -22,6 +33,15 @@ octopusviewer-media-view .octopusviewer-media-view-controls {
     position: absolute;
     bottom: 0;
     right: 0;
+    background-color: var(--octopusviewer-controls-background-color);
+    display: flex;
+    flex-wrap: nowrap;
+    line-height: 1;
+    gap: 5px;
+}
+
+octopusviewer-media-view .octopusviewer-media-view-controls > * {
+    padding: 5px;
 }
 
 .octopusviewer-viewer {
@@ -47,7 +67,8 @@ octopusviewer-media-view .octopusviewer-media-view-controls {
     font-weight: bold;
 }
 
-.octopusviewer-fullscreen {
+.octopusviewer-fullscreen,
+.octopusviewer-download {
     cursor: pointer;
 }
 

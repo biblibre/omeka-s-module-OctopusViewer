@@ -2,17 +2,14 @@
 /**
  * @var array $query
  * @var string $title
+ * @var string[] $attributes
  */
+
+$this->headLink()->appendStylesheet($this->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
+$this->headScript()->appendFile($this->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
+
 ?>
-<?php $showMediaSelector = $this->siteSetting('octopusviewer_show_media_selector', '') ?: $this->setting('octopusviewer_show_media_selector', 'auto'); ?>
-<?php $showMediaInfo = $this->siteSetting('octopusviewer_show_media_info', '') ?: $this->setting('octopusviewer_show_media_info', 'always'); ?>
-<octopusviewer-viewer
-    media-query="<?php echo http_build_query($query); ?>"
-    site-slug="<?php echo $this->layout()->site->slug(); ?>"
-    show-media-selector="<?= $this->escapeHtml($showMediaSelector) ?>"
-    show-media-info="<?= $this->escapeHtml($showMediaInfo) ?>"
-    extra-stylesheet="<?= $this->escapeHtml($extraStylesheet); ?>"
->
+<octopusviewer-viewer <?= $this->htmlAttributes($attributes) ?>>
     <?php if (!empty($title)): ?>
         <span slot="title"><?= $this->escapeHtml($title); ?></span>
     <?php endif; ?>

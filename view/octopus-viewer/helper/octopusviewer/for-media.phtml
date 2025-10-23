@@ -4,5 +4,5 @@
  */
 ?>
 <div class="octopusviewer-wrapper">
-    <?= $this->octopusViewer()->viewer(['media_id' => $media->id()], $media->displayTitle()); ?>
+    <?= $this->octopusViewer()->viewer(['media_id' => $media->id()], $media->displayTitle(), ['media-id' => $item->primaryMedia()]); ?>
 </div>

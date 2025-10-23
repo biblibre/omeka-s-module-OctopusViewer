@@ -4,6 +4,7 @@ namespace OctopusViewer\Site\ResourcePageBlockLayout;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Site\ResourcePageBlockLayout\ResourcePageBlockLayoutInterface;
 use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
+use Omeka\Api\Representation\ItemRepresentation;
 
 class OctopusViewerMediaView implements ResourcePageBlockLayoutInterface
 {
@@ -19,6 +20,23 @@ class OctopusViewerMediaView implements ResourcePageBlockLayoutInterface
 
     public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource) : string
     {
-        return $view->octopusViewer()->mediaView($resource);
+        if ($resource instanceof ItemRepresentation) {
+            $item = $resource;
+            $media = $item->primaryMedia();
+        } else {
+            $media = $resource;
+            $item = $media->item();
+        }
+
+        if (!$media) {
+            return '';
+        }
+
+        $attributes = [
+            'media-query' => http_build_query(['item_id' => $item->id()]),
+            'media-id' => $media->id(),
+        ];
+
+        return $view->octopusViewer()->mediaView($attributes);
     }
 }

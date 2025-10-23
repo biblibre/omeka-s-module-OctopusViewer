@@ -1,10 +1,10 @@
 <?php
 /**
- * @var Omeka\Api\Representation\AbstractResourceEntityRepresentation $resource
+ * @var string[] $attributes
  */
+
+$this->headLink()->appendStylesheet($this->assetUrl('css/octopusviewer.css', 'OctopusViewer'));
+$this->headLink()->appendStylesheet($this->assetUrl('css/octopusviewer-viewer.css', 'OctopusViewer'));
+$this->headScript()->appendFile($this->assetUrl('js/octopusviewer-viewer.js', 'OctopusViewer'));
 ?>
-<?php $media = $resource->resourceName() === 'items' ? $resource->primaryMedia() : $resource ?>
-<octopusviewer-media-info
-    site-slug="<?php echo $this->layout()->site->slug(); ?>"
-    <?= $media ? sprintf('media-id="%s"', $media->id()) : '' ?>
-></octopusviewer-media-info>
+<octopusviewer-media-info <?= $this->htmlAttributes($attributes) ?>></octopusviewer-media-info>

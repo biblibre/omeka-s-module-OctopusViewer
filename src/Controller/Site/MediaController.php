@@ -42,4 +42,20 @@ class MediaController extends AbstractActionController
 
         return $view;
     }
+
+    public function downloadAction()
+    {
+        $partialHelper = $this->viewHelpers()->get('partial');
+
+        $mediaId = $this->params()->fromRoute('id');
+        $media = $this->api()->read('media', $mediaId)->getContent();
+
+        $view = new JsonModel([
+            'originalUrl' => $media->originalUrl(),
+        ]);
+
+        $this->getResponse()->getHeaders()->addHeaderLine('Access-Control-Allow-Origin', '*');
+
+        return $view;
+    }
 }

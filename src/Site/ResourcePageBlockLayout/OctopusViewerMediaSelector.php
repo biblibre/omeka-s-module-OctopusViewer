@@ -19,6 +19,16 @@ class OctopusViewerMediaSelector implements ResourcePageBlockLayoutInterface
 
     public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource) : string
     {
-        return $view->octopusViewer()->mediaSelector($resource);
+        $media = $resource->primaryMedia();
+        if (!$media) {
+            return '';
+        }
+
+        $attributes = [
+            'media-query' => http_build_query(['item_id' => $resource->id()]),
+            'media-id' => $media->id(),
+        ];
+
+        return $view->octopusViewer()->mediaSelector($attributes);
     }
 }
