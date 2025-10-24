@@ -53,28 +53,12 @@
 
             this.shadowRoot.querySelector('.octopusviewer-viewer').classList.add('loaded');
 
-            // TODO Redo this
-            //const shouldShowMediaSelector =
-            //    this.showMediaSelector === 'always' ||
-            //    (this.showMediaSelector === 'auto' && allMedia.length > 1);
-            //if (shouldShowMediaSelector) {
-            //    this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.remove('hidden');
-            //}
-
             if (this.showMediaInfo === 'always') {
                 this.shadowRoot.querySelector('.octopusviewer-media-info').classList.remove('hidden');
             }
         }
 
         attachEventListeners () {
-            this.shadowRoot.addEventListener('octopus:media-select', ev => {
-                for (const el of this.shadowRoot.querySelectorAll('octopusviewer-media-selector, octopusviewer-media-view, octopusviewer-media-info')) {
-                    if (el === ev.target) continue;
-
-                    el.mediaId = ev.detail.mediaId;
-                }
-            });
-
             this.shadowRoot.querySelector('.octopusviewer-viewer').addEventListener('click', ev => {
                 // Allow links to be clicked
                 if (ev.target.closest('a[href]')) {
@@ -91,6 +75,17 @@
                 ev.stopPropagation();
 
                 ev.target.closest('.sidebar').classList.toggle('collapsed');
+            });
+
+            this.shadowRoot.addEventListener('octopus:media-list-loaded', ev => {
+                const shouldShowMediaSelector =
+                    this.showMediaSelector === 'always' ||
+                    (this.showMediaSelector === 'auto' && ev.detail.media.length > 1);
+                if (shouldShowMediaSelector) {
+                    this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.remove('hidden');
+                } else {
+                    this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.add('hidden');
+                }
             });
         }
 
@@ -157,7 +152,7 @@
         <div class="octopusviewer-title"><slot name="title"></slot></div>
     </div>
     <div class="octopusviewer-body">
-        <div class="octopusviewer-media-selector sidebar sidebar-left">
+        <div class="octopusviewer-media-selector sidebar sidebar-left hidden">
             <div class="sidebar-header collapse-toggle">
                 <i class="octopusviewer-icon-collapse"></i>
             </div>
@@ -172,7 +167,6 @@
             <div class="sidebar-footer octopusviewer-media-info-footer"></div>
         </div>
     </div>
-    <div class="octopusviewer-footer"></div>
 </div>
     `;
 
@@ -206,6 +200,12 @@
             if (name === 'media-id') {
                 this.#loadInfo();
             }
+        }
+
+        connectedCallback () {
+            this.getRootNode().addEventListener('octopus:media-select', ev => {
+                this.mediaId = ev.detail.mediaId;
+            });
         }
 
         get mediaId () {
@@ -284,36 +284,10 @@
             this.appendChild(viewTemplate.content.cloneNode(true));
             this.loadJsDependencies();
 
-            this.addEventListener('click', ev => {
-                if (ev.target.closest('.octopusviewer-fullscreen')) {
-                    ev.preventDefault();
+            this.addEventListener('click', this.#onClick)
 
-                    if (document.fullscreenElement) {
-                        document.exitFullscreen();
-                    } else {
-                        const viewer = document.createElement('octopusviewer-viewer');
-                        viewer.mediaQuery = 'item_id=87600';
-                        viewer.siteSlug = this.siteSlug;
-                        viewer.mediaId = this.mediaId;
-                        viewer.style.position = 'absolute';
-                        viewer.style.top = '-20000px';
-                        viewer.style.left = '-20000px';
-                        viewer.addEventListener('fullscreenchange', () => {
-                            if (!document.fullscreenElement) {
-                                viewer.remove();
-                            }
-                        });
-                        document.body.appendChild(viewer);
-                        viewer.requestFullscreen();
-                    }
-                } else if (ev.target.closest('.octopusviewer-download')) {
-                    ev.preventDefault();
-
-                    const mediaDownloadUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${this.mediaId}/download`, baseUrl);
-                    fetch(mediaDownloadUrl).then(res => res.json()).then(data => {
-                        window.open(data.originalUrl, '_blank');
-                    }).catch(console.error);
-                }
+            this.getRootNode().addEventListener('octopus:media-select', ev => {
+                this.mediaId = ev.detail.mediaId;
             });
         }
 
@@ -347,6 +321,59 @@
                 script.onerror = reject;
                 document.head.appendChild(script);
             });
+        }
+
+        #onClick (ev) {
+            if (ev.target.closest('.octopusviewer-fullscreen')) {
+                ev.preventDefault();
+
+                this.toggleFullscreen();
+            } else if (ev.target.closest('.octopusviewer-download')) {
+                ev.preventDefault();
+
+                this.download();
+            }
+        }
+
+        toggleFullscreen () {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                const rootNode = this.getRootNode();
+                if (rootNode instanceof ShadowRoot) {
+                    rootNode.host.requestFullscreen();
+                } else {
+                    // Recreate full viewer with sidebars
+                    const viewer = document.createElement('octopusviewer-viewer');
+
+                    viewer.mediaQuery = this.mediaQuery;
+                    viewer.siteSlug = this.siteSlug;
+                    viewer.mediaId = this.mediaId;
+                    viewer.showMediaSelector = this.showMediaSelector;
+                    viewer.showMediaInfo = this.showMediaInfo;
+
+                    viewer.style.position = 'absolute';
+                    viewer.style.top = '-20000px';
+                    viewer.style.left = '-20000px';
+
+                    viewer.addEventListener('fullscreenchange', () => {
+                        if (!document.fullscreenElement) {
+                            viewer.remove();
+                        }
+                    });
+                    document.body.appendChild(viewer);
+                    viewer.requestFullscreen();
+                }
+            }
+        }
+
+        download () {
+            const mediaDownloadUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${this.mediaId}/download`, baseUrl);
+            fetch(mediaDownloadUrl)
+                .then(res => res.json())
+                .then(data => {
+                    window.open(data.originalUrl, '_blank');
+                }).catch(console.error);
         }
 
         get mediaId () {
@@ -420,15 +447,6 @@
 
                 const allMedia = mediaSelectorContainer.querySelectorAll('.octopusviewer-media-selector-element');
                 if (allMedia.length === 0) {
-                    this.remove();
-                    return;
-                }
-
-                const shouldShowMediaSelector =
-                    this.showMediaSelector === 'always' ||
-                    (this.showMediaSelector === 'auto' && allMedia.length > 1);
-                if (!shouldShowMediaSelector) {
-                    this.remove();
                     return;
                 }
 
@@ -436,6 +454,8 @@
 
                 const mediaSelector = this.querySelector('.octopusviewer-media-selector-list');
                 mediaSelector.replaceChildren(...mediaSelectorContainer.childNodes);
+
+                this.#dispatchMediaListLoadedEvent();
 
                 if (this.mediaId) {
                     this._markMediaAsSelected(this.mediaId);
@@ -501,6 +521,24 @@
             );
         }
 
+        #dispatchMediaListLoadedEvent () {
+            const media = [];
+
+            for (const el of this.querySelectorAll('.octopusviewer-media-selector-element[data-media-id]')) {
+                media.push({ id: el.dataset.mediaId });
+            }
+
+            this.dispatchEvent(
+                new CustomEvent(
+                    'octopus:media-list-loaded',
+                    {
+                        bubbles: true,
+                        detail: { media },
+                    }
+                )
+            );
+        }
+
         get mediaId () {
             return this.getAttribute('media-id');
         }
@@ -546,12 +584,4 @@
     selectorTemplate.innerHTML = `<div class="octopusviewer-media-selector-list"></div>`;
 
     window.customElements.define('octopusviewer-media-selector', OctopusViewerMediaSelector);
-
-    document.addEventListener('octopus:media-select', function (ev) {
-        for (const el of document.querySelectorAll('octopusviewer-media-selector, octopusviewer-media-view, octopusviewer-media-info')) {
-            if (el === ev.target) continue;
-
-            el.mediaId = ev.detail.mediaId;
-        }
-    });
 })();

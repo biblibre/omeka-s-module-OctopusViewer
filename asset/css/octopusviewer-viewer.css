@@ -19,6 +19,8 @@ octopusviewer-media-selector {
 }
 .octopusviewer-media-view > octopusviewer-media-view {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 octopusviewer-media-view {
@@ -27,12 +29,9 @@ octopusviewer-media-view {
 }
 
 octopusviewer-media-view .octopusviewer-media-view-main {
-    height: 100%;
+    flex-grow: 1;
 }
 octopusviewer-media-view .octopusviewer-media-view-controls {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     background-color: var(--octopusviewer-controls-background-color);
     display: flex;
     flex-wrap: nowrap;
@@ -55,6 +54,10 @@ octopusviewer-media-view .octopusviewer-media-view-controls > * {
 }
 
 .octopusviewer-header {
+    display: none;
+}
+
+:host(:fullscreen) .octopusviewer-header {
     align-items: center;
     border-bottom: 1px solid var(--octopusviewer-border-color);
     display: flex;
@@ -254,7 +257,7 @@ a.octopusviewer-download {
     text-decoration: none;
 }
 
-.octopusviewer-media-selector .octopusviewer-download span {
+.octopusviewer-media-selector-list .octopusviewer-download span {
     display: none;
 }
 
