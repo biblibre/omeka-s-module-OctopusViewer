@@ -14,9 +14,6 @@ The following template files can be overriden by themes:
 ``view/octopus-viewer/site/media/info.phtml``
     The content of the right panel.
 
-``view/octopus-viewer/site/media/info-footer.phtml``
-    The footer of the right panel.
-
 ``view/octopus-viewer/site/viewer/media-selector.phtml``
     The content of the left panel.
 

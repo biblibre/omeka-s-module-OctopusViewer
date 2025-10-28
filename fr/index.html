@@ -1,23 +1,22 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manuel utilisateur de OctopusViewer &mdash; Documentation OctopusViewer </title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/translations.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d1a510d7"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
@@ -29,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> OctopusViewer
+
+          
+          
+          <a href="#" class="icon icon-home">
+            OctopusViewer
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -47,6 +50,7 @@
 <p class="caption" role="heading"><span class="caption-text">Thème</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="theme/customize-viewer-appearance.html">Personnaliser l’apparence de la visionneuse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theme/resource-page-blocks.html">Blocs de page de ressource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme/templates.html">Templates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theme/view-helpers.html"><em>View helpers</em></a></li>
 </ul>
@@ -68,7 +72,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a></li>
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Manuel utilisateur de OctopusViewer</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> Afficher la source de la page</a>
@@ -80,11 +84,11 @@
            <div itemprop="articleBody">
              
   <section id="octopusviewer-user-manual">
-<h1>Manuel utilisateur de OctopusViewer<a class="headerlink" href="#octopusviewer-user-manual" title="Lien permanent vers cette rubrique"></a></h1>
+<h1>Manuel utilisateur de OctopusViewer<a class="headerlink" href="#octopusviewer-user-manual" title="Lien vers cette rubrique"></a></h1>
 <p>OctopusViewer rassemble tous vos médias Omeka S dans une visionneuse légère. Elle est prévue pour être utilisée en remplacement d’autres visionneuses comme UniversalViewer ou Mirador.</p>
 <p>En revanche, contrairement à UniversalViewer et Mirador, OctopusViewer n’est pas une visionneuse IIIF. Pour utiliser des manifestes IIIF avec OctopusViewer, ils doivent être ajoutés à Omeka S en tant que média « IIIF presentation » (nécessite Omeka S 4.0.0 ou plus).</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Lien vers cette rubrique"></a></h2>
 <p>UniversalViewer et Mirador sont d’excellents outils mais ils ont quelques limites quand ils sont utilisés dans Omeka S:</p>
 <ul class="simple">
 <li><p>Ils nécessitent un manifeste IIIF, ce qui veut souvent dire que des modules supplémentaires doivent être installés</p></li>
@@ -100,7 +104,7 @@
 </ul>
 </section>
 <section id="features">
-<h2>Fonctionnalités<a class="headerlink" href="#features" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Fonctionnalités<a class="headerlink" href="#features" title="Lien vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p>Une visionneuse divisée en 3 panneaux:</p>
 <ul>
@@ -116,11 +120,11 @@
 </ul>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Lien vers cette rubrique"></a></h2>
 <p>Voir la documentation utilisateur pour <a class="reference external" href="http://omeka.org/s/docs/user-manual/modules/#installing-modules">installer un module</a>.</p>
 </section>
 <section id="license">
-<h2>Licence<a class="headerlink" href="#license" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Licence<a class="headerlink" href="#license" title="Lien vers cette rubrique"></a></h2>
 <p>OctopusViewer est distribué sous la licence publique générale GNU, version 3. Le texte complet de cette licence est dans le fichier <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>.</p>
 <div class="toctree-wrapper compound">
 </div>
@@ -141,7 +145,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, BibLibre.</p>
+    <p>&#169; Droits d'auteur 2023, BibLibre.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
