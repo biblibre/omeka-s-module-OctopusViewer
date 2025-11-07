@@ -1,22 +1,25 @@
-# French translations for PACKAGE package.
-# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2023.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Julian Maurice <julian.maurice@biblibre.com>, 2025
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 13:07+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
-"Language-Team: none\n"
-"Language: fr\n"
+"POT-Creation-Date: 2025-11-07 13:26+0100\n"
+"PO-Revision-Date: 2025-11-07 12:28+0000\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>, 2025\n"
+"Language-Team: French (https://app.transifex.com/biblibre-/teams/298658/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.6\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: view/octopus-viewer/site/viewer/media-download-link.phtml:2
 #: view/octopus-viewer/site/viewer/media-download-link.phtml:4
@@ -51,77 +54,134 @@ msgstr "Avant le contenu"
 msgid "After the media content"
 msgstr "Après le contenu"
 
-#: src/Form/ConfigForm.php:51
+#: src/Form/ConfigForm.php:48
+msgid ""
+"This setting can be replaced by one or several resource page blocks "
+"available in the theme settings. In that case, select \"No\""
+msgstr ""
+"Ce paramètre peut-être remplacé par un bloc ou plusieurs blocs de page de "
+"ressource disponibles dans les paramètres de thème. Dans ce cas, "
+"sélectionner \"Non\""
+
+#: src/Form/ConfigForm.php:57
 msgid "IIIF Image URI template"
 msgstr "Modèle d'URI IIIF Image"
 
-#: src/Form/ConfigForm.php:52
+#: src/Form/ConfigForm.php:58
 msgid ""
 "If set, it will be used to build an IIIF base URI for media stored locally. "
 "The following expressions can be used and will be replaced by their "
 "corresponding value: {id}, {storage_id}, {filename}, {extension}"
 msgstr ""
-"Si défini, sera utilisé pour construire une URI IIIF pour les médias stockés "
-"localement. Les expressions suivantes peuvent être utilisées et seront "
+"Si défini, sera utilisé pour construire une URI IIIF pour les médias stockés"
+" localement. Les expressions suivantes peuvent être utilisées et seront "
 "remplacées par leur valeur correspondante: {id}, {storage_id}, {filename}, "
 "{extension}"
 
-#: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:19
-msgid "Show media selector"
-msgstr "Afficher le sélecteur de médias"
+#: src/Form/ConfigForm.php:70 src/Form/SiteSettingsFieldset.php:19
+msgid "Show media selector sidebar"
+msgstr "Afficher la barre latérale du sélecteur de média"
 
-#: src/Form/ConfigForm.php:65 src/Form/ConfigForm.php:82
-msgid "This setting can be overriden in the site settings"
-msgstr "Ce paramètre peut être surchargé dans les paramètres du site"
+#: src/Form/ConfigForm.php:71
+msgid ""
+"This setting only applies to the full viewer (not the media selector block)."
+" It can be overriden in the site settings"
+msgstr ""
+"Ce paramètre s'applique uniquement à la visionneuse complète (pas au bloc "
+"sélecteur de média). Il peut être surchargé dans les paramètres du site"
 
-#: src/Form/ConfigForm.php:67 src/Form/SiteSettingsFieldset.php:22
+#: src/Form/ConfigForm.php:73 src/Form/ConfigForm.php:90
+#: src/Form/SiteSettingsFieldset.php:23 src/Form/SiteSettingsFieldset.php:42
 msgid "Only if there are several media"
 msgstr "Seulement s'il y a plusieurs médias"
 
-#: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:37
-msgid "Show media info"
-msgstr "Afficher les infos du média"
+#: src/Form/ConfigForm.php:87 src/Form/SiteSettingsFieldset.php:38
+msgid "Show media selector block"
+msgstr "Afficher le bloc sélecteur de média"
 
-#: src/Form/ConfigForm.php:97 src/Form/SiteSettingsFieldset.php:54
+#: src/Form/ConfigForm.php:88
+msgid ""
+"This setting only applies to the media selector block (not the media "
+"selector sidebar). It can be overriden in the site settings"
+msgstr ""
+"Ce paramètre s'applique uniquement au bloc sélecteur de média (et non à la "
+"barre latérale du sélecteur de média). Il peut être surchargé dans les "
+"paramètres du site"
+
+#: src/Form/ConfigForm.php:100 src/Form/SiteSettingsFieldset.php:53
+msgid "Show media info sidebar"
+msgstr "Afficher la barre latérale des infos du média"
+
+#: src/Form/ConfigForm.php:101
+msgid ""
+"This setting only applies to the full viewer (not the media metadata block)."
+" It can be overriden in the site settings"
+msgstr ""
+"Ce paramètre s'applique uniquement à la visionneuse complète (pas au bloc "
+"métadonnées du média). Il peut être surchargé dans les paramètres du site"
+
+#: src/Form/ConfigForm.php:116 src/Form/SiteSettingsFieldset.php:71
 msgid "Default media title"
 msgstr "Titre du média par défaut"
 
-#: src/Form/ConfigForm.php:98 src/Form/SiteSettingsFieldset.php:55
+#: src/Form/ConfigForm.php:117 src/Form/SiteSettingsFieldset.php:72
 msgid "Text used when a media has no title"
 msgstr "Texte utilisé quand un média n'a pas de titre"
 
-#: src/Form/ConfigForm.php:101 src/Form/SiteSettingsFieldset.php:59
+#: src/Form/ConfigForm.php:120 src/Form/SiteSettingsFieldset.php:76
 msgid "No text"
 msgstr "Aucun texte"
 
-#: src/Form/ConfigForm.php:114 src/Form/SiteSettingsFieldset.php:72
+#: src/Form/ConfigForm.php:133 src/Form/SiteSettingsFieldset.php:89
 msgid "Show download link"
 msgstr "Afficher un lien de téléchargement"
 
-#: src/Form/ConfigForm.php:115 src/Form/SiteSettingsFieldset.php:73
+#: src/Form/ConfigForm.php:134 src/Form/SiteSettingsFieldset.php:90
 msgid ""
-"Show a link to download the original file when available (does not work with "
-"some media types like Youtube videos for instance)"
+"Show a link to download the original file when available (does not work with"
+" some media types like Youtube videos for instance)"
 msgstr ""
-"Affiche un lien pour télécharger le fichier original quand il est disponible "
-"(ne fonctionne pas avec certains types de média tels que les vidéos Youtube "
-"par exemple)"
+"Affiche un lien pour télécharger le fichier original quand il est disponible"
+" (ne fonctionne pas avec certains types de média tels que les vidéos Youtube"
+" par exemple)"
 
-#: src/Form/ConfigForm.php:118 src/Form/SiteSettingsFieldset.php:77
+#: src/Form/ConfigForm.php:137 src/Form/SiteSettingsFieldset.php:94
 msgid "In the media selector panel"
 msgstr "Dans panneau de sélection de média"
 
-#: src/Form/ConfigForm.php:119 src/Form/SiteSettingsFieldset.php:78
+#: src/Form/ConfigForm.php:138 src/Form/SiteSettingsFieldset.php:95
 msgid "In the controls (below media view by default)"
 msgstr "Dans les contrôles (sous la vue du média par défaut)"
 
-#: src/Form/ConfigForm.php:120 src/Form/SiteSettingsFieldset.php:79
+#: src/Form/ConfigForm.php:139 src/Form/SiteSettingsFieldset.php:96
 msgid "In the media selector panel and in the controls"
 msgstr "Dans le panneau de sélection de média et dans les contrôles"
 
 #: src/Form/SiteSettingsFieldset.php:12
 msgid "Octopus Viewer"
 msgstr "Octopus Viewer"
+
+#: src/Form/SiteSettingsFieldset.php:20
+msgid ""
+"This setting only applies to the full viewer (not the media selector block)"
+msgstr ""
+"Ce paramètre s'applique uniquement à la visionneuse complète (et non au bloc"
+" sélecteur de média)"
+
+#: src/Form/SiteSettingsFieldset.php:39
+msgid ""
+"This setting only applies to the media selector block (not the media "
+"selector sidebar)"
+msgstr ""
+"Ce paramètre s'applique uniquement au bloc sélecteur de média (et non à la "
+"barre latérale du sélecteur de média)"
+
+#: src/Form/SiteSettingsFieldset.php:54
+msgid ""
+"This setting only applies to the full viewer (not the media metadata block)"
+msgstr ""
+"Ce paramètre s'applique uniquement à la visionneuse complète (et non au bloc"
+" métadonnées du média)"
 
 #: src/Site/ResourcePageBlockLayout/OctopusViewerMediaInfo.php:13
 msgid "Octopus viewer media metadata"

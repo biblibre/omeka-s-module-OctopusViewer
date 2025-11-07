@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 13:07+0100\n"
+"POT-Creation-Date: 2025-11-07 13:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,69 +50,110 @@ msgstr ""
 msgid "After the media content"
 msgstr ""
 
-#: src/Form/ConfigForm.php:51
+#: src/Form/ConfigForm.php:48
+msgid ""
+"This setting can be replaced by one or several resource page blocks "
+"available in the theme settings. In that case, select \"No\""
+msgstr ""
+
+#: src/Form/ConfigForm.php:57
 msgid "IIIF Image URI template"
 msgstr ""
 
-#: src/Form/ConfigForm.php:52
+#: src/Form/ConfigForm.php:58
 msgid ""
 "If set, it will be used to build an IIIF base URI for media stored locally. "
 "The following expressions can be used and will be replaced by their "
 "corresponding value: {id}, {storage_id}, {filename}, {extension}"
 msgstr ""
 
-#: src/Form/ConfigForm.php:64 src/Form/SiteSettingsFieldset.php:19
-msgid "Show media selector"
+#: src/Form/ConfigForm.php:70 src/Form/SiteSettingsFieldset.php:19
+msgid "Show media selector sidebar"
 msgstr ""
 
-#: src/Form/ConfigForm.php:65 src/Form/ConfigForm.php:82
-msgid "This setting can be overriden in the site settings"
+#: src/Form/ConfigForm.php:71
+msgid ""
+"This setting only applies to the full viewer (not the media selector block). "
+"It can be overriden in the site settings"
 msgstr ""
 
-#: src/Form/ConfigForm.php:67 src/Form/SiteSettingsFieldset.php:22
+#: src/Form/ConfigForm.php:73 src/Form/ConfigForm.php:90
+#: src/Form/SiteSettingsFieldset.php:23 src/Form/SiteSettingsFieldset.php:42
 msgid "Only if there are several media"
 msgstr ""
 
-#: src/Form/ConfigForm.php:81 src/Form/SiteSettingsFieldset.php:37
-msgid "Show media info"
+#: src/Form/ConfigForm.php:87 src/Form/SiteSettingsFieldset.php:38
+msgid "Show media selector block"
 msgstr ""
 
-#: src/Form/ConfigForm.php:97 src/Form/SiteSettingsFieldset.php:54
+#: src/Form/ConfigForm.php:88
+msgid ""
+"This setting only applies to the media selector block (not the media "
+"selector sidebar). It can be overriden in the site settings"
+msgstr ""
+
+#: src/Form/ConfigForm.php:100 src/Form/SiteSettingsFieldset.php:53
+msgid "Show media info sidebar"
+msgstr ""
+
+#: src/Form/ConfigForm.php:101
+msgid ""
+"This setting only applies to the full viewer (not the media metadata block). "
+"It can be overriden in the site settings"
+msgstr ""
+
+#: src/Form/ConfigForm.php:116 src/Form/SiteSettingsFieldset.php:71
 msgid "Default media title"
 msgstr ""
 
-#: src/Form/ConfigForm.php:98 src/Form/SiteSettingsFieldset.php:55
+#: src/Form/ConfigForm.php:117 src/Form/SiteSettingsFieldset.php:72
 msgid "Text used when a media has no title"
 msgstr ""
 
-#: src/Form/ConfigForm.php:101 src/Form/SiteSettingsFieldset.php:59
+#: src/Form/ConfigForm.php:120 src/Form/SiteSettingsFieldset.php:76
 msgid "No text"
 msgstr ""
 
-#: src/Form/ConfigForm.php:114 src/Form/SiteSettingsFieldset.php:72
+#: src/Form/ConfigForm.php:133 src/Form/SiteSettingsFieldset.php:89
 msgid "Show download link"
 msgstr ""
 
-#: src/Form/ConfigForm.php:115 src/Form/SiteSettingsFieldset.php:73
+#: src/Form/ConfigForm.php:134 src/Form/SiteSettingsFieldset.php:90
 msgid ""
 "Show a link to download the original file when available (does not work with "
 "some media types like Youtube videos for instance)"
 msgstr ""
 
-#: src/Form/ConfigForm.php:118 src/Form/SiteSettingsFieldset.php:77
+#: src/Form/ConfigForm.php:137 src/Form/SiteSettingsFieldset.php:94
 msgid "In the media selector panel"
 msgstr ""
 
-#: src/Form/ConfigForm.php:119 src/Form/SiteSettingsFieldset.php:78
+#: src/Form/ConfigForm.php:138 src/Form/SiteSettingsFieldset.php:95
 msgid "In the controls (below media view by default)"
 msgstr ""
 
-#: src/Form/ConfigForm.php:120 src/Form/SiteSettingsFieldset.php:79
+#: src/Form/ConfigForm.php:139 src/Form/SiteSettingsFieldset.php:96
 msgid "In the media selector panel and in the controls"
 msgstr ""
 
 #: src/Form/SiteSettingsFieldset.php:12
 msgid "Octopus Viewer"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:20
+msgid ""
+"This setting only applies to the full viewer (not the media selector block)"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:39
+msgid ""
+"This setting only applies to the media selector block (not the media "
+"selector sidebar)"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:54
+msgid ""
+"This setting only applies to the full viewer (not the media metadata block)"
 msgstr ""
 
 #: src/Site/ResourcePageBlockLayout/OctopusViewerMediaInfo.php:13
