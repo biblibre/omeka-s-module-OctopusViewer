@@ -16,7 +16,8 @@ class SiteSettingsFieldset extends Fieldset
             'name' => 'octopusviewer_show_media_selector',
             'options' => [
                 'element_group' => 'octopusviewer',
-                'label' => 'Show media selector', // @translate
+                'label' => 'Show media selector sidebar', // @translate
+                'info' => 'This setting only applies to the full viewer (not the media selector block)', // @translate
                 'empty_option' => 'Use global setting', // @translate
                 'value_options' => [
                     'auto' => 'Only if there are several media', // @translate
@@ -31,10 +32,26 @@ class SiteSettingsFieldset extends Fieldset
 
         $this->add([
             'type' => Select::class,
+            'name' => 'octopusviewer_show_media_selector_block',
+            'options' => [
+                'element_group' => 'octopusviewer',
+                'label' => 'Show media selector block', // @translate
+                'info' => 'This setting only applies to the media selector block (not the media selector sidebar)', // @translate
+                'empty_option' => 'Use global setting', // @translate
+                'value_options' => [
+                    'auto' => 'Only if there are several media', // @translate
+                    'always' => 'Always', // @translate
+                ],
+            ],
+        ]);
+
+        $this->add([
+            'type' => Select::class,
             'name' => 'octopusviewer_show_media_info',
             'options' => [
                 'element_group' => 'octopusviewer',
-                'label' => 'Show media info', // @translate
+                'label' => 'Show media info sidebar', // @translate
+                'info' => 'This setting only applies to the full viewer (not the media metadata block)', // @translate
                 'empty_option' => 'Use global setting', // @translate
                 'value_options' => [
                     'always' => 'Always', // @translate

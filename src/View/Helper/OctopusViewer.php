@@ -25,6 +25,7 @@ class OctopusViewer extends AbstractHelper
         $attributes['site-slug'] ??= $view->layout()->site->slug();
         $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
         $attributes['show-media-info'] ??= $view->siteSetting('octopusviewer_show_media_info', '') ?: $view->setting('octopusviewer_show_media_info', 'always');
+        $attributes['show-download-link'] ??= $view->siteSetting('octopusviewer_show_download_link', '') ?: $view->setting('octopusviewer_show_download_link', 'no');
         $attributes['extra-stylesheet'] ??= $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true);
 
         $args = [
@@ -79,7 +80,7 @@ class OctopusViewer extends AbstractHelper
         $view = $this->getView();
 
         $attributes['site-slug'] ??= $view->layout()->site->slug();
-        $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
+        $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector_block', '') ?: $view->setting('octopusviewer_show_media_selector_block', 'auto');
 
         $args = [
             'attributes' => $attributes,
@@ -95,6 +96,7 @@ class OctopusViewer extends AbstractHelper
         $attributes['site-slug'] ??= $view->layout()->site->slug();
         $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
         $attributes['show-media-info'] ??= $view->siteSetting('octopusviewer_show_media_info', '') ?: $view->setting('octopusviewer_show_media_info', 'always');
+        $attributes['show-download-link'] ??= $view->siteSetting('octopusviewer_show_download_link', '') ?: $view->setting('octopusviewer_show_download_link', 'no');
         $attributes['extra-stylesheet'] ??= $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true);
 
         $args = [

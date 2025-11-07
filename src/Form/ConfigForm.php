@@ -44,6 +44,12 @@ class ConfigForm extends Form
             ],
         ]);
 
+        if (version_compare(\Omeka\Module::VERSION, '4.0') > 0) {
+            $info = 'This setting can be replaced by one or several resource page blocks available in the theme settings. In that case, select "No"'; // @translate
+            $this->get('octopusviewer_item_show')->setOption('info', $info);
+            $this->get('octopusviewer_media_show')->setOption('info', $info);
+        }
+
         $this->add([
             'type' => Text::class,
             'name' => 'octopusviewer_iiif_image_uri_template',
@@ -61,8 +67,8 @@ class ConfigForm extends Form
             'type' => Select::class,
             'name' => 'octopusviewer_show_media_selector',
             'options' => [
-                'label' => 'Show media selector', // @translate
-                'info' => 'This setting can be overriden in the site settings', // @translate
+                'label' => 'Show media selector sidebar', // @translate
+                'info' => 'This setting only applies to the full viewer (not the media selector block). It can be overriden in the site settings', // @translate
                 'value_options' => [
                     'auto' => 'Only if there are several media', // @translate
                     'always' => 'Always', // @translate
@@ -76,10 +82,23 @@ class ConfigForm extends Form
 
         $this->add([
             'type' => Select::class,
+            'name' => 'octopusviewer_show_media_selector_block',
+            'options' => [
+                'label' => 'Show media selector block', // @translate
+                'info' => 'This setting only applies to the media selector block (not the media selector sidebar). It can be overriden in the site settings', // @translate
+                'value_options' => [
+                    'auto' => 'Only if there are several media', // @translate
+                    'always' => 'Always', // @translate
+                ],
+            ],
+        ]);
+
+        $this->add([
+            'type' => Select::class,
             'name' => 'octopusviewer_show_media_info',
             'options' => [
-                'label' => 'Show media info', // @translate
-                'info' => 'This setting can be overriden in the site settings', // @translate
+                'label' => 'Show media info sidebar', // @translate
+                'info' => 'This setting only applies to the full viewer (not the media metadata block). It can be overriden in the site settings', // @translate
                 'value_options' => [
                     'always' => 'Always', // @translate
                     'never' => 'Never', // @translate

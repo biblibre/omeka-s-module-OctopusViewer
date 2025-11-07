@@ -40,7 +40,7 @@
             const mediaInfo = document.createElement('octopusviewer-media-info');
 
             for (const el of [mediaSelector, mediaView, mediaInfo]) {
-                for (const property of ['mediaQuery', 'siteSlug', 'showMediaSelector', 'showMediaInfo', 'mediaId']) {
+                for (const property of ['mediaQuery', 'siteSlug', 'showMediaSelector', 'showMediaInfo', 'showDownloadLink', 'mediaId']) {
                     el[property] = this[property];
                 }
             }
@@ -118,6 +118,14 @@
 
         set showMediaInfo (showMediaInfo) {
             this.setAttribute('show-media-info', showMediaInfo ?? '');
+        }
+
+        get showDownloadLink () {
+            return this.getAttribute('show-download-link') ?? '';
+        }
+
+        set showDownloadLink (showDownloadLink) {
+            this.setAttribute('show-download-link', showDownloadLink ?? '');
         }
 
         get extraStylesheet () {
@@ -296,22 +304,18 @@
                         fetch(mediaRenderUrl).then(response => {
                             return response.text();
                         }).then(html => {
-                            this.replaceChildren(viewTemplate.content.cloneNode(true));
+                            this.applyTemplate();
                             this.querySelector('.octopusviewer-media-view-main').innerHTML = html;
                         });
                     } else {
-                        this.replaceChildren(viewTemplate.content.cloneNode(true));
+                        this.applyTemplate();
                     }
                 });
             }
         }
 
         connectedCallback () {
-            if (window.Omeka?.jsTranslate) {
-                viewTemplate.content.querySelector('.octopusviewer-download').setAttribute('title', Omeka.jsTranslate('Download'));
-                viewTemplate.content.querySelector('.octopusviewer-fullscreen').setAttribute('title', Omeka.jsTranslate('Toggle fullscreen'));
-            }
-            this.appendChild(viewTemplate.content.cloneNode(true));
+            this.applyTemplate();
 
             this.loadJsDependencies();
 
@@ -322,6 +326,20 @@
         disconnectedCallback () {
             this.removeEventListener('click', this);
             this.getRootNode().removeEventListener('octopus:media-select', this);
+        }
+
+        applyTemplate () {
+            const fragment = viewTemplate.content.cloneNode(true)
+            if (this.showDownloadLink !== 'controls' && this.showDownloadLink !== 'media-selector|controls') {
+                fragment.querySelector('.octopusviewer-download')?.remove();
+            }
+
+            if (window.Omeka?.jsTranslate) {
+                fragment.querySelector('.octopusviewer-download')?.setAttribute('title', Omeka.jsTranslate('Download'));
+                fragment.querySelector('.octopusviewer-fullscreen')?.setAttribute('title', Omeka.jsTranslate('Toggle fullscreen'));
+            }
+
+            this.replaceChildren(fragment);
         }
 
         handleEvent (ev) {
@@ -404,6 +422,7 @@
                 viewer.mediaId = this.mediaId;
                 viewer.showMediaSelector = this.showMediaSelector;
                 viewer.showMediaInfo = this.showMediaInfo;
+                viewer.showDownloadLink = this.showDownloadLink;
 
                 viewer.style.position = 'absolute';
                 viewer.style.top = '-20000px';
@@ -468,6 +487,14 @@
             this.setAttribute('show-media-info', showMediaInfo ?? '');
         }
 
+        get showDownloadLink () {
+            return this.getAttribute('show-download-link') ?? '';
+        }
+
+        set showDownloadLink (showDownloadLink) {
+            this.setAttribute('show-download-link', showDownloadLink ?? '');
+        }
+
         get fullscreenTitle () {
             return this.getAttribute('fullscreen-title') ?? '';
         }
@@ -507,6 +534,9 @@
 
                 const allMedia = mediaSelectorContainer.querySelectorAll('.octopusviewer-media-selector-element');
                 if (allMedia.length === 0) {
+                    return;
+                }
+                if (allMedia.length === 1 && this.showMediaSelector === 'auto') {
                     return;
                 }
 
