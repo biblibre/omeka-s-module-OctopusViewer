@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.9.1] - 2025-11-07
 
 - Clarify that some settings only apply to the full viewer
 - Add a new global setting and its site-specific counterpart for showing the
@@ -142,6 +142,7 @@ directory and do a fresh install of OctopusViewer
 
 Initial release
 
+[0.9.1]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.9.1
 [0.9.0]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.9.0
 [0.8.2]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.8.2
 [0.8.1]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.8.1
