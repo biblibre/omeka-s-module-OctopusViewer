@@ -28,6 +28,7 @@ return [
             'image/jp2' => 'image',
             'image/jpeg' => 'image',
             'image/png' => 'image',
+            'image/svg+xml' => 'image',
             'image/tiff' => 'image',
             'image/webp' => 'image',
             'application/pdf' => 'pdf',
