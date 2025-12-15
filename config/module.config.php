@@ -79,21 +79,23 @@ return [
                                     ],
                                 ],
                             ],
+                            // This route is useful to add a Content-Security-Policy
+                            // header to the response and to inject a custom
+                            // CSS stylesheet.
+                            // Other than that, it only renders the pdfjs
+                            // viewer.html file
+                            'pdfjs-viewer' => [
+                                'type' => \Laminas\Router\Http\Literal::class,
+                                'options' => [
+                                    'route' => '/pdf.js/web/viewer',
+                                    'defaults' => [
+                                        '__NAMESPACE__' => 'OctopusViewer\Controller',
+                                        'controller' => 'pdfjs',
+                                        'action' => 'viewer',
+                                    ],
+                                ],
+                            ],
                         ],
-                    ],
-                ],
-            ],
-            // This route is only useful to add a Content-Security-Policy
-            // header to the response.
-            // Other than that, it only renders the pdfjs viewer.html file
-            'octopusviewer-pdfjs-viewer' => [
-                'type' => \Laminas\Router\Http\Literal::class,
-                'options' => [
-                    'route' => '/modules/OctopusViewer/asset/vendor/pdf.js/web/viewer',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'OctopusViewer\Controller',
-                        'controller' => 'pdfjs',
-                        'action' => 'viewer',
                     ],
                 ],
             ],

@@ -19,7 +19,7 @@ class Pdf extends AbstractFileRenderer
 
     public function render(PhpRenderer $view, MediaRepresentation $media): string
     {
-        $viewer_url = $view->serverUrl($view->url('octopusviewer-pdfjs-viewer'));
+        $viewer_url = $view->serverUrl($view->url('site/octopusviewer/pdfjs-viewer', [], [], true));
 
         $config = [
             'viewer_url' => $viewer_url,
