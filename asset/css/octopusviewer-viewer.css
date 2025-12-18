@@ -25,10 +25,12 @@ octopusviewer-media-selector {
 octopusviewer-media-view {
     position: relative;
     line-height: var(--octopusviewer-line-height);
+    overflow: hidden;
 }
 
 octopusviewer-media-view .octopusviewer-media-view-main {
     flex-grow: 1;
+    overflow: auto;
 }
 octopusviewer-media-view .octopusviewer-media-view-controls {
     background-color: var(--octopusviewer-controls-background-color);
