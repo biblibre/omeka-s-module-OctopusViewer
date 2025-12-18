@@ -20,8 +20,8 @@ if ($defaultMediaTitle === 'no_text') {
         class="octopusviewer-media-selector-element"
         title="<?php echo $this->escapeHtml($title); ?>"
         data-media-id="<?php echo $media->id(); ?>"
-        data-octopusviewer-render-url="<?php echo $this->url('site/octopusviewer/default', ['controller' => 'media', 'id' => $media->id(), 'action' => 'render'], [], true); ?>"
-        data-octopusviewer-info-url="<?php echo $this->url('site/octopusviewer/default', ['controller' => 'media', 'id' => $media->id(), 'action' => 'info'], [], true); ?>"
+        data-octopusviewer-render-url="<?php echo $this->url('site/octopusviewer/default-id', ['controller' => 'media', 'id' => $media->id(), 'action' => 'render'], [], true); ?>"
+        data-octopusviewer-info-url="<?php echo $this->url('site/octopusviewer/default-id', ['controller' => 'media', 'id' => $media->id(), 'action' => 'info'], [], true); ?>"
     >
         <div class="octopusviewer-thumbnail">
             <?php echo $this->thumbnail($media, 'square'); ?>

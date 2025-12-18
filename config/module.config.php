@@ -15,6 +15,8 @@ return [
     'js_translate_strings' => [
         'Download', // @translate
         'Toggle fullscreen', // @translate
+        'Previous', // @translate
+        'Next', // @translate
     ],
     'octopusviewer_file_renderers' => [
         'factories' => [
@@ -67,16 +69,16 @@ return [
                             'default' => [
                                 'type' => \Laminas\Router\Http\Segment::class,
                                 'options' => [
-                                    'route' => '/:controller/:id/:action',
+                                    'route' => '/:controller[/:action]',
+                                    'defaults' => [
+                                        'action' => 'browse',
+                                    ],
                                 ],
                             ],
-                            'viewer' => [
+                            'default-id' => [
                                 'type' => \Laminas\Router\Http\Segment::class,
                                 'options' => [
-                                    'route' => '/viewer/:action',
-                                    'defaults' => [
-                                        'controller' => 'viewer',
-                                    ],
+                                    'route' => '/:controller/:id/:action',
                                 ],
                             ],
                             // This route is useful to add a Content-Security-Policy

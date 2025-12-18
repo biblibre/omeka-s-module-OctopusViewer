@@ -2,24 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Julian Maurice <julian.maurice@biblibre.com>, 2025
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 13:26+0100\n"
+"POT-Creation-Date: 2025-12-18 10:44+0100\n"
 "PO-Revision-Date: 2025-11-07 12:28+0000\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>, 2025\n"
-"Language-Team: French (https://app.transifex.com/biblibre-/teams/298658/fr/)\n"
+"Language-Team: French (https://app.transifex.com/biblibre-/teams/298658/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
+"1000000 == 0 ? 1 : 2;\n"
 
 #: view/octopus-viewer/site/viewer/media-download-link.phtml:2
 #: view/octopus-viewer/site/viewer/media-download-link.phtml:4
@@ -73,8 +75,8 @@ msgid ""
 "The following expressions can be used and will be replaced by their "
 "corresponding value: {id}, {storage_id}, {filename}, {extension}"
 msgstr ""
-"Si défini, sera utilisé pour construire une URI IIIF pour les médias stockés"
-" localement. Les expressions suivantes peuvent être utilisées et seront "
+"Si défini, sera utilisé pour construire une URI IIIF pour les médias stockés "
+"localement. Les expressions suivantes peuvent être utilisées et seront "
 "remplacées par leur valeur correspondante: {id}, {storage_id}, {filename}, "
 "{extension}"
 
@@ -84,8 +86,8 @@ msgstr "Afficher la barre latérale du sélecteur de média"
 
 #: src/Form/ConfigForm.php:71
 msgid ""
-"This setting only applies to the full viewer (not the media selector block)."
-" It can be overriden in the site settings"
+"This setting only applies to the full viewer (not the media selector block). "
+"It can be overriden in the site settings"
 msgstr ""
 "Ce paramètre s'applique uniquement à la visionneuse complète (pas au bloc "
 "sélecteur de média). Il peut être surchargé dans les paramètres du site"
@@ -114,8 +116,8 @@ msgstr "Afficher la barre latérale des infos du média"
 
 #: src/Form/ConfigForm.php:101
 msgid ""
-"This setting only applies to the full viewer (not the media metadata block)."
-" It can be overriden in the site settings"
+"This setting only applies to the full viewer (not the media metadata block). "
+"It can be overriden in the site settings"
 msgstr ""
 "Ce paramètre s'applique uniquement à la visionneuse complète (pas au bloc "
 "métadonnées du média). Il peut être surchargé dans les paramètres du site"
@@ -138,12 +140,12 @@ msgstr "Afficher un lien de téléchargement"
 
 #: src/Form/ConfigForm.php:134 src/Form/SiteSettingsFieldset.php:90
 msgid ""
-"Show a link to download the original file when available (does not work with"
-" some media types like Youtube videos for instance)"
+"Show a link to download the original file when available (does not work with "
+"some media types like Youtube videos for instance)"
 msgstr ""
-"Affiche un lien pour télécharger le fichier original quand il est disponible"
-" (ne fonctionne pas avec certains types de média tels que les vidéos Youtube"
-" par exemple)"
+"Affiche un lien pour télécharger le fichier original quand il est disponible "
+"(ne fonctionne pas avec certains types de média tels que les vidéos Youtube "
+"par exemple)"
 
 #: src/Form/ConfigForm.php:137 src/Form/SiteSettingsFieldset.php:94
 msgid "In the media selector panel"
@@ -165,8 +167,8 @@ msgstr "Octopus Viewer"
 msgid ""
 "This setting only applies to the full viewer (not the media selector block)"
 msgstr ""
-"Ce paramètre s'applique uniquement à la visionneuse complète (et non au bloc"
-" sélecteur de média)"
+"Ce paramètre s'applique uniquement à la visionneuse complète (et non au bloc "
+"sélecteur de média)"
 
 #: src/Form/SiteSettingsFieldset.php:39
 msgid ""
@@ -180,8 +182,8 @@ msgstr ""
 msgid ""
 "This setting only applies to the full viewer (not the media metadata block)"
 msgstr ""
-"Ce paramètre s'applique uniquement à la visionneuse complète (et non au bloc"
-" métadonnées du média)"
+"Ce paramètre s'applique uniquement à la visionneuse complète (et non au bloc "
+"métadonnées du média)"
 
 #: src/Site/ResourcePageBlockLayout/OctopusViewerMediaInfo.php:13
 msgid "Octopus viewer media metadata"

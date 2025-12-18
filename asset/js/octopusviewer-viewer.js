@@ -5,20 +5,177 @@
     const baseUrlEnd = src.indexOf('/modules/OctopusViewer/asset/js/octopusviewer-viewer.js');
     const baseUrl = src.substring(0, baseUrlEnd) + '/';
 
-    class OctopusViewerViewer extends HTMLElement {
-        static get observedAttributes() {
-            return ['media-id'];
+    class OctopusViewer extends EventTarget {
+        #selectedMedia;
+        #selectedMediaIndex;
+
+        static #instances = new Map();
+        static #instancesByElement = new WeakMap();
+
+        static getInstance(element) {
+            if (!(element instanceof OctopusViewerBaseElement)) {
+                throw new Error('element is not an instance of OctopusViewerBaseElement');
+            }
+
+            if (!this.#instancesByElement.has(element)) {
+                const instanceKey = element.instanceKey;
+                if (!this.#instances.has(instanceKey)) {
+                    const instance = new OctopusViewer(element.siteSlug, element.mediaQuery)
+                    this.#instances.set(instanceKey, instance);
+                }
+
+                this.#instancesByElement.set(element, this.#instances.get(instanceKey));
+            }
+
+            return this.#instancesByElement.get(element);
         }
 
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (oldValue === newValue) return;
+        static setInstance(element, instance) {
+            this.#instancesByElement.set(element, instance);
+        }
 
-            if (name === 'media-id') {
-                for (const el of this.shadowRoot.querySelectorAll('octopusviewer-media-selector,octopusviewer-media-view,octopusviewer-media-info')) {
-                    el.mediaId = newValue;
-                }
+        constructor (siteSlug, mediaQuery) {
+            super();
+
+            this.siteSlug = siteSlug;
+            this.mediaQuery = mediaQuery;
+
+            this.loadMediaList();
+        }
+
+        loadMediaList () {
+            const mediaListUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/media-list', baseUrl);
+            mediaListUrl.search = this.mediaQuery;
+
+            fetch(mediaListUrl)
+                .then(res => res.json())
+                .then(res => {
+                    this.media = res.media;
+
+                    this.dispatchEvent(
+                        new CustomEvent(
+                            'octopus:media-list-loaded',
+                            {
+                                detail: { media: this.media },
+                            }
+                        )
+                    );
+
+                    this.selectMedia(0);
+                });
+        }
+
+        get selectedMedia () {
+            return this.#selectedMedia;
+        }
+
+        selectMedia (index) {
+            this.#selectedMedia = this.media.at(index);
+            this.#selectedMediaIndex = this.#selectedMedia ? index : undefined;
+
+            this.dispatchEvent(
+                new CustomEvent(
+                    'octopus:media-select',
+                    {
+                        detail: { media: this.selectedMedia },
+                    }
+                )
+            );
+        }
+
+        selectMediaById (id) {
+            const index = this.media.findIndex(m => m['o:id'] == id);
+            if (index < 0) {
+                throw new Error('Attempt to select a media that is not in the list');
+            }
+
+            this.selectMedia(index);
+        }
+
+        selectMediaPrevious () {
+            if (this.hasPrevious()) {
+                this.selectMedia(this.#selectedMediaIndex - 1);
             }
         }
+
+        selectMediaNext () {
+            if (this.hasNext()) {
+                this.selectMedia(this.#selectedMediaIndex + 1);
+            }
+        }
+
+        hasPrevious () {
+            return this.media && this.#selectedMediaIndex > 0;
+        }
+
+        hasNext () {
+            return this.media && this.#selectedMediaIndex < this.media.length - 1;
+        }
+
+        createFullscreenViewer (options = {}) {
+            const viewer = document.createElement('octopusviewer-viewer');
+            viewer.instance = this;
+
+            const title = document.createElement('span');
+            title.setAttribute('slot', 'title');
+            title.innerText = options.fullscreenTitle;
+            viewer.appendChild(title);
+
+            viewer.mediaQuery = this.mediaQuery;
+            viewer.siteSlug = this.siteSlug;
+            viewer.showMediaSelector = options.showMediaSelector;
+            viewer.showMediaInfo = options.showMediaInfo;
+            viewer.showDownloadLink = options.showDownloadLink;
+
+            viewer.style.position = 'absolute';
+            viewer.style.top = '-20000px';
+            viewer.style.left = '-20000px';
+
+            viewer.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement) {
+                    viewer.remove();
+                }
+            });
+            document.body.appendChild(viewer);
+            viewer.requestFullscreen();
+        }
+    }
+
+    class OctopusViewerBaseElement extends HTMLElement {
+        get siteSlug () {
+            return this.getAttribute('site-slug');
+        }
+
+        set siteSlug (siteSlug) {
+            this.setAttribute('site-slug', siteSlug ?? '');
+        }
+
+        get mediaQuery () {
+            return this.getAttribute('media-query');
+        }
+
+        set mediaQuery (mediaQuery) {
+            this.setAttribute('media-query', mediaQuery ?? '');
+        }
+
+        get instanceKey () {
+            return this.getAttribute('instance-key') ?? `${this.siteSlug}:${this.mediaQuery}`;
+        }
+
+        set instanceKey (instanceKey) {
+            this.setAttribute('instance-key', instanceKey);
+        }
+
+        get instance () {
+            return OctopusViewer.getInstance(this);
+        }
+
+        set instance (instance) {
+            OctopusViewer.setInstance(this, instance);
+        }
+    }
+
+    class OctopusViewerViewerElement extends OctopusViewerBaseElement {
         constructor () {
             super();
 
@@ -40,28 +197,35 @@
             const mediaInfo = document.createElement('octopusviewer-media-info');
 
             for (const el of [mediaSelector, mediaView, mediaInfo]) {
-                for (const property of ['mediaQuery', 'siteSlug', 'showMediaSelector', 'showMediaInfo', 'showDownloadLink', 'mediaId']) {
+                for (const property of ['instance', 'mediaQuery', 'siteSlug', 'showDownloadLink']) {
                     el[property] = this[property];
                 }
             }
+
+            const titleSlot = this.shadowRoot.querySelector('slot[name="title"]');
+            titleSlot.addEventListener('slotchange', ev => {
+                mediaView.fullscreenTitle = ev.target.assignedNodes().map(node => node.textContent).join(' ');
+            });
 
             this.shadowRoot.querySelector('.octopusviewer-media-selector .sidebar-content').appendChild(mediaSelector);
             this.shadowRoot.querySelector('.octopusviewer-media-view').appendChild(mediaView);
             this.shadowRoot.querySelector('.octopusviewer-media-info-metadata').appendChild(mediaInfo);
 
             this.shadowRoot.addEventListener('click', this);
-            this.shadowRoot.addEventListener('octopus:media-list-loaded', this);
+            this.instance.addEventListener('octopus:media-list-loaded', this);
 
             this.shadowRoot.querySelector('.octopusviewer-viewer').classList.add('loaded');
 
             if (this.showMediaInfo === 'always') {
                 this.shadowRoot.querySelector('.octopusviewer-media-info').classList.remove('hidden');
             }
+
+            this.#setMediaSelectorVisibility();
         }
 
         disconnectedCallback () {
             this.shadowRoot.removeEventListener('click', this);
-            this.shadowRoot.removeEventListener('octopus:media-list-loaded', this);
+            this.instance.removeEventListener('octopus:media-list-loaded', this);
         }
 
         handleEvent (ev) {
@@ -78,30 +242,6 @@
             link.setAttribute('rel', 'stylesheet');
             link.setAttribute('href', new URL(url, baseUrl));
             this.shadowRoot.appendChild(link);
-        }
-
-        get mediaId () {
-            return this.getAttribute('media-id');
-        }
-
-        set mediaId (mediaId) {
-            this.setAttribute('media-id', mediaId ?? '');
-        }
-
-        get mediaQuery () {
-            return this.getAttribute('media-query');
-        }
-
-        set mediaQuery (query) {
-            this.setAttribute('media-query', query ?? '');
-        }
-
-        get siteSlug () {
-            return this.getAttribute('site-slug');
-        }
-
-        set siteSlug (slug) {
-            this.setAttribute('site-slug', slug ?? '');
         }
 
         get showMediaSelector () {
@@ -155,9 +295,13 @@
         }
 
         #onMediaListLoaded (ev) {
+            this.#setMediaSelectorVisibility();
+        }
+
+        #setMediaSelectorVisibility () {
             const shouldShowMediaSelector =
                 this.showMediaSelector === 'always' ||
-                (this.showMediaSelector === 'auto' && ev.detail.media.length > 1);
+                (this.showMediaSelector === 'auto' && this.instance.media && this.instance.media.length > 1);
 
             if (shouldShowMediaSelector) {
                 this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.remove('hidden');
@@ -165,7 +309,6 @@
                 this.shadowRoot.querySelector('.octopusviewer-media-selector').classList.add('hidden');
             }
         }
-
     }
 
     const template = document.createElement('template');
@@ -192,57 +335,23 @@
 </div>
     `;
 
-    window.customElements.define('octopusviewer-viewer', OctopusViewerViewer);
+    window.customElements.define('octopusviewer-viewer', OctopusViewerViewerElement);
 
-    class OctopusViewerMediaInfo extends HTMLElement {
-        static get observedAttributes() {
-            return ['media-id'];
-        }
-
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (oldValue === newValue) return;
-
-            if (name === 'media-id') {
-                this.#loadInfo();
-            }
-        }
-
+    class OctopusViewerMediaInfoElement extends OctopusViewerBaseElement {
         connectedCallback () {
-            this.getRootNode().addEventListener('octopus:media-select', this);
+            this.#render();
+
+            this.instance.addEventListener('octopus:media-select', this);
         }
 
         disconnectedCallback () {
-            this.getRootNode().removeEventListener('octopus:media-select', this);
+            this.instance.removeEventListener('octopus:media-select', this);
         }
 
         handleEvent (ev) {
             if (ev.type === 'octopus:media-select') {
                 return this.#onMediaSelect(ev);
             }
-        }
-
-        get mediaId () {
-            return this.getAttribute('media-id');
-        }
-
-        set mediaId (mediaId) {
-            this.setAttribute('media-id', mediaId ?? '');
-        }
-
-        get mediaQuery () {
-            return this.getAttribute('media-query');
-        }
-
-        set mediaQuery (query) {
-            this.setAttribute('media-query', query ?? '');
-        }
-
-        get siteSlug () {
-            return this.getAttribute('site-slug');
-        }
-
-        set siteSlug (slug) {
-            this.setAttribute('site-slug', slug ?? '');
         }
 
         get showMediaSelector () {
@@ -261,9 +370,11 @@
             this.setAttribute('show-media-info', showMediaInfo ?? '');
         }
 
-        #loadInfo () {
-            if (this.mediaId) {
-                const mediaInfoUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${this.mediaId}/info`, baseUrl);
+        #render () {
+            const mediaId = this.instance.selectedMedia?.['o:id'];
+            if (mediaId) {
+                const siteSlug = this.instance.siteSlug;
+                const mediaInfoUrl = new URL(`s/${siteSlug}/octopusviewer/media/${mediaId}/info`, baseUrl);
 
                 fetch(mediaInfoUrl).then(response => {
                     return response.json();
@@ -279,57 +390,31 @@
         }
 
         #onMediaSelect (ev) {
-            this.mediaId = ev.detail.mediaId;
+            this.#render();
         }
     }
 
-    window.customElements.define('octopusviewer-media-info', OctopusViewerMediaInfo);
+    window.customElements.define('octopusviewer-media-info', OctopusViewerMediaInfoElement);
 
-    class OctopusViewerMediaView extends HTMLElement {
+    class OctopusViewerMediaViewElement extends OctopusViewerBaseElement {
         #jsDepsPromise;
 
-        static get observedAttributes() {
-            return ['media-id'];
-        }
-
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (oldValue === newValue) return;
-
-            if (name === 'media-id') {
-                const mediaId = newValue;
-
-                this.loadJsDependencies().then(() => {
-                    if (mediaId) {
-                        const mediaRenderUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${mediaId}/render`, baseUrl);
-                        fetch(mediaRenderUrl).then(response => {
-                            return response.text();
-                        }).then(html => {
-                            this.applyTemplate();
-                            this.querySelector('.octopusviewer-media-view-main').innerHTML = html;
-                        });
-                    } else {
-                        this.applyTemplate();
-                    }
-                });
-            }
-        }
-
         connectedCallback () {
-            this.applyTemplate();
-
-            this.loadJsDependencies();
+            this.#render();
 
             this.addEventListener('click', this.#onClick)
-            this.getRootNode().addEventListener('octopus:media-select', this);
+            this.instance.addEventListener('octopus:media-select', this);
         }
 
         disconnectedCallback () {
             this.removeEventListener('click', this);
-            this.getRootNode().removeEventListener('octopus:media-select', this);
+
+            this.instance.removeEventListener('octopus:media-select', this);
         }
 
         applyTemplate () {
             const fragment = viewTemplate.content.cloneNode(true)
+
             if (this.showDownloadLink !== 'controls' && this.showDownloadLink !== 'media-selector|controls') {
                 fragment.querySelector('.octopusviewer-download')?.remove();
             }
@@ -337,6 +422,23 @@
             if (window.Omeka?.jsTranslate) {
                 fragment.querySelector('.octopusviewer-download')?.setAttribute('title', Omeka.jsTranslate('Download'));
                 fragment.querySelector('.octopusviewer-fullscreen')?.setAttribute('title', Omeka.jsTranslate('Toggle fullscreen'));
+                fragment.querySelector('.octopusviewer-previous')?.setAttribute('title', Omeka.jsTranslate('Previous'));
+                fragment.querySelector('.octopusviewer-next')?.setAttribute('title', Omeka.jsTranslate('Next'));
+            }
+
+            const downloadButton = fragment.querySelector('button.octopusviewer-download');
+            if (downloadButton) {
+                const selectedMedia = this.instance.selectedMedia;
+                downloadButton.disabled = !selectedMedia || !selectedMedia['o:original_url']
+            }
+
+            const nextButton = fragment.querySelector('button.octopusviewer-next');
+            if (nextButton) {
+                nextButton.disabled = !this.instance.hasNext();
+            }
+            const previousButton = fragment.querySelector('button.octopusviewer-previous');
+            if (previousButton) {
+                previousButton.disabled = !this.instance.hasPrevious();
             }
 
             this.replaceChildren(fragment);
@@ -392,11 +494,36 @@
                 ev.preventDefault();
 
                 this.download();
+            } else if (ev.target.closest('.octopusviewer-previous')) {
+                ev.preventDefault();
+
+                this.instance.selectMediaPrevious();
+            } else if (ev.target.closest('.octopusviewer-next')) {
+                ev.preventDefault();
+
+                this.instance.selectMediaNext();
             }
         }
 
         #onMediaSelect (ev) {
-            this.mediaId = ev.detail.mediaId;
+            this.#render();
+        }
+
+        #render() {
+            const mediaId = this.instance.selectedMedia?.['o:id'];
+            this.loadJsDependencies().then(() => {
+                if (mediaId) {
+                    const mediaRenderUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${mediaId}/render`, baseUrl);
+                    fetch(mediaRenderUrl).then(response => {
+                        return response.text();
+                    }).then(html => {
+                        this.applyTemplate();
+                        this.querySelector('.octopusviewer-media-view-main').innerHTML = html;
+                    });
+                } else {
+                    this.applyTemplate();
+                }
+            });
         }
 
         toggleFullscreen () {
@@ -405,70 +532,29 @@
                 return;
             }
 
-            const rootNode = this.getRootNode();
-            if (rootNode instanceof ShadowRoot) {
-                rootNode.host.requestFullscreen();
-            } else {
-                // Recreate full viewer with sidebars
-                const viewer = document.createElement('octopusviewer-viewer');
-
-                const title = document.createElement('span');
-                title.setAttribute('slot', 'title');
-                title.innerText = this.fullscreenTitle;
-                viewer.appendChild(title);
-
-                viewer.mediaQuery = this.mediaQuery;
-                viewer.siteSlug = this.siteSlug;
-                viewer.mediaId = this.mediaId;
-                viewer.showMediaSelector = this.showMediaSelector;
-                viewer.showMediaInfo = this.showMediaInfo;
-                viewer.showDownloadLink = this.showDownloadLink;
-
-                viewer.style.position = 'absolute';
-                viewer.style.top = '-20000px';
-                viewer.style.left = '-20000px';
-
-                viewer.addEventListener('fullscreenchange', () => {
-                    if (!document.fullscreenElement) {
-                        viewer.remove();
-                    }
-                });
-                document.body.appendChild(viewer);
-                viewer.requestFullscreen();
-            }
+            const options = {
+                fullscreenTitle: this.fullscreenTitle,
+                showMediaSelector: this.showMediaSelector,
+                showMediaInfo: this.showMediaInfo,
+                showDownloadLink: this.showDownloadLink,
+            };
+            this.instance.createFullscreenViewer(options);
         }
 
         download () {
-            const mediaDownloadUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${this.mediaId}/download`, baseUrl);
-            fetch(mediaDownloadUrl)
-                .then(res => res.json())
-                .then(data => {
-                    window.open(data.originalUrl, '_blank');
-                }).catch(console.error);
-        }
-
-        get mediaId () {
-            return this.getAttribute('media-id');
-        }
-
-        set mediaId (mediaId) {
-            this.setAttribute('media-id', mediaId ?? '');
-        }
-
-        get mediaQuery () {
-            return this.getAttribute('media-query');
-        }
-
-        set mediaQuery (query) {
-            this.setAttribute('media-query', query ?? '');
-        }
-
-        get siteSlug () {
-            return this.getAttribute('site-slug');
-        }
-
-        set siteSlug (slug) {
-            this.setAttribute('site-slug', slug ?? '');
+            const mediaId = this.instance.selectedMedia?.['o:id'];
+            if (mediaId) {
+                const mediaDownloadUrl = new URL(`s/${this.siteSlug}/octopusviewer/media/${mediaId}/download`, baseUrl);
+                fetch(mediaDownloadUrl)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.originalUrl) {
+                            window.open(data.originalUrl, '_blank');
+                        } else {
+                            console.error('Attempt to download a media that has no original url');
+                        }
+                    }).catch(console.error);
+            }
         }
 
         get showMediaSelector () {
@@ -508,75 +594,92 @@
     viewTemplate.innerHTML = `
         <div class="octopusviewer-media-view-main"></div>
         <div class="octopusviewer-media-view-controls">
-            <a class="octopusviewer-download" title="Download"><i class="octopusviewer-icon-download"></i></a>
-            <a class="octopusviewer-fullscreen" title="Toggle fullscreen"><i class="octopusviewer-icon-fullscreen"></i></a>
+            <div class="octopusviewer-media-view-controls-region-left">
+                <button class="octopusviewer-download" title="Download"><i class="octopusviewer-icon-download"></i></button>
+            </div>
+            <div class="octopusviewer-media-view-controls-region-center">
+                <button class="octopusviewer-previous" title="Previous"><i class="octopusviewer-icon-previous"></i></button>
+                <button class="octopusviewer-next" title="Next"><i class="octopusviewer-icon-next"></i></button>
+            </div>
+            <div class="octopusviewer-media-view-controls-region-right">
+                <button class="octopusviewer-fullscreen" title="Toggle fullscreen"><i class="octopusviewer-icon-fullscreen"></i></button>
+            </div>
         </div>
     `;
 
-    window.customElements.define('octopusviewer-media-view', OctopusViewerMediaView);
+    window.customElements.define('octopusviewer-media-view', OctopusViewerMediaViewElement);
 
-    class OctopusViewerMediaSelector extends HTMLElement {
-        static get observedAttributes() {
-            return ['media-id'];
+    class OctopusViewerMediaSelectorElement extends OctopusViewerBaseElement {
+        connectedCallback () {
+            this.instance.addEventListener('octopus:media-list-loaded', this);
+            this.instance.addEventListener('octopus:media-select', this);
+
+            this.addEventListener('click', this.#onClick)
+
+            this.#loadMediaSelector();
         }
 
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (name === 'media-id') {
-                const mediaId = newValue;
-                this.#markMediaAsSelected(mediaId);
+        disconnectedCallback () {
+            this.instance.removeEventListener('octopus:media-list-loaded', this);
+            this.instance.removeEventListener('octopus:media-select', this);
+
+            this.removeEventListener('click', this);
+        }
+
+        handleEvent (ev) {
+            if (ev.type === 'octopus:media-list-loaded') {
+                this.#onMediaListLoaded(ev);
+            } else if (ev.type === 'octopus:media-select') {
+                this.#onMediaSelect(ev);
+            } else if (ev.type === 'click') {
+                this.#onClick(ev);
             }
         }
 
-        connectedCallback () {
-            this.fetchMediaSelector().then(mediaSelectorHTML => {
+        #loadMediaSelector () {
+            const media = this.instance.media;
+
+            if (!media || media.length === 0 || (media.length === 1 && this.showMediaSelector === 'auto')) {
+                this.replaceChildren();
+                return;
+            }
+
+            this.fetchMediaSelector(this.instance.mediaQuery, this.instance.siteSlug).then(mediaSelectorHTML => {
                 const mediaSelectorContainer = document.createElement('div');
                 mediaSelectorContainer.innerHTML = mediaSelectorHTML;
 
-                const allMedia = mediaSelectorContainer.querySelectorAll('.octopusviewer-media-selector-element');
-                if (allMedia.length === 0) {
-                    return;
-                }
-                if (allMedia.length === 1 && this.showMediaSelector === 'auto') {
-                    return;
-                }
-
-                this.appendChild(selectorTemplate.content.cloneNode(true));
+                this.replaceChildren(selectorTemplate.content.cloneNode(true));
 
                 const mediaSelector = this.querySelector('.octopusviewer-media-selector-list');
                 mediaSelector.replaceChildren(...mediaSelectorContainer.childNodes);
 
-                this.#dispatchMediaListLoadedEvent();
-
-                if (this.mediaId) {
-                    this.#markMediaAsSelected(this.mediaId);
-                } else {
-                    this.mediaId = allMedia[0].dataset.mediaId;
-                    this.#dispatchMediaSelectEvent();
-                }
+                this.#markMediaAsSelected(this.instance.selectedMedia?.['o:id']);
             });
-
-            this.addEventListener('click', this.#onClick)
         }
 
-        disconnectedCallback () {
-            this.removeEventListener('click', this.#onClick);
+        #onMediaListLoaded (ev) {
+            this.#loadMediaSelector();
         }
 
-        fetchMediaSelector () {
-            const mediaSelectorUrl = new URL('s/' + this.siteSlug + '/octopusviewer/viewer/media-selector', baseUrl);
-            mediaSelectorUrl.search = this.mediaQuery;
+        #onMediaSelect (ev) {
+            this.#markMediaAsSelected(ev.detail.media?.['o:id']);
+        }
+
+        fetchMediaSelector (mediaQuery, siteSlug) {
+            const mediaSelectorUrl = new URL('s/' + siteSlug + '/octopusviewer/viewer/media-selector', baseUrl);
+            mediaSelectorUrl.search = mediaQuery;
 
             return fetch(mediaSelectorUrl).then(res => res.text())
         }
 
         #markMediaAsSelected (mediaId) {
-            const mediaElement = this.querySelector('[data-media-id="' + mediaId + '"]');
-            if (mediaElement) {
-                mediaElement.closest('.octopusviewer-media-selector-list').querySelectorAll('.octopusviewer-media-selector-element').forEach(e => {
+            this.querySelectorAll('[data-media-id]').forEach(e => {
+                if (mediaId && mediaId == e.dataset.mediaId) {
+                    e.classList.add('octopusviewer-selected');
+                } else {
                     e.classList.remove('octopusviewer-selected');
-                });
-                mediaElement.classList.add('octopusviewer-selected');
-            }
+                }
+            });
         }
 
         #onClick (ev) {
@@ -594,63 +697,7 @@
 
             ev.stopPropagation();
 
-            this.mediaId = el.dataset.mediaId;
-
-            this.#dispatchMediaSelectEvent();
-        }
-
-        #dispatchMediaSelectEvent () {
-            this.dispatchEvent(
-                new CustomEvent(
-                    'octopus:media-select',
-                    {
-                        bubbles: true,
-                        detail: { mediaId: this.mediaId },
-                    }
-                )
-            );
-        }
-
-        #dispatchMediaListLoadedEvent () {
-            const media = [];
-
-            for (const el of this.querySelectorAll('.octopusviewer-media-selector-element[data-media-id]')) {
-                media.push({ id: el.dataset.mediaId });
-            }
-
-            this.dispatchEvent(
-                new CustomEvent(
-                    'octopus:media-list-loaded',
-                    {
-                        bubbles: true,
-                        detail: { media },
-                    }
-                )
-            );
-        }
-
-        get mediaId () {
-            return this.getAttribute('media-id');
-        }
-
-        set mediaId (mediaId) {
-            this.setAttribute('media-id', mediaId ?? '');
-        }
-
-        get mediaQuery () {
-            return this.getAttribute('media-query');
-        }
-
-        set mediaQuery (query) {
-            this.setAttribute('media-query', query ?? '');
-        }
-
-        get siteSlug () {
-            return this.getAttribute('site-slug');
-        }
-
-        set siteSlug (slug) {
-            this.setAttribute('site-slug', slug ?? '');
+            this.instance.selectMediaById(el.dataset.mediaId);
         }
 
         get showMediaSelector () {
@@ -673,5 +720,5 @@
     const selectorTemplate = document.createElement('template');
     selectorTemplate.innerHTML = `<div class="octopusviewer-media-selector-list"></div>`;
 
-    window.customElements.define('octopusviewer-media-selector', OctopusViewerMediaSelector);
+    window.customElements.define('octopusviewer-media-selector', OctopusViewerMediaSelectorElement);
 })();

@@ -21,6 +21,7 @@ class OctopusViewer extends AbstractHelper
     {
         $view = $this->getView();
 
+        $attributes['instance-key'] ??= bin2hex(random_bytes(16));
         $attributes['media-query'] ??= http_build_query($query);
         $attributes['site-slug'] ??= $view->layout()->site->slug();
         $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
