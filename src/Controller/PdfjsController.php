@@ -27,7 +27,7 @@ class PdfjsController extends AbstractActionController
         $contents = str_replace($link, $links, $contents);
 
         $base_url = $serverUrl($basePath('/modules/OctopusViewer/asset/vendor/pdf.js/web/viewer.html'));
-        $contents = preg_replace('<head>', sprintf('<head><base href="%s">', $escapeHtmlAttr($base_url)), $contents, 1);
+        $contents = preg_replace('/<head>/', sprintf('<head><base href="%s">', $escapeHtmlAttr($base_url)), $contents, 1);
 
         $response->setContent($contents);
 
