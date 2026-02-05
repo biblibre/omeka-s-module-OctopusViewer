@@ -5,6 +5,8 @@
     const baseUrlEnd = src.indexOf('/modules/OctopusViewer/asset/js/octopusviewer-viewer.js');
     const baseUrl = src.substring(0, baseUrlEnd) + '/';
 
+    const v = (new URL(src)).searchParams.get('v') ?? '';
+
     class OctopusViewer extends EventTarget {
         #selectedMedia;
         #selectedMediaIndex;
@@ -183,7 +185,7 @@
         }
 
         connectedCallback () {
-            this.appendStylesheet('modules/OctopusViewer/asset/css/octopusviewer-viewer.css');
+            this.appendStylesheet(`modules/OctopusViewer/asset/css/octopusviewer-viewer.css?v=${v}`);
             if (this.extraStylesheet) {
                 this.appendStylesheet(this.extraStylesheet);
             }
