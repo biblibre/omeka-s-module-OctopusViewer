@@ -98,7 +98,7 @@ class OctopusViewer extends AbstractHelper
         $attributes['show-media-selector'] ??= $view->siteSetting('octopusviewer_show_media_selector', '') ?: $view->setting('octopusviewer_show_media_selector', 'auto');
         $attributes['show-media-info'] ??= $view->siteSetting('octopusviewer_show_media_info', '') ?: $view->setting('octopusviewer_show_media_info', 'always');
         $attributes['show-download-link'] ??= $view->siteSetting('octopusviewer_show_download_link', '') ?: $view->setting('octopusviewer_show_download_link', 'no');
-        $attributes['extra-stylesheet'] ??= $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true);
+        $attributes['fullscreen-extra-stylesheet'] ??= $view->assetUrl('css/octopusviewer-viewer-extra.css', 'OctopusViewer', $override = true);
 
         $args = [
             'attributes' => $attributes,

@@ -128,6 +128,7 @@
             viewer.showMediaSelector = options.showMediaSelector;
             viewer.showMediaInfo = options.showMediaInfo;
             viewer.showDownloadLink = options.showDownloadLink;
+            viewer.extraStylesheet = options.extraStylesheet;
 
             viewer.style.position = 'absolute';
             viewer.style.top = '-20000px';
@@ -203,6 +204,8 @@
                     el[property] = this[property];
                 }
             }
+
+            mediaView.fullscreenExtraStylesheet = this.extraStylesheet;
 
             const titleSlot = this.shadowRoot.querySelector('slot[name="title"]');
             titleSlot.addEventListener('slotchange', ev => {
@@ -539,6 +542,7 @@
                 showMediaSelector: this.showMediaSelector,
                 showMediaInfo: this.showMediaInfo,
                 showDownloadLink: this.showDownloadLink,
+                extraStylesheet: this.fullscreenExtraStylesheet,
             };
             this.instance.createFullscreenViewer(options);
         }
@@ -589,6 +593,14 @@
 
         set fullscreenTitle (fullscreenTitle) {
             this.setAttribute('fullscreen-title', fullscreenTitle ?? '');
+        }
+
+        get fullscreenExtraStylesheet () {
+            return this.getAttribute('fullscreen-extra-stylesheet') ?? '';
+        }
+
+        set fullscreenExtraStylesheet (fullscreenExtraStylesheet) {
+            this.setAttribute('fullscreen-extra-stylesheet', fullscreenExtraStylesheet ?? '');
         }
     }
 

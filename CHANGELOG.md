@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 - Mitigate cache issues by adding `v` parameter to static file url
+- Pass extraStylesheet to fullscreen viewer
 
 ## [0.10.2] - 2026-01-07
 
