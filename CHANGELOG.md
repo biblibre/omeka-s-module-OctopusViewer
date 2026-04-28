@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.10.4] - 2026-04-28
 
 - Hide "Current page" tool that does not make sense in this context and shows
   another pdf file
@@ -166,6 +166,8 @@ directory and do a fresh install of OctopusViewer
 
 Initial release
 
+[0.10.4]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.10.4
+[0.10.3]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.10.3
 [0.10.2]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.10.2
 [0.10.1]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.10.1
 [0.10.0]: https://github.com/biblibre/omeka-s-module-OctopusViewer/releases/tag/v0.10.0
