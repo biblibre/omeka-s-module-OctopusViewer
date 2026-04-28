@@ -18,3 +18,7 @@
 #editorModeButtons, #editorModeSeparator {
     display: none;
 }
+
+#viewBookmark {
+    display: none;
+}
