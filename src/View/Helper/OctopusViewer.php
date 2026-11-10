@@ -6,7 +6,6 @@ use Laminas\View\Helper\AbstractHelper;
 use OctopusViewer\MediaRenderer\Manager as MediaRendererManager;
 use Omeka\Api\Representation\ItemRepresentation;
 use Omeka\Api\Representation\MediaRepresentation;
-use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class OctopusViewer extends AbstractHelper
 {

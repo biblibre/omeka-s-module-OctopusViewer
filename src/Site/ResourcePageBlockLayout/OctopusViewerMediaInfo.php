@@ -8,17 +8,17 @@ use Omeka\Api\Representation\ItemRepresentation;
 
 class OctopusViewerMediaInfo implements ResourcePageBlockLayoutInterface
 {
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Octopus viewer media metadata'; // @translate
     }
 
-    public function getCompatibleResourceNames() : array
+    public function getCompatibleResourceNames(): array
     {
         return ['items', 'media'];
     }
 
-    public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource) : string
+    public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource): string
     {
         if ($resource instanceof ItemRepresentation) {
             $item = $resource;

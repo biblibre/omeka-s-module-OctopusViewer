@@ -7,17 +7,17 @@ use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class OctopusViewerMediaSelector implements ResourcePageBlockLayoutInterface
 {
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Octopus viewer media selector'; // @translate
     }
 
-    public function getCompatibleResourceNames() : array
+    public function getCompatibleResourceNames(): array
     {
         return ['items'];
     }
 
-    public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource) : string
+    public function render(PhpRenderer $view, AbstractResourceEntityRepresentation $resource): string
     {
         $media = $resource->primaryMedia();
         if (!$media) {

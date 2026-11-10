@@ -16,8 +16,8 @@ class PdfjsController extends AbstractActionController
         $contents = file_get_contents($filepath);
 
         $viewHelpers = $this->viewHelpers();
-        $serverUrl= $viewHelpers->get('serverUrl');
-        $assetUrl= $viewHelpers->get('assetUrl');
+        $serverUrl = $viewHelpers->get('serverUrl');
+        $assetUrl = $viewHelpers->get('assetUrl');
         $basePath = $viewHelpers->get('basePath');
         $escapeHtmlAttr = $viewHelpers->get('escapeHtmlAttr');
 
